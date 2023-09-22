@@ -6,10 +6,10 @@ import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-shell',
   standalone: true,
-  imports: [CommonModule, MatToolbarModule, RouterOutlet, MatToolbarModule],
+  imports: [CommonModule, MatToolbarModule, RouterOutlet],
   template: `
     <ng-container>
-      <mat-toolbar>
+      <mat-toolbar color="primary">
         <span>My Application</span>
       </mat-toolbar>
       <router-outlet></router-outlet>
