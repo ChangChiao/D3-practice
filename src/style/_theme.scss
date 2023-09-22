@@ -1,5 +1,6 @@
 @use './palettes' as *;
 @use '@angular/material' as mat;
+@import 'normalize.css';
 
 @include mat.core;
 
