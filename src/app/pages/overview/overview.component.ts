@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-overview',
   standalone: true,
   imports: [CommonModule],
-  template: `<p>overview works!</p>`,
+  template: `<p class="title">overview works!</p>`,
   styleUrls: ['./overview.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

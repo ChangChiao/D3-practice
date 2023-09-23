@@ -4,7 +4,7 @@
 
 @include mat.core;
 
-$app-primary: mat.define-palette($primary-palette, 500);
+$app-primary: mat.define-palette($primary, 500);
 $app-accent: mat.define-palette($mat-blue, 500);
 $app-warn: mat.define-palette($mat-yellow, 500);
 

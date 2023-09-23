@@ -1,0 +1,6 @@
+@use 'sass:map';
+@use './palettes' as *;
+
+.title {
+    color: map.get($secondary, 600) ;
+}
