@@ -1,7 +1,6 @@
 @use './palettes' as *;
 @use '@angular/material' as mat;
 
-
 @include mat.core;
 
 $app-primary: mat.define-palette($primary, 500);
@@ -13,7 +12,7 @@ $app-theme: mat.define-light-theme(
     color: (
       primary: $app-primary,
       accent: $app-accent,
-      warn: $app-warn
-    )
+      warn: $app-warn,
+    ),
   )
 );

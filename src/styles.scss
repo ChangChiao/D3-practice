@@ -8,15 +8,10 @@
 @import '@fontsource/fira-mono/500.css';
 @import '@fontsource/fira-mono/700.css';
 
-
-
-
 @include mat.core;
-
 
 @include mat.all-component-themes($app-theme);
 
-
 body {
-    font-family: 'Fira Mono', 'system', sans-serif;
+  font-family: 'Fira Mono', 'system', sans-serif;
 }

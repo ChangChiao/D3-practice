@@ -31,6 +31,12 @@ dependencies:
   '@fontsource/fira-mono':
     specifier: ^5.0.8
     version: 5.0.8
+  '@ngrx/component-store':
+    specifier: ^16.2.0
+    version: 16.2.0(@angular/core@16.2.0)(rxjs@7.8.0)
+  '@ngrx/store':
+    specifier: ^16.2.0
+    version: 16.2.0(@angular/core@16.2.0)(rxjs@7.8.0)
   '@nx/angular':
     specifier: 16.8.1
     version: 16.8.1(@angular-devkit/build-angular@16.2.0)(@angular-devkit/core@16.2.0)(@angular-devkit/schematics@16.2.0)(@schematics/angular@16.2.0)(@types/node@16.11.7)(eslint@8.46.0)(nx@16.8.1)(rxjs@7.8.0)(ts-node@10.9.1)(typescript@5.1.3)
@@ -4115,6 +4121,28 @@ packages:
       tslib: 2.6.1
     dev: false
 
+  /@ngrx/component-store@16.2.0(@angular/core@16.2.0)(rxjs@7.8.0):
+    resolution: {integrity: sha512-XpLt2AY6BiITv/pQjr0ATNMRflxY0XWy/DRMaTvoR7DPH5o3E/wojbogpj9lDi07rTWmONlvmbUuUoF5QmKB0Q==}
+    peerDependencies:
+      '@angular/core': ^16.0.0
+      rxjs: ^6.5.3 || ^7.5.0
+    dependencies:
+      '@angular/core': 16.2.0(rxjs@7.8.0)(zone.js@0.13.0)
+      rxjs: 7.8.0
+      tslib: 2.6.1
+    dev: false
+
+  /@ngrx/store@16.2.0(@angular/core@16.2.0)(rxjs@7.8.0):
+    resolution: {integrity: sha512-C7oIUC87xXV+1dTGUwYG/L4p0IZdYv/Ou1nTL/LffyAHllmmygTA5gzLB87abLOhucAxlFIQMQ8t/GSxdk/+QA==}
+    peerDependencies:
+      '@angular/core': ^16.0.0
+      rxjs: ^6.5.3 || ^7.5.0
+    dependencies:
+      '@angular/core': 16.2.0(rxjs@7.8.0)(zone.js@0.13.0)
+      rxjs: 7.8.0
+      tslib: 2.6.1
+    dev: false
+
   /@ngtools/webpack@16.2.0(@angular/compiler-cli@16.2.0)(typescript@5.1.3)(webpack@5.88.2):
     resolution: {integrity: sha512-c9jv4r7GnLTpnPOeF+a9yAm/3/2wwl9lMBU32i9hlY+q/Hqde4PiL95bUOLnRRL1I64DV7BFTlSZqSPgDpFXZQ==}
     engines: {node: ^16.14.0 || >=18.10.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
@@ -4206,7 +4234,7 @@ packages:
     resolution: {integrity: sha512-aMHFxbbK+ukFfVaipaIlmiZGF8m1jUDMw4pZKB1VIk4GaAnbvimaKiBBf9rX/FDsleV1gERqBlQoweeU6SPJSA==}
     dependencies:
       '@nx/angular': 16.8.1(@angular-devkit/build-angular@16.2.0)(@angular-devkit/core@16.2.0)(@angular-devkit/schematics@16.2.0)(@schematics/angular@16.2.0)(@types/node@16.11.7)(eslint@8.46.0)(nx@16.8.1)(rxjs@7.8.0)(ts-node@10.9.1)(typescript@5.1.3)
-      tslib: 2.3.0
+      tslib: 2.6.1
     transitivePeerDependencies:
       - '@angular-devkit/build-angular'
       - '@angular-devkit/core'
@@ -4348,7 +4376,7 @@ packages:
     hasBin: true
     dependencies:
       nx: 16.8.1
-      tslib: 2.3.0
+      tslib: 2.6.1
     transitivePeerDependencies:
       - '@swc-node/register'
       - '@swc/core'
@@ -4483,7 +4511,7 @@ packages:
       '@phenomnomnominal/tsquery': 5.0.1(typescript@5.1.3)
       detect-port: 1.5.1
       semver: 7.5.3
-      tslib: 2.3.0
+      tslib: 2.6.1
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@swc-node/register'
@@ -4510,7 +4538,7 @@ packages:
       nx: 16.8.1
       semver: 7.5.3
       tmp: 0.2.1
-      tslib: 2.3.0
+      tslib: 2.6.1
 
   /@nx/eslint-plugin@16.8.1(@types/node@16.11.7)(@typescript-eslint/parser@5.60.1)(eslint-config-prettier@8.1.0)(eslint@8.46.0)(nx@16.8.1)(typescript@5.1.3):
     resolution: {integrity: sha512-UhOtC1zeGytfMtsVSa3r3FbUIUtXLjtvBtZvr/vr8Ff1QSMVfTYwhVOqctYsBVYDpJonwyz3vm95SOHbBlSw6A==}
@@ -4789,7 +4817,7 @@ packages:
       terser-webpack-plugin: 5.3.9(esbuild@0.18.17)(webpack@5.88.2)
       ts-loader: 9.4.4(typescript@5.1.3)(webpack@5.88.2)
       tsconfig-paths-webpack-plugin: 4.0.0
-      tslib: 2.3.0
+      tslib: 2.6.1
       webpack: 5.88.2(esbuild@0.18.17)
       webpack-dev-server: 4.15.1(webpack@5.88.2)
       webpack-node-externals: 3.0.0
@@ -5551,7 +5579,7 @@ packages:
       chalk: 4.1.2
       jsdom: 16.7.0
       object-path: 0.11.8
-      tslib: 2.3.0
+      tslib: 2.6.1
       typescript: 5.1.3
     transitivePeerDependencies:
       - bufferutil
@@ -9082,7 +9110,7 @@ packages:
     dependencies:
       copy-anything: 2.0.6
       parse-node-version: 1.0.1
-      tslib: 2.3.0
+      tslib: 2.6.1
     optionalDependencies:
       errno: 0.1.8
       graceful-fs: 4.2.11
@@ -10757,7 +10785,7 @@ packages:
   /rxjs@7.8.1:
     resolution: {integrity: sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==}
     dependencies:
-      tslib: 2.3.0
+      tslib: 2.6.1
 
   /safe-buffer@5.1.2:
     resolution: {integrity: sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g==}
