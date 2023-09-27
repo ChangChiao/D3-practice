@@ -14,7 +14,7 @@ export const appRoutes: Route[] = [
           ),
       },
       {
-        path: 'detail:id',
+        path: 'detail',
         loadChildren: () =>
           import('./pages/detail/detail-page.routes').then(
             (m) => m.DETAIL_PAGE_ROUTES
