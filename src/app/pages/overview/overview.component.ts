@@ -25,6 +25,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
       <a [routerLink]="['/detail']" [queryParams]="{ id: 1 }">
         link to detail component
       </a>
+      <a [routerLink]="['/rwd']"> rwd </a>
 
       <p class="title">overview works!</p>
     </div>

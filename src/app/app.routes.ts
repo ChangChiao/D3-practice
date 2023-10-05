@@ -20,6 +20,11 @@ export const appRoutes: Route[] = [
             (m) => m.DETAIL_PAGE_ROUTES
           ),
       },
+      {
+        path: 'rwd',
+        loadChildren: () =>
+          import('./pages/rwd/rwd-page.routes').then((m) => m.RWD_PAGE_ROUTES),
+      },
     ],
   },
 ];
