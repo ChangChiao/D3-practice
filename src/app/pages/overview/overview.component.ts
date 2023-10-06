@@ -2,7 +2,10 @@ import {
   ChangeDetectionStrategy,
   Component,
   OnInit,
+  computed,
+  effect,
   inject,
+  signal,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
@@ -28,9 +31,27 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
       <a [routerLink]="['/rwd']"> rwd </a>
 
       <p class="title">overview works!</p>
+      <p>count: {{ count() }}</p>
+      <p>doubleCount: {{ doubleCount() }}</p>
+      <button (click)="setCount()">set count</button>
     </div>
   `,
   styleUrls: ['./overview.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class OverviewComponent {}
+export class OverviewComponent {
+  count = signal(0);
+  doubleCount = computed(() => this.count() * 2);
+  // setCount() {
+  //   this.count.set(3);
+  // }
+  constructor() {
+    effect(() => {
+      console.log('effect' + this.count());
+    });
+  }
+
+  setCount() {
+    this.count.update((val) => val + 1);
+  }
+}
