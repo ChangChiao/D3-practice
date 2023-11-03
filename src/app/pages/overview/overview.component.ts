@@ -6,6 +6,7 @@ import {
   effect,
   inject,
   signal,
+  untracked,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
@@ -29,11 +30,13 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
         link to detail component
       </a>
       <a [routerLink]="['/rwd']"> rwd </a>
-
+      <a [routerLink]="['/ani']"> ani </a>
       <p class="title">overview works!</p>
       <p>count: {{ count() }}</p>
+      <p>person: {{ person() }}</p>
       <p>doubleCount: {{ doubleCount() }}</p>
       <button (click)="setCount()">set count</button>
+      <button (click)="setPerson()">set person</button>
     </div>
   `,
   styleUrls: ['./overview.component.scss'],
@@ -41,17 +44,29 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 })
 export class OverviewComponent {
   count = signal(0);
+  person = signal(0);
   doubleCount = computed(() => this.count() * 2);
   // setCount() {
   //   this.count.set(3);
   // }
   constructor() {
     effect(() => {
-      console.log('effect' + this.count());
+      const count = this.count();
+      untracked(() => {
+        console.log('effect', count, this.person());
+        // this.someMethodThatReadsSignals(count);
+      });
     });
+  }
+
+  someMethodThatReadsSignals(count: number) {
+    console.log('someMethodThatReadsSignals' + count);
   }
 
   setCount() {
     this.count.update((val) => val + 1);
+  }
+  setPerson() {
+    this.person.update((val) => val + 1);
   }
 }

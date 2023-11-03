@@ -25,6 +25,13 @@ export const appRoutes: Route[] = [
         loadChildren: () =>
           import('./pages/rwd/rwd-page.routes').then((m) => m.RWD_PAGE_ROUTES),
       },
+      {
+        path: 'ani',
+        loadChildren: () =>
+          import('./pages/animation/animation-page.routes').then(
+            (m) => m.ANIMATION_PAGE_ROUTES
+          ),
+      },
     ],
   },
 ];
