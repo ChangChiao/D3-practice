@@ -34,9 +34,18 @@ dependencies:
   '@fontsource/fira-mono':
     specifier: ^5.0.8
     version: 5.0.8
+  '@ngrx/component':
+    specifier: ^16.3.0
+    version: 16.3.0(@angular/common@16.2.0)(@angular/core@16.2.0)(rxjs@7.8.0)
   '@ngrx/component-store':
     specifier: ^16.2.0
     version: 16.2.0(@angular/core@16.2.0)(rxjs@7.8.0)
+  '@ngrx/effects':
+    specifier: ^16.3.0
+    version: 16.3.0(@angular/core@16.2.0)(@ngrx/store@16.2.0)(rxjs@7.8.0)
+  '@ngrx/entity':
+    specifier: ^16.3.0
+    version: 16.3.0(@angular/core@16.2.0)(@ngrx/store@16.2.0)(rxjs@7.8.0)
   '@ngrx/store':
     specifier: ^16.2.0
     version: 16.2.0(@angular/core@16.2.0)(rxjs@7.8.0)
@@ -4314,6 +4323,45 @@ packages:
       rxjs: ^6.5.3 || ^7.5.0
     dependencies:
       '@angular/core': 16.2.0(rxjs@7.8.0)(zone.js@0.13.0)
+      rxjs: 7.8.0
+      tslib: 2.6.1
+    dev: false
+
+  /@ngrx/component@16.3.0(@angular/common@16.2.0)(@angular/core@16.2.0)(rxjs@7.8.0):
+    resolution: {integrity: sha512-4PA0XWLey5q8vINBmqSIDwC+JEIRU7vfqRRiF9XzN6fftYTMC4lJLN3EyWRuUSQ8BzOaLzEv6/CJNqhRxVI6SQ==}
+    peerDependencies:
+      '@angular/common': ^16.0.0
+      '@angular/core': ^16.0.0
+      rxjs: ^6.5.3 || ^7.5.0
+    dependencies:
+      '@angular/common': 16.2.0(@angular/core@16.2.0)(rxjs@7.8.0)
+      '@angular/core': 16.2.0(rxjs@7.8.0)(zone.js@0.13.0)
+      rxjs: 7.8.0
+      tslib: 2.6.1
+    dev: false
+
+  /@ngrx/effects@16.3.0(@angular/core@16.2.0)(@ngrx/store@16.2.0)(rxjs@7.8.0):
+    resolution: {integrity: sha512-QvN+jJFqBHH6x5eqtFVeMTcotoWMLTrDjK4wW61hmbYafGmBbEnIgikTsn2DSPA67io0DhgDtBHoBKnicy1gEw==}
+    peerDependencies:
+      '@angular/core': ^16.0.0
+      '@ngrx/store': 16.3.0
+      rxjs: ^6.5.3 || ^7.5.0
+    dependencies:
+      '@angular/core': 16.2.0(rxjs@7.8.0)(zone.js@0.13.0)
+      '@ngrx/store': 16.2.0(@angular/core@16.2.0)(rxjs@7.8.0)
+      rxjs: 7.8.0
+      tslib: 2.6.1
+    dev: false
+
+  /@ngrx/entity@16.3.0(@angular/core@16.2.0)(@ngrx/store@16.2.0)(rxjs@7.8.0):
+    resolution: {integrity: sha512-o+jhJylWPt9gspzkb61QqHgeBFssDKz4J/EoQcAE217Y1bEBWf6EuleHXiFvAoWKkNqb8eTHRnNGgT0VPE9G+A==}
+    peerDependencies:
+      '@angular/core': ^16.0.0
+      '@ngrx/store': 16.3.0
+      rxjs: ^6.5.3 || ^7.5.0
+    dependencies:
+      '@angular/core': 16.2.0(rxjs@7.8.0)(zone.js@0.13.0)
+      '@ngrx/store': 16.2.0(@angular/core@16.2.0)(rxjs@7.8.0)
       rxjs: 7.8.0
       tslib: 2.6.1
     dev: false

@@ -11,13 +11,16 @@ import {
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { LetDirective } from '@ngrx/component';
+import { selectVoteData } from 'src/app/store/app.selectors';
 
 @Component({
   selector: 'app-overview',
   standalone: true,
-  imports: [CommonModule, MatIconModule, RouterModule],
+  imports: [CommonModule, LetDirective, MatIconModule, RouterModule],
   template: `
-    <div>
+    <div *ngrxLet="vm$ as vm">
       <mat-icon
         aria-hidden="false"
         aria-label="Example home icon"
@@ -37,15 +40,18 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
       <p>doubleCount: {{ doubleCount() }}</p>
       <button (click)="setCount()">set count</button>
       <button (click)="setPerson()">set person</button>
+      <!-- {{ vm | json }} -->
     </div>
   `,
   styleUrls: ['./overview.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OverviewComponent {
+  #store = inject(Store);
   count = signal(0);
   person = signal(0);
   doubleCount = computed(() => this.count() * 2);
+  vm$ = this.#store.select(selectVoteData);
   // setCount() {
   //   this.count.set(3);
   // }
