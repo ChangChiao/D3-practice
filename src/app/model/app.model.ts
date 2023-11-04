@@ -1,8 +1,8 @@
-export interface TodoState {
-  todo: Todo[];
+export interface VoteState {
+  vote: Vote[];
 }
 
-export interface Todo {
+export interface Vote {
   userId: number;
   id: number;
   title: string;

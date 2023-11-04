@@ -11,13 +11,15 @@ import {
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { LetDirective } from '@ngrx/component';
+import { AppComponentStore } from 'src/app/store/app.state';
 
 @Component({
   selector: 'app-overview',
   standalone: true,
-  imports: [CommonModule, MatIconModule, RouterModule],
+  imports: [CommonModule, MatIconModule, RouterModule, LetDirective],
   template: `
-    <div>
+    <div *ngrxLet="vm$ as vm">
       <mat-icon
         aria-hidden="false"
         aria-label="Example home icon"
@@ -37,6 +39,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
       <p>doubleCount: {{ doubleCount() }}</p>
       <button (click)="setCount()">set count</button>
       <button (click)="setPerson()">set person</button>
+      {{ vm | json }}
     </div>
   `,
   styleUrls: ['./overview.component.scss'],
@@ -49,6 +52,8 @@ export class OverviewComponent {
   // setCount() {
   //   this.count.set(3);
   // }
+  #store = inject(AppComponentStore);
+  vm$ = this.#store.vm$;
   constructor() {
     effect(() => {
       const count = this.count();

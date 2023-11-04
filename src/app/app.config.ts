@@ -5,18 +5,36 @@ import {
 } from '@angular/router';
 
 import { appRoutes } from './app.routes';
-import { TODO_KEY, TodoStore } from './store';
-import { provideState } from '@ngrx/store';
 import { provideHttpClient } from '@angular/common/http';
 import { IconRegistryService } from './service/icon-registry.service';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { AppComponentStore } from './store/app.state';
+import { tap } from 'rxjs';
+
+function initializeAppFactory(store: AppComponentStore) {
+  return () => {
+    store.voteData$
+      .pipe(
+        tap((data) => {
+          console.log('data==', data);
+          store.setVote(data);
+        })
+      )
+      .subscribe();
+  };
+}
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(appRoutes, withEnabledBlockingInitialNavigation()),
     provideHttpClient(),
     provideAnimations(),
-    // provideState(TODO_KEY, TodoStore),
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeAppFactory,
+      deps: [AppComponentStore],
+      multi: true,
+    },
     {
       provide: APP_INITIALIZER,
       useFactory: (iconRegistryService: IconRegistryService) => () =>

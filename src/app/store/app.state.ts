@@ -1,36 +1,36 @@
 import { Injectable, inject } from '@angular/core';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
-import { Todo, TodoState } from '../model/todo.model';
+import { Vote, VoteState } from '../model/app.model';
 import { EMPTY, catchError, map } from 'rxjs';
-import { CounterService } from '../service';
+import { AppService } from '../service';
 
 const initState = {
-  todo: [],
+  vote: [],
 };
 
 export const TODO_KEY = 'todo';
 
 @Injectable({ providedIn: 'root' })
-export class TodoStore extends ComponentStore<TodoState> {
-  #service = inject(CounterService);
+export class AppComponentStore extends ComponentStore<VoteState> {
+  #service = inject(AppService);
 
-  readonly counter$ = this.#service.fetchData$.pipe(
+  voteData$ = this.#service.fetchData$.pipe(
     map((data) => data),
     catchError(() => EMPTY)
   );
 
-  readonly #counter$ = this.select(({ todo }) => todo);
+  readonly #voteData$ = this.select(({ vote }) => vote);
   readonly vm$ = this.select(
-    this.#counter$,
+    this.#voteData$,
     // this.#loading$,
-    (todo) => ({ data: todo }),
+    (data) => ({ vote: data }),
     {
       debounce: true,
     }
   );
 
-  readonly setTodo = this.updater((state, payload: Todo[]) => ({
-    todo: payload,
+  readonly setVote = this.updater((state, payload: Vote[]) => ({
+    vote: payload,
   }));
 
   constructor() {
