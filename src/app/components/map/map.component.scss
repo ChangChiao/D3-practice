@@ -7,4 +7,17 @@
   bottom: 0;
   left: 0;
   margin: auto;
+  .county {
+    stroke: #757575;
+    stroke-width: 0.05;
+  }
+
+  .town {
+    stroke: #fff;
+    stroke-width: 0.05;
+  }
+  .village {
+    stroke: #fff;
+    stroke-width: 0.05;
+  }
 }

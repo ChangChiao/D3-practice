@@ -10,7 +10,12 @@ import { geoMercator } from 'd3-geo';
 import { feature, mesh } from 'topojson-client';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin, retry } from 'rxjs';
-import { CountryData, TownData, VillageData } from '../../model/index';
+import {
+  CountryData,
+  TownData,
+  TransferData,
+  VillageData,
+} from '../../model/index';
 
 @Component({
   selector: 'app-map',
@@ -31,7 +36,7 @@ export class MapComponent implements AfterViewInit {
   centerPoint = { x: 0, y: 0 };
   width = 2000;
   height = 1000;
-  initialScale = 5000;
+  initialScale = 1000;
 
   isMobile = false;
   map = null;
@@ -43,12 +48,13 @@ export class MapComponent implements AfterViewInit {
   x = 480;
   y = 480;
 
-  townData = {};
-  villageData = {};
-  countryData = {};
+  townData: TransferData = null;
+  villageData: TransferData = null;
+  countryData: TransferData = null;
 
-  path = d3.geoPath();
+  // path = d3.geoPath();
   projection = geoMercator().scale(this.initialScale).center([123, 24]);
+  path = d3.geoPath().projection(this.projection);
 
   collapse = d3.select('#collapse-content').style('opacity', 1);
   dragContainer = d3
@@ -75,9 +81,9 @@ export class MapComponent implements AfterViewInit {
   drawCountry() {
     console.log('this.xx', this.countryData);
     this.map
-      .append('g')
-      .selectAll('.county')
-      .data(this.countryData)
+      // .append('g')
+      .selectAll('path')
+      .data(this.countryData.features)
       .enter()
       .append('path')
       .attr('class', 'county')
@@ -142,15 +148,17 @@ export class MapComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    type dataInterdace = [];
     this.width = document.body.clientWidth;
     this.height = document.body.clientHeight;
     this.centerPoint = { x: this.width / 2, y: this.height / 2 };
     this.renderMap();
     this.fetchData().subscribe(([country, town, village]) => {
-      this.countryData = feature(country, country.objects.tracts);
-      this.townData = town;
-      this.villageData = village;
+      // @ts-ignore
+      this.countryData = feature(country, country.objects.counties);
+      // @ts-ignore
+      this.townData = feature(town, town.objects.town);
+      // @ts-ignore
+      this.villageData = feature(village, village.objects.tracts);
       // this.registerG();
       this.drawCountry();
       // console.log('country, town, village', country, town, village);
@@ -175,13 +183,15 @@ export class MapComponent implements AfterViewInit {
       .select('.map')
       .append('svg')
       .attr('width', this.width)
-      .attr('height', this.height)
-      .style('position', 'absolute')
-      .style('top', '0px')
-      .style('left', '0px');
+      .attr('height', this.height);
+    // .style('position', 'absolute')
+    // .style('top', '0px')
+    // .style('left', '0px');
   }
 
   switchArea() {}
 
   selectArea() {}
+
+  goPrevArea() {}
 }
