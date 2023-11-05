@@ -6,7 +6,6 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import * as d3 from 'd3';
-import { zoom } from 'd3-zoom';
 import { feature, mesh } from 'topojson-client';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin, retry } from 'rxjs';
@@ -36,7 +35,7 @@ export class MapComponent implements AfterViewInit {
   centerPoint = { x: 0, y: 0 };
   width = 700;
   height = 1000;
-  initialScale = 1000;
+  initialScale = 1;
 
   isMobile = false;
   map = null;
@@ -45,6 +44,7 @@ export class MapComponent implements AfterViewInit {
   toolTip = null;
   colorScale = null;
   renderData = null;
+  zoom = null;
 
   x = 480;
   y = 480;
@@ -54,10 +54,8 @@ export class MapComponent implements AfterViewInit {
   countryData: TransferData = null;
 
   path = d3.geoPath();
-  // projection = geoMercator().scale(this.initialScale).center([123, 24]);
+  // projection = d3.geoMercator().scale(this.initialScale).center([123, 24]);
   // path = d3.geoPath().projection(this.projection);
-
-  zoom = zoom().on('zoom', this.zoomed);
 
   collapse = d3.select('#collapse-content').style('opacity', 1);
   dragContainer = d3
@@ -81,9 +79,9 @@ export class MapComponent implements AfterViewInit {
       // );
     });
 
-  zoomed() {
-    // @ts-ignore
-    this.g.attr('transform', d3.event.transform);
+  zoomed(event) {
+    console.log('event.transform', event.transform);
+    this.g.attr('transform', event.transform);
   }
 
   drawCountry() {
@@ -99,16 +97,19 @@ export class MapComponent implements AfterViewInit {
         return i.properties.color;
       });
 
-    this.map.attr(
-      'transform',
-      'translate(' +
-        (this.centerPoint.x - 480 * ((this.height / 960) * 0.8)) +
-        ',' +
-        (this.centerPoint.y - 480 * ((this.height / 960) * 0.8)) +
-        ')scale(' +
-        (this.height / 960) * 0.8 +
-        ')'
-    );
+    this.map.attr('transform', 'translate(100,50)scale(900)');
+    this.map.call(this.zoom.transform, d3.zoomIdentity.scale(0.8));
+
+    // this.map.attr(
+    //   'transform',
+    //   'translate(' +
+    //     (this.centerPoint.x - 480 * ((this.height / 960) * 0.8)) +
+    //     ',' +
+    //     (this.centerPoint.y - 480 * ((this.height / 960) * 0.8)) +
+    //     ')scale(' +
+    //     (this.height / 960) * 0.8 +
+    //     ')'
+    // );
 
     // .on("click", clicked)
     // .on("mouseover", enterCounty);
@@ -157,8 +158,6 @@ export class MapComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.width = document.body.clientWidth;
     this.height = document.body.clientHeight;
-    console.log('this.w', this.width);
-    console.log('this.h', this.height);
     this.centerPoint = { x: this.width / 2, y: this.height / 2 };
     this.renderMap();
     this.fetchData().subscribe(([country, town, village]) => {
@@ -168,7 +167,7 @@ export class MapComponent implements AfterViewInit {
       this.townData = feature(town, town.objects.town);
       // @ts-ignore
       this.villageData = feature(village, village.objects.tracts);
-      this.createSVGg();
+
       this.drawCountry();
       // console.log('country, town, village', country, town, village);
     });
@@ -194,11 +193,24 @@ export class MapComponent implements AfterViewInit {
       .attr('height', this.height)
       .append('svg');
 
+    this.createSVGg();
+    this.sleep(2000);
+    this.initZoom();
     this.map.call(this.zoom);
-    // this.map.call(
-    //   this.zoom.transform,
-    //   d3.zoomIdentity.scale(1).translate(-200, -200)
-    // );
+    // this.map.call(this.zoom.transform, d3.zoomIdentity.scale(0.8));
+  }
+
+  async sleep(sec) {
+    return new Promise<void>((resolve) => {
+      return setTimeout(() => resolve(), sec);
+    });
+  }
+
+  initZoom() {
+    this.zoom = d3
+      .zoom()
+      .scaleExtent([1, 8])
+      .on('zoom', this.zoomed.bind(this));
   }
 
   switchArea() {}
