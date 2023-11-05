@@ -1,3 +1,9 @@
+.map-container {
+  position: relative;
+  width: 90vw;
+  height: 100vh;
+  overflow: hidden;
+}
 .map {
   border: 1px solid #ccc;
   background-color: #202d49;

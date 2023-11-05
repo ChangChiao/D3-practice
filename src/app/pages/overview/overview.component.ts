@@ -40,6 +40,7 @@ import { MapComponent } from '../../components/map/map.component';
       </a>
       <a [routerLink]="['/rwd']"> rwd </a>
       <a [routerLink]="['/ani']"> ani </a>
+      <app-map></app-map>
       <p class="title">overview works!</p>
       <p>count: {{ count() }}</p>
       <p>person: {{ person() }}</p>
@@ -48,7 +49,6 @@ import { MapComponent } from '../../components/map/map.component';
       <button (click)="setPerson()">set person</button>
       <
       {{ vm | json }}
-      <app-map></app-map>
     </div>
   `,
   styleUrls: ['./overview.component.scss'],

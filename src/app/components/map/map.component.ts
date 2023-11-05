@@ -22,7 +22,7 @@ import {
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div #chartContainer class="chart-container">
+    <div class="map-container">
       <svg class="map"></svg>
       <div id="collapse-content"></div>
     </div>
@@ -34,7 +34,7 @@ export class MapComponent implements AfterViewInit {
   state!: { worlddata: any; neighbors: any };
   #api = inject(HttpClient);
   centerPoint = { x: 0, y: 0 };
-  width = 2000;
+  width = 700;
   height = 1000;
   initialScale = 1000;
 
@@ -52,9 +52,9 @@ export class MapComponent implements AfterViewInit {
   villageData: TransferData = null;
   countryData: TransferData = null;
 
-  // path = d3.geoPath();
-  projection = geoMercator().scale(this.initialScale).center([123, 24]);
-  path = d3.geoPath().projection(this.projection);
+  path = d3.geoPath();
+  // projection = geoMercator().scale(this.initialScale).center([123, 24]);
+  // path = d3.geoPath().projection(this.projection);
 
   collapse = d3.select('#collapse-content').style('opacity', 1);
   dragContainer = d3
@@ -81,12 +81,12 @@ export class MapComponent implements AfterViewInit {
   drawCountry() {
     console.log('this.xx', this.countryData);
     this.map
-      // .append('g')
-      .selectAll('path')
+      .append('g')
+      .selectAll('.country')
       .data(this.countryData.features)
       .enter()
       .append('path')
-      .attr('class', 'county')
+      .attr('class', 'country')
       .attr('d', this.path)
       .style('fill', function (i) {
         return i.properties.color;
@@ -150,6 +150,8 @@ export class MapComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.width = document.body.clientWidth;
     this.height = document.body.clientHeight;
+    console.log('this.w', this.width);
+    console.log('this.h', this.height);
     this.centerPoint = { x: this.width / 2, y: this.height / 2 };
     this.renderMap();
     this.fetchData().subscribe(([country, town, village]) => {
@@ -183,10 +185,10 @@ export class MapComponent implements AfterViewInit {
       .select('.map')
       .append('svg')
       .attr('width', this.width)
-      .attr('height', this.height);
-    // .style('position', 'absolute')
-    // .style('top', '0px')
-    // .style('left', '0px');
+      .attr('height', this.height)
+      .style('position', 'absolute')
+      .style('top', '0px')
+      .style('left', '0px');
   }
 
   switchArea() {}
