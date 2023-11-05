@@ -52,6 +52,9 @@ dependencies:
   d3-geo:
     specifier: ^3.1.0
     version: 3.1.0
+  d3-zoom:
+    specifier: ^3.0.0
+    version: 3.0.0
   normalize.css:
     specifier: ^8.0.1
     version: 8.0.1

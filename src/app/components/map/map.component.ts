@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import * as d3 from 'd3';
-import { geoMercator } from 'd3-geo';
+import { zoom } from 'd3-zoom';
 import { feature, mesh } from 'topojson-client';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin, retry } from 'rxjs';
@@ -40,6 +40,7 @@ export class MapComponent implements AfterViewInit {
 
   isMobile = false;
   map = null;
+  g = null;
   // path = null;
   toolTip = null;
   colorScale = null;
@@ -55,6 +56,8 @@ export class MapComponent implements AfterViewInit {
   path = d3.geoPath();
   // projection = geoMercator().scale(this.initialScale).center([123, 24]);
   // path = d3.geoPath().projection(this.projection);
+
+  zoom = zoom().on('zoom', this.zoomed);
 
   collapse = d3.select('#collapse-content').style('opacity', 1);
   dragContainer = d3
@@ -78,10 +81,14 @@ export class MapComponent implements AfterViewInit {
       // );
     });
 
+  zoomed() {
+    // @ts-ignore
+    this.g.attr('transform', d3.event.transform);
+  }
+
   drawCountry() {
     console.log('this.xx', this.countryData);
     this.map
-      .append('g')
       .selectAll('.country')
       .data(this.countryData.features)
       .enter()
@@ -161,7 +168,7 @@ export class MapComponent implements AfterViewInit {
       this.townData = feature(town, town.objects.town);
       // @ts-ignore
       this.villageData = feature(village, village.objects.tracts);
-      // this.registerG();
+      this.createSVGg();
       this.drawCountry();
       // console.log('country, town, village', country, town, village);
     });
@@ -176,19 +183,22 @@ export class MapComponent implements AfterViewInit {
     // this.renderMap();
   }
 
-  registerG() {
-    return this.map.append('g').call(this.dragContainer);
+  createSVGg() {
+    this.g = this.map.append('g');
   }
 
   renderMap() {
     this.map = d3
       .select('.map')
-      .append('svg')
       .attr('width', this.width)
       .attr('height', this.height)
-      .style('position', 'absolute')
-      .style('top', '0px')
-      .style('left', '0px');
+      .append('svg');
+
+    this.map.call(this.zoom);
+    // this.map.call(
+    //   this.zoom.transform,
+    //   d3.zoomIdentity.scale(1).translate(-200, -200)
+    // );
   }
 
   switchArea() {}
