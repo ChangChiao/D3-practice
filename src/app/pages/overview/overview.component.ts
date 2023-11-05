@@ -13,11 +13,18 @@ import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { LetDirective } from '@ngrx/component';
 import { AppComponentStore } from 'src/app/store/app.state';
+import { MapComponent } from 'src/components/map/map.component';
 
 @Component({
   selector: 'app-overview',
   standalone: true,
-  imports: [CommonModule, MatIconModule, RouterModule, LetDirective],
+  imports: [
+    CommonModule,
+    MapComponent,
+    MatIconModule,
+    RouterModule,
+    LetDirective,
+  ],
   template: `
     <div *ngrxLet="vm$ as vm">
       <mat-icon
@@ -39,6 +46,7 @@ import { AppComponentStore } from 'src/app/store/app.state';
       <p>doubleCount: {{ doubleCount() }}</p>
       <button (click)="setCount()">set count</button>
       <button (click)="setPerson()">set person</button>
+      <
       {{ vm | json }}
     </div>
   `,
