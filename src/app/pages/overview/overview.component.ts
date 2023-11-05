@@ -13,7 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { LetDirective } from '@ngrx/component';
 import { AppComponentStore } from 'src/app/store/app.state';
-import { MapComponent } from 'src/components/map/map.component';
+import { MapComponent } from '../../components/map/map.component';
 
 @Component({
   selector: 'app-overview',
@@ -48,6 +48,7 @@ import { MapComponent } from 'src/components/map/map.component';
       <button (click)="setPerson()">set person</button>
       <
       {{ vm | json }}
+      <app-map></app-map>
     </div>
   `,
   styleUrls: ['./overview.component.scss'],

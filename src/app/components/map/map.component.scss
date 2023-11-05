@@ -1,26 +1,10 @@
-.chart-container {
-  width: 1000px;
-  height: 600px;
-}
-
-.chart-node {
-  cursor: pointer;
-}
-
-.controls {
-  color: #ffffff;
+.map {
+  border: 1px solid #ccc;
+  background-color: #202d49;
   position: absolute;
-  top: 5;
-  left: 5;
-  display: flex;
-  flex-direction: column;
-}
-
-.map-canvas {
-  position: absolute;
-  margin: 0 auto;
-  right: 0;
-  left: 0;
   top: 0;
-  background-color: #111133;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
 }

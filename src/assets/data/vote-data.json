@@ -1,0 +1,80 @@
+[
+  {
+    "notes": {
+      "comments": "WARN: The data is from Wikipidia and is converted to json by Metis Teng. This is only for practice purpose.",
+      "sourceBy": "https://zh.wikipedia.org/wiki/%E8%87%BA%E7%81%A3%E8%A1%8C%E6%94%BF%E5%8D%80%E4%BA%BA%E5%8F%A3%E5%AF%86%E5%BA%A6%E8%A1%A8"
+    },
+    "data": [
+      {
+        "rank": 1,
+        "city": "新北市",
+        "engName": "New Taipei City",
+        "revenue": "4,008,113",
+        "increasingRate": "-3,473"
+      },
+      {
+        "rank": 2,
+        "city": "臺中市",
+        "engName": "Taichung City",
+        "revenue": "2,813,490",
+        "increasingRate": "-932"
+      },
+      {
+        "rank": 3,
+        "city": "高雄市",
+        "EngName": "Kaohsiung City",
+        "revenue": "2,744,691",
+        "increasingRate": "-2,248"
+      },
+      {
+        "rank": 4,
+        "city": "臺北市",
+        "EngName": "Taipei City",
+        "revenue": "2,524,393",
+        "increasingRate": "-7,266"
+      },
+      {
+        "rank": 5,
+        "city": "桃園市",
+        "EngName": "Taoyuan City",
+        "revenue": "2,272,391",
+        "increasingRate": "-61"
+      },
+      {
+        "rank": 6,
+        "city": "臺南市",
+        "EngName": "Tainan City",
+        "revenue": "1,862,059",
+        "increasingRate": "-1,376"
+      },
+      {
+        "rank": 7,
+        "city": "彰化縣",
+        "EngName": "Changhua County",
+        "revenue": "1,255,330",
+        "increasingRate": "-732"
+      },
+      {
+        "rank": 8,
+        "city": "屏東縣",
+        "EngName": "Pingtung County",
+        "revenue": "804,440",
+        "increasingRate": "-737"
+      },
+      {
+        "rank": 9,
+        "city": "雲林縣",
+        "EngName": "Yunlin County",
+        "revenue": "670,132",
+        "increasingRate": "-532"
+      },
+      {
+        "rank": 10,
+        "city": "新竹縣",
+        "EngName": "Hsinchu County",
+        "revenue": "575,580",
+        "increasingRate": "+449"
+      }
+    ]
+  }
+]

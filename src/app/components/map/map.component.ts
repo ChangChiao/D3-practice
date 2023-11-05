@@ -9,6 +9,7 @@ import * as d3 from 'd3';
 import { geoMercator } from 'd3-geo';
 import { feature, mesh } from 'topojson-client';
 import { HttpClient } from '@angular/common/http';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-map',
@@ -28,10 +29,11 @@ export class MapComponent implements AfterViewInit {
   width = 1000;
   height = 600;
   initialScale = 5000;
-  #taiwanCountry = [];
   map = null;
   path = null;
   toolTip = null;
+  colorScale = null;
+  renderData = null;
 
   lastScale = 0;
   centerX = 0;
@@ -43,50 +45,21 @@ export class MapComponent implements AfterViewInit {
 
   projection = geoMercator().scale(this.initialScale).center([123, 24]);
 
-  // zoom = d3
-  //   .zoom()
-  //   .scaleExtent([1, 8])
-  //   .on('zoom', (event: any) => {
-  //     const features = d3.selectAll('.country');
-  //     const t = event.transform;
-
-  //     const scale = t.k * this.initialScale;
-  //     const centerY = t.y;
-  //     const centerX = t.x;
-  //     let updated = false;
-
-  //     if (scale !== this.lastScale) {
-  //       this.projection.scale(scale);
-  //       this.lastScale = scale;
-  //       updated = true;
-  //     }
-  //     if (centerX !== this.lastCenterX || centerY !== this.lastCenterY) {
-  //       // this.projection.center([centerY, centerX]);
-  //       updated = true;
-  //       console.log(this.projection.scale(), scale, t.k, t.y);
-  //     }
-
-  //     if (updated) {
-  //       const path = d3.geoPath().projection(this.projection);
-  //       features.attr('d', path);
-  //     }
-  //   });
-
   draw() {
-    this.path = this.map.geoPath().projection(this.projection);
+    this.path = d3.geoPath(this.projection);
 
     this.map
       .selectAll('path')
-      .data(renderData)
+      .data(this.renderData)
       .enter()
       .append('path')
       .attr('d', this.path)
       .attr('stroke', '#3f2ab2')
       .attr('stroke-width', '0.7');
-    // .attr("fill", (d) => colorScale(d.revenue) || "#d6d6d6")
+    // .attr("fill", (d) => colorScale(d.vote) || "#d6d6d6")
     // .on("mouseover", function (d) {
     //   const target = d3.select(this).data()[0];
-    //   const rev = target.revenue ?? 0;
+    //   const rev = target.vote ?? 0;
     //   this.toolTip
     //     .style("visibility", "visible")
     //     .text(`${target.properties.COUNTYNAME},${rev}`);
@@ -96,8 +69,59 @@ export class MapComponent implements AfterViewInit {
     // });
   }
 
-  async getMapData() {
-    return this.#api.get('../../data/map-data.json').subscribe((res) => res);
+  getMapData() {
+    return this.#api.get('/assets/data/map-data.json');
+  }
+
+  getVoteData() {
+    return this.#api.get('/assets/data/vote-data.json');
+  }
+
+  toNumber(str) {
+    return parseFloat(str.replace(/,/g, ''));
+  }
+
+  combineData = (map, revenue) => {
+    const { data } = revenue[0];
+    for (const vo of map) {
+      const { COUNTYNAME } = vo.properties;
+      const target = data.find((ele) => ele.city === COUNTYNAME);
+      // console.log("target", target)
+      if (target) {
+        vo.revenue = this.toNumber(target.revenue);
+      }
+    }
+  };
+
+  fetchData() {
+    forkJoin([this.getMapData(), this.getVoteData()]).subscribe(
+      ([map, vote]) => {
+        this.renderData = feature(
+          //@ts-ignore
+          map,
+          //@ts-ignore
+          map.objects['COUNTY_MOI_1090820']
+          //@ts-ignore
+        ).features;
+        this.combineData(this.renderData, vote);
+        const voteData = vote[0].data;
+        //顏色範圍
+        this.colorScale = d3
+          .scaleLinear()
+          .domain([
+            //@ts-ignore
+            d3.min(voteData, (d) => this.toNumber(d.revenue)),
+            //@ts-ignore
+            d3.max(voteData, (d) => this.toNumber(d.revenue)),
+          ])
+          //@ts-ignore
+          .range([
+            '#bcafb0', // <= the lightest shade we want
+            '#ec595c', // <= the darkest shade we want
+          ]);
+        this.draw();
+      }
+    );
   }
 
   setToolTip() {
@@ -113,7 +137,7 @@ export class MapComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.renderMap();
-    this.draw();
+    this.fetchData();
     // this.state.worlddata.features.forEach((country: any, index: number) => {
     //   this.countryColors.push(
     //     `rgba(30,80,100,${
@@ -129,7 +153,7 @@ export class MapComponent implements AfterViewInit {
     this.map = d3.select('.map');
 
     this.map.attr('width', this.width).attr('height', this.height).append('g');
-    this.map.call(this.zoom);
+    // this.map.call(this.zoom);
     // this.redraw();
   }
 
