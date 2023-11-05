@@ -9,7 +9,8 @@ import * as d3 from 'd3';
 import { geoMercator } from 'd3-geo';
 import { feature, mesh } from 'topojson-client';
 import { HttpClient } from '@angular/common/http';
-import { forkJoin } from 'rxjs';
+import { forkJoin, retry } from 'rxjs';
+import { CountryData, TownData, VillageData } from '../../model/index';
 
 @Component({
   selector: 'app-map',
@@ -18,6 +19,7 @@ import { forkJoin } from 'rxjs';
   template: `
     <div #chartContainer class="chart-container">
       <svg class="map"></svg>
+      <div id="collapse-content"></div>
     </div>
   `,
   styleUrls: ['./map.component.scss'],
@@ -26,102 +28,106 @@ import { forkJoin } from 'rxjs';
 export class MapComponent implements AfterViewInit {
   state!: { worlddata: any; neighbors: any };
   #api = inject(HttpClient);
-  width = 1000;
-  height = 600;
+  centerPoint = { x: 0, y: 0 };
+  width = 2000;
+  height = 1000;
   initialScale = 5000;
+
+  isMobile = false;
   map = null;
-  path = null;
+  // path = null;
   toolTip = null;
   colorScale = null;
   renderData = null;
 
-  lastScale = 0;
-  centerX = 0;
-  centerY = 0;
-  lastCenterX = 0;
-  lastCenterY = 0;
+  x = 480;
+  y = 480;
 
-  countryColors = [];
+  townData = {};
+  villageData = {};
+  countryData = {};
 
+  path = d3.geoPath();
   projection = geoMercator().scale(this.initialScale).center([123, 24]);
 
-  draw() {
-    this.path = d3.geoPath(this.projection);
+  collapse = d3.select('#collapse-content').style('opacity', 1);
+  dragContainer = d3
+    .drag()
+    .on('start', () => {
+      this.collapse.transition().duration(400).style('opacity', 1);
+    })
+    .on('drag', (d, i) => {
+      // this.x = this.x || 0;
+      // this.y = this.y || 0;
+      // this.x += d3.event.dx;
+      // this.y += d3.event.dy;
+      // const k = height / vWidth;
+      // d3.select(this).attr(
+      //   'transform',
+      //   `translate(${this.centerPoint.x},${
+      //     this.centerPoint.y
+      //   })scale(${k})translate(${-x},${-y})translate(${this.x / k},${
+      //     this.y / k
+      //   })`
+      // );
+    });
 
+  drawCountry() {
+    console.log('this.xx', this.countryData);
     this.map
-      .selectAll('path')
-      .data(this.renderData)
+      .append('g')
+      .selectAll('.county')
+      .data(this.countryData)
       .enter()
       .append('path')
+      .attr('class', 'county')
       .attr('d', this.path)
-      .attr('stroke', '#3f2ab2')
-      .attr('stroke-width', '0.7');
-    // .attr("fill", (d) => colorScale(d.vote) || "#d6d6d6")
-    // .on("mouseover", function (d) {
-    //   const target = d3.select(this).data()[0];
-    //   const rev = target.vote ?? 0;
-    //   this.toolTip
-    //     .style("visibility", "visible")
-    //     .text(`${target.properties.COUNTYNAME},${rev}`);
-    // })
-    // .on("mouseleave", function () {
-    //   this.toolTip.style("visibility", "hidden");
-    // });
+      .style('fill', function (i) {
+        return i.properties.color;
+      });
+
+    this.map.attr(
+      'transform',
+      'translate(' +
+        (this.centerPoint.x - 480 * ((this.height / 960) * 0.8)) +
+        ',' +
+        (this.centerPoint.y - 480 * ((this.height / 960) * 0.8)) +
+        ')scale(' +
+        (this.height / 960) * 0.8 +
+        ')'
+    );
+
+    // .on("click", clicked)
+    // .on("mouseover", enterCounty);
+
+    // this.map
+    //   .selectAll('path')
+    //   .data(this.renderData)
+    //   .enter()
+    //   .append('path')
+    //   .attr('d', this.path)
+    //   .attr('stroke', '#3f2ab2')
+    //   .attr('stroke-width', '0.7');
   }
 
-  getMapData() {
-    return this.#api.get('/assets/data/map-data.json');
+  getCountryData() {
+    return this.#api.get<CountryData>('/assets/data/country-data.json');
   }
 
-  getVoteData() {
-    return this.#api.get('/assets/data/vote-data.json');
+  getVillageData() {
+    return this.#api.get<VillageData>('/assets/data/village-data.json');
   }
 
-  toNumber(str) {
-    return parseFloat(str.replace(/,/g, ''));
+  getTownData() {
+    return this.#api.get<TownData>('/assets/data/town-data.json');
   }
-
-  combineData = (map, revenue) => {
-    const { data } = revenue[0];
-    for (const vo of map) {
-      const { COUNTYNAME } = vo.properties;
-      const target = data.find((ele) => ele.city === COUNTYNAME);
-      // console.log("target", target)
-      if (target) {
-        vo.revenue = this.toNumber(target.revenue);
-      }
-    }
-  };
 
   fetchData() {
-    forkJoin([this.getMapData(), this.getVoteData()]).subscribe(
-      ([map, vote]) => {
-        this.renderData = feature(
-          //@ts-ignore
-          map,
-          //@ts-ignore
-          map.objects['COUNTY_MOI_1090820']
-          //@ts-ignore
-        ).features;
-        this.combineData(this.renderData, vote);
-        const voteData = vote[0].data;
-        //顏色範圍
-        this.colorScale = d3
-          .scaleLinear()
-          .domain([
-            //@ts-ignore
-            d3.min(voteData, (d) => this.toNumber(d.revenue)),
-            //@ts-ignore
-            d3.max(voteData, (d) => this.toNumber(d.revenue)),
-          ])
-          //@ts-ignore
-          .range([
-            '#bcafb0', // <= the lightest shade we want
-            '#ec595c', // <= the darkest shade we want
-          ]);
-        this.draw();
-      }
-    );
+    return forkJoin([
+      this.getCountryData(),
+      this.getTownData(),
+      this.getVillageData(),
+    ]);
   }
 
   setToolTip() {
@@ -136,8 +142,19 @@ export class MapComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
+    type dataInterdace = [];
+    this.width = document.body.clientWidth;
+    this.height = document.body.clientHeight;
+    this.centerPoint = { x: this.width / 2, y: this.height / 2 };
     this.renderMap();
-    this.fetchData();
+    this.fetchData().subscribe(([country, town, village]) => {
+      this.countryData = feature(country, country.objects.tracts);
+      this.townData = town;
+      this.villageData = village;
+      // this.registerG();
+      this.drawCountry();
+      // console.log('country, town, village', country, town, village);
+    });
     // this.state.worlddata.features.forEach((country: any, index: number) => {
     //   this.countryColors.push(
     //     `rgba(30,80,100,${
@@ -149,47 +166,22 @@ export class MapComponent implements AfterViewInit {
     // this.renderMap();
   }
 
-  renderMap() {
-    this.map = d3.select('.map');
-
-    this.map.attr('width', this.width).attr('height', this.height).append('g');
-    // this.map.call(this.zoom);
-    // this.redraw();
+  registerG() {
+    return this.map.append('g').call(this.dragContainer);
   }
 
-  // redraw() {
-  //   const svg = d3.select('#mapCanvas');
-  //   const path = d3.geoPath().projection(this.projection);
+  renderMap() {
+    this.map = d3
+      .select('.map')
+      .append('svg')
+      .attr('width', this.width)
+      .attr('height', this.height)
+      .style('position', 'absolute')
+      .style('top', '0px')
+      .style('left', '0px');
+  }
 
-  //   svg
-  //     .selectAll('path.country')
-  //     .data(this.state.worlddata.features)
-  //     .enter()
-  //     .append('path')
-  //     .attr('d', path)
-  //     .attr('class', 'country')
-  //     .attr('fill', (d: any, index: number) => {
-  //       return this.countryColors[index];
-  //     })
-  //     .attr('stroke', '#ffffff')
-  //     .attr('stroke-width', 0.2)
-  //     .on('mouseover', (event: MouseEvent, d: any) => {
-  //       this.hoverHandler(event);
-  //     })
-  //     .on('mouseout', (event: MouseEvent, d: any) => {
-  //       this.hoverHandler(event, d);
-  //     });
-  // }
+  switchArea() {}
 
-  // hoverHandler(event: MouseEvent, d?: any) {
-  //   const node = d3.select(event.currentTarget as unknown as string);
-  //   if (d) {
-  //     node.attr(
-  //       'fill',
-  //       this.countryColors[this.state.worlddata.features.indexOf(d)]
-  //     );
-  //   } else {
-  //     node.attr('fill', 'rgba(255, 255, 0, 0.25)');
-  //   }
-  // }
+  selectArea() {}
 }
