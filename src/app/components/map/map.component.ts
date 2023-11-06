@@ -66,7 +66,9 @@ export class MapComponent implements AfterViewInit {
   clickedTarget = null;
 
   activeLineColor = 'orange';
-  normalLineColor = 'white';
+  normalLineColor = 'black';
+  activeLineWidth = '0.7';
+  normalLineWidth = '0.3';
 
   x = 480;
   y = 480;
@@ -116,7 +118,6 @@ export class MapComponent implements AfterViewInit {
 
   createCountry() {
     const self = this;
-    console.log('this.xx', this.countryData);
     this.g
       .selectAll('.country')
       .data(this.countryData.features)
@@ -128,9 +129,7 @@ export class MapComponent implements AfterViewInit {
         return i.properties.color;
       })
       .on('click', function (event, data) {
-        // d3.select(this).attr('border', 0.8);
-        // d3.select(this).classed('active', true);
-        // d3.select(this).raise();
+        self.clearBoundary();
         self.clickedTarget = d3.select(this);
         self.drawBoundary();
 
@@ -163,14 +162,67 @@ export class MapComponent implements AfterViewInit {
     // );
   }
 
+  createTown(data) {
+    const self = this;
+    const countyTowns = this.townData.features.filter(
+      (item) => item.id.slice(0, 5) == data.id
+    );
+    console.log('countyTowns', countyTowns);
+    const townPaths = this.g
+      .selectAll('.town')
+      .data(countyTowns, (item) => item.id);
+    const enterTownPaths = townPaths
+      .enter()
+      .append('path')
+      .attr('class', 'town')
+      .attr('d', this.path)
+      .style('opacity', 0)
+      .on('click', this.switchArea)
+      .style('fill', function (i) {
+        return i.properties.color;
+      })
+      .on('click', function (event, data) {
+        self.clearBoundary();
+        self.clickedTarget = d3.select(this);
+        self.drawBoundary();
+        self.switchArea(data);
+      })
+      .on('mouseover', (event, data) => this.showInfo(data));
+
+    return { townPaths, enterTownPaths };
+  }
+
+  createVillage(data) {
+    const self = this;
+    const townVillages = this.villageData.features.filter(
+      (i) => i.id.slice(0, 7) == data.id
+    );
+    console.log('townVillages', townVillages);
+    const villagePaths = this.g.selectAll('.village').data(townVillages);
+    const enterVillagePaths = villagePaths
+      .enter()
+      .append('path')
+      .attr('class', 'village')
+      .attr('d', this.path)
+      .style('stroke-width', this.normalLineWidth)
+      .style('stroke', this.normalLineColor)
+      .style('fill', function (i) {
+        return i.properties.color;
+      })
+      .on('mouseover', (event, data) => this.showInfo(data));
+    return { villagePaths, enterVillagePaths };
+  }
+
   drawBoundary() {
-    this.clickedTarget.style('stroke-width', 0.7);
+    if (!this.clickedTarget) return;
+    this.clickedTarget.style('stroke-width', this.activeLineWidth);
     this.clickedTarget.style('stroke', this.activeLineColor);
     this.clickedTarget.raise();
   }
 
   clearBoundary() {
-    this.clickedTarget.style('stroke-width', 0.2);
+    if (!this.clickedTarget) return;
+    this.clickedTarget.style('stroke-width', this.normalLineWidth);
     this.clickedTarget.style('stroke', this.normalLineColor);
     this.clickedTarget.lower();
   }
@@ -285,33 +337,48 @@ export class MapComponent implements AfterViewInit {
         this.zoom(bounds, null, 'country');
         break;
       }
-      case 'town':
+      case 'town': {
+        const bounds = this.path.bounds(data);
+        this.toVillage(data);
+        this.zoom(bounds, null, 'town');
         break;
+      }
       case 'village':
         break;
     }
   }
 
   toTown(data) {
-    const countyTowns = this.townData.features.filter(
-      (item) => item.id.slice(0, 5) == data.id
-    );
-    console.log('countyTowns', countyTowns);
-    const townPaths = this.g
-      .selectAll('.town')
-      .data(countyTowns, (item) => item.id);
-    const enterTownPaths = townPaths
-      .enter()
-      .append('path')
-      .attr('class', 'town')
-      .attr('d', this.path)
-      .style('opacity', 0)
-      .on('click', this.switchArea)
-      .style('fill', function (i) {
-        return i.properties.color;
-      })
-      .on('mouseover', (event, data) => this.showInfo(data));
+    const { townPaths, enterTownPaths } = this.createTown(data);
+    // const countyTowns = this.townData.features.filter(
+    //   (item) => item.id.slice(0, 5) == data.id
+    // );
+    // console.log('countyTowns', countyTowns);
+    // const townPaths = this.g
+    //   .selectAll('.town')
+    //   .data(countyTowns, (item) => item.id);
+    // const enterTownPaths = townPaths
+    //   .enter()
+    //   .append('path')
+    //   .attr('class', 'town')
+    //   .attr('d', this.path)
+    //   .style('opacity', 0)
+    //   .on('click', this.switchArea)
+    //   .style('fill', function (i) {
+    //     return i.properties.color;
+    //   })
+    //   .on('mouseover', (event, data) => this.showInfo(data));
     this.toOtherArea('county', townPaths, enterTownPaths);
+  }
+
+  toVillage(data) {
+    const { villagePaths, enterVillagePaths } = this.createVillage(data);
+    // const townVillages = this.villageData.features.filter(
+    //   (i) => i.id.slice(0, 7) == data.id
+    // );
+    // const villagePaths = this.g.selectAll('.village').data(townVillages);
+    // const enterVillagePaths = enterVillage(villagePaths);
+    this.toOtherArea('town', villagePaths, enterVillagePaths);
   }
 
   toOtherArea(areaType, fromPath, toPath) {
@@ -351,39 +418,26 @@ export class MapComponent implements AfterViewInit {
   }
 
   zoom(bounds, bounds2, type) {
-    // const self = this;
-    // const startX = this.x;
-    // const startY = this.y;
-    // const startScale = this.scale;
-    // console.log('zoom===', type);
-    // console.log('shape1', bounds);
-    // console.log('shape2', bounds2);
     const { dx, dy, x, y } = this.calcDistance(bounds);
     this.x = x;
     this.y = y;
-    if (type == 'country') {
-      this.scale = 0.9 / Math.max(dx / this.width, dy / this.height);
-      // if (this.isDesktopDevice) {
-      //   this.scale = 960;
-      // } else {
-      //   this.scale = 1300;
-      // }
-    } else if (type == 'town') {
-      if (this.isDesktopDevice) {
-        this.scale = Math.max(dy, dx);
-      } else {
-        this.scale = Math.max(dx, dy) * 2;
-      }
-    } else {
-      const { dx, dy } = this.calcDistance(bounds2);
-      if (this.isDesktopDevice) {
-        this.scale = Math.max(dy, dx) * 2;
-      } else {
-        this.scale = Math.max(dy, dx);
-      }
-    }
-    // const fromObj = [startX, startY, startScale];
-    // const toObj = [this.x, this.y, this.scale];
+    this.scale = 0.9 / Math.max(dx / this.width, dy / this.height);
+    // if (type == 'country') {
+    //   this.scale = 0.9 / Math.max(dx / this.width, dy / this.height);
+    // } else if (type == 'town') {
+    //   if (this.isDesktopDevice) {
+    //     this.scale = Math.max(dy, dx);
+    //   } else {
+    //     this.scale = Math.max(dx, dy) * 2;
+    //   }
+    // } else {
+    //   const { dx, dy } = this.calcDistance(bounds2);
+    //   if (this.isDesktopDevice) {
+    //     this.scale = Math.max(dy, dx) * 2;
+    //   } else {
+    //     this.scale = Math.max(dy, dx);
+    //   }
+    // }
 
     const translate = [
       this.width / 2 - this.scale * x,
@@ -406,13 +460,13 @@ export class MapComponent implements AfterViewInit {
     //   });
   }
 
-  transform(p) {
-    console.log('p', p);
-    const k = (this.height / p[2]) * 0.8;
-    return `translate(${this.centerPoint[0] - p[0] * k}, ${
-      this.centerPoint[1] - p[1] * k
-    }) scale(${k})`;
-  }
+  // transform(p) {
+  //   console.log('p', p);
+  //   const k = (this.height / p[2]) * 0.8;
+  //   return `translate(${this.centerPoint[0] - p[0] * k}, ${
+  //     this.centerPoint[1] - p[1] * k
+  //   }) scale(${k})`;
+  // }
 
   selectArea() {}
 
