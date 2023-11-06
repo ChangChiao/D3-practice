@@ -62,10 +62,11 @@ export class MapComponent implements AfterViewInit {
   toolTip = null;
   colorScale = null;
   renderData = null;
-  zoom = null;
+  // zoom = null;
 
   x = 480;
   y = 480;
+  scale = 900;
 
   townData: TransferData = null;
   villageData: TransferData = null;
@@ -89,7 +90,7 @@ export class MapComponent implements AfterViewInit {
       // this.y = this.y || 0;
       // this.x += d3.event.dx;
       // this.y += d3.event.dy;
-      // const k = height / vWidth;
+      // const k = height / scale;
       // d3.select(this).attr(
       //   'transform',
       //   `translate(${this.centerPoint.x},${
@@ -110,7 +111,6 @@ export class MapComponent implements AfterViewInit {
   }
 
   createCountry() {
-    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self = this;
     console.log('this.xx', this.countryData);
     this.g
@@ -125,6 +125,7 @@ export class MapComponent implements AfterViewInit {
       })
       .on('click', function (event, data) {
         self.showInfo(data);
+        self.switchArea(data);
       })
       .on('mouseover', function (event, data) {
         d3.select(this).attr('opacity', 0.8);
@@ -229,6 +230,17 @@ export class MapComponent implements AfterViewInit {
     });
   }
 
+  getDataType(num) {
+    if (num === 5) {
+      return 'country';
+    }
+    if (num === 7) {
+      return 'town';
+    }
+
+    return 'village';
+  }
+
   // initZoom() {
   //   this.zoom = d3
   //     .zoom()
@@ -240,7 +252,144 @@ export class MapComponent implements AfterViewInit {
   //     .on('zoom', this.zoomed.bind(this));
   // }
 
-  switchArea() {}
+  switchArea(data) {
+    const type = this.getDataType(data.id?.length);
+    console.log('type', type);
+    console.log('data.id', data.id);
+    switch (type) {
+      case 'country': {
+        console.log('data--sw', data);
+        const bounds = this.path.bounds(data);
+        this.toTown(data);
+        this.zoom(bounds, null, 'country');
+        break;
+      }
+      case 'town':
+        break;
+      case 'village':
+        break;
+    }
+  }
+
+  toTown(data) {
+    const countyTowns = this.townData.features.filter(
+      (item) => item.id.slice(0, 5) == data.id
+    );
+    console.log('countyTowns', countyTowns);
+    const townPaths = this.g
+      .selectAll('.town')
+      .data(countyTowns, (item) => item.id);
+    const enterTownPaths = townPaths
+      .enter()
+      .append('path')
+      .attr('class', 'town')
+      .attr('d', this.path)
+      .style('opacity', 0)
+      .on('click', this.switchArea)
+      .style('fill', function (i) {
+        return i.properties.color;
+      })
+      .on('mouseover', (event, data) => this.showInfo(data));
+    this.toOtherArea('county', townPaths, enterTownPaths, data);
+  }
+
+  toOtherArea(areaType, fromPath, toPath, d) {
+    fromPath.exit().transition().duration(500).style('opacity', 0).remove();
+    toPath
+      .style('opacity', 0)
+      .transition()
+      .delay(100)
+      .duration(500)
+      .style('opacity', 1);
+    const strokeWidth = areaType === 'country' ? '0.7' : '0.2';
+    if (areaType === 'county') {
+      this.map
+        .selectAll('.village')
+        .data([])
+        .exit()
+        .transition()
+        .duration(100)
+        .style('opacity', 0)
+        .remove();
+    }
+    this.g
+      .selectAll('.active')
+      .style('stroke-width', strokeWidth)
+      .style('stroke', '#ffcc00');
+    // this.map.selectAll('.' + areaType).sort(function (a, b) {
+    //   if (a.id != d.id) return -1;
+    //   return 1;
+    // });
+  }
+
+  drawBoundary(data) {
+    const bounds = this.path.bounds(data);
+    this.zoom(bounds, null, '2');
+  }
+
+  calcDistance(bounds) {
+    const dx = bounds[1][0] - bounds[0][0];
+    const dy = bounds[1][1] - bounds[0][1];
+    const x = (bounds[0][0] + bounds[1][0]) / 2;
+    const y = (bounds[0][1] + bounds[1][1]) / 2;
+    return { dx, dy, x, y };
+  }
+
+  zoom(bounds, bounds2, type) {
+    const self = this;
+    const startX = this.x;
+    const startY = this.y;
+    const startScale = this.scale;
+    console.log('zoom===', type);
+    console.log('shape1', bounds);
+    console.log('shape2', bounds2);
+    const { dx, dy, x, y } = this.calcDistance(bounds);
+    this.x = x;
+    this.y = y;
+    if (type == 'country') {
+      // this.x = 480;
+      // this.y = 480;
+      this.scale = Math.max(dx / this.width, dy / this.height);
+      // if (this.isDesktopDevice) {
+      //   this.scale = 960;
+      // } else {
+      //   this.scale = 1300;
+      // }
+    } else if (type == 'town') {
+      if (this.isDesktopDevice) {
+        this.scale = Math.max(dy, dx);
+      } else {
+        this.scale = Math.max(dx, dy) * 2;
+      }
+    } else {
+      const { dx, dy } = this.calcDistance(bounds2);
+      if (this.isDesktopDevice) {
+        this.scale = Math.max(dy, dx) * 2;
+      } else {
+        this.scale = Math.max(dy, dx);
+      }
+    }
+    const fromObj = [startX, startY, startScale];
+    const toObj = [this.x, this.y, this.scale];
+    //@ts-ignore
+    const fn = d3.interpolateZoom(fromObj, toObj);
+    this.g
+      .transition()
+      .duration(500)
+      .attrTween('transform', function () {
+        return function (t) {
+          return self.transform(fn(t));
+        };
+      });
+  }
+
+  transform(p) {
+    console.log('p', p);
+    const k = (this.height / p[2]) * 0.8;
+    return `translate(${this.centerPoint[0] - p[0] * k}, ${
+      this.centerPoint[1] - p[1] * k
+    }) scale(${k})`;
+  }
 
   selectArea() {}
 
