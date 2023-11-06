@@ -63,6 +63,10 @@ export class MapComponent implements AfterViewInit {
   colorScale = null;
   renderData = null;
   // zoom = null;
+  clickedTarget = null;
+
+  activeLineColor = 'orange';
+  normalLineColor = 'white';
 
   x = 480;
   y = 480;
@@ -125,11 +129,10 @@ export class MapComponent implements AfterViewInit {
       })
       .on('click', function (event, data) {
         // d3.select(this).attr('border', 0.8);
-        d3.select(this).classed('active', true);
-        d3.select(this).raise();
-        // self.g
-        //   .selectAll('path')
-        //   .classed('active', (item) => item.id === data.id);
+        // d3.select(this).classed('active', true);
+        // d3.select(this).raise();
+        self.clickedTarget = d3.select(this);
+        self.drawBoundary();
 
         self.showInfo(data);
         self.switchArea(data);
@@ -158,6 +161,18 @@ export class MapComponent implements AfterViewInit {
     //     (this.height / 960) * 0.8 +
     //     ')'
     // );
+  }
+
+  drawBoundary() {
+    this.clickedTarget.style('stroke-width', 0.7);
+    this.clickedTarget.style('stroke', this.activeLineColor);
+    this.clickedTarget.raise();
+  }
+
+  clearBoundary() {
+    this.clickedTarget.style('stroke-width', 0.2);
+    this.clickedTarget.style('stroke', this.normalLineColor);
+    this.clickedTarget.lower();
   }
 
   getCountryData() {
@@ -265,7 +280,6 @@ export class MapComponent implements AfterViewInit {
 
     switch (type) {
       case 'country': {
-        console.log('data--sw', data);
         const bounds = this.path.bounds(data);
         this.toTown(data);
         this.zoom(bounds, null, 'country');
@@ -297,10 +311,10 @@ export class MapComponent implements AfterViewInit {
         return i.properties.color;
       })
       .on('mouseover', (event, data) => this.showInfo(data));
-    this.toOtherArea('county', townPaths, enterTownPaths, data);
+    this.toOtherArea('county', townPaths, enterTownPaths);
   }
 
-  toOtherArea(areaType, fromPath, toPath, d) {
+  toOtherArea(areaType, fromPath, toPath) {
     fromPath.exit().transition().duration(500).style('opacity', 0).remove();
     toPath
       .style('opacity', 0)
@@ -308,7 +322,6 @@ export class MapComponent implements AfterViewInit {
       .delay(100)
       .duration(500)
       .style('opacity', 1);
-    const strokeWidth = areaType === 'country' ? '1' : '0.5';
     if (areaType === 'county') {
       this.map
         .selectAll('.village')
@@ -319,19 +332,14 @@ export class MapComponent implements AfterViewInit {
         .style('opacity', 0)
         .remove();
     }
-    this.map
-      .selectAll('.active')
-      .style('stroke-width', strokeWidth)
-      .style('stroke', '#ffcc00');
+    // this.map
+    //   .selectAll('.active')
+    //   .style('stroke-width', strokeWidth)
+    //   .style('stroke', '#ffcc00');
     // this.map.selectAll('.' + areaType).sort(function (a, b) {
     //   if (a.id != d.id) return -1;
     //   return 1;
     // });
-  }
-
-  drawBoundary(data) {
-    const bounds = this.path.bounds(data);
-    this.zoom(bounds, null, '2');
   }
 
   calcDistance(bounds) {
