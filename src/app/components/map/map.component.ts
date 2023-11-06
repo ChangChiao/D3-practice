@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   inject,
+  signal,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import * as d3 from 'd3';
@@ -24,6 +25,14 @@ import {
     <div class="map-container">
       <svg class="map"></svg>
       <div id="collapse-content"></div>
+      <div class="map-info-box">
+        <h3 class="map-info-box__title">{{ infoSelected().name }}</h3>
+        <ul class="map-info-box__list">
+          <li>{{ infoSelected().ddp }}%</li>
+          <li>{{ infoSelected().kmt }}%</li>
+          <li>{{ infoSelected().pfp }}%</li>
+        </ul>
+      </div>
     </div>
   `,
   styleUrls: ['./map.component.scss'],
@@ -36,6 +45,13 @@ export class MapComponent implements AfterViewInit {
   width = 700;
   height = 1000;
   initialScale = 1;
+
+  infoSelected = signal({
+    name: '',
+    ddp: 0,
+    kmt: 0,
+    pfp: 0,
+  });
 
   isMobile = false;
   map = null;
@@ -79,12 +95,24 @@ export class MapComponent implements AfterViewInit {
       // );
     });
 
-  zoomed(event) {
-    console.log('event.transform', event.transform);
-    this.g.attr('transform', event.transform);
+  // zoomed(event) {
+  //   console.log('event.transform', event.transform);
+  //   this.g.attr('transform', event.transform);
+  // }
+  showInfo(data) {
+    const countrySelected = data.properties.name.substring(0, 3);
+    const [filteredCountry] = this.countryData.features.filter(
+      (item) => item.properties.name.toString() == countrySelected
+    );
+    const { name, ddp, kmt, pfp } = filteredCountry.properties;
+    this.infoSelected.set({ name, ddp, kmt, pfp });
+    // this.infoSelected = { name, ddp, kmt, pfp };
+    console.log('filteredCountry', filteredCountry);
   }
 
   drawCountry() {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    const self = this;
     console.log('this.xx', this.countryData);
     this.g
       .selectAll('.country')
@@ -95,16 +123,20 @@ export class MapComponent implements AfterViewInit {
       .attr('d', this.path)
       .style('fill', function (i) {
         return i.properties.color;
+      })
+      .on('mouseover', function (event, data) {
+        d3.select(this).attr('opacity', 0.8);
+        self.showInfo(data);
+      })
+      .on('mouseout', function () {
+        // 鼠标移出时的事件处理
+        d3.select(this).attr('opacity', 1);
+
+        // 清空信息框
+        d3.select('#info-box').text('');
       });
 
-    // this.map.attr('transform', 'translate(100,50)scale(900)');
-    this.g.attr('transform', 'translate(30,130)scale(0.5)');
-    // this.map.call(this.zoom.transform, d3.zoomIdentity.scale(300));
-
-    // d3.select(this.map.current)
-    //   .transition()
-    //   .duration(500)
-    //   .attr('transform', `translate(${this.x},${this.y})`);
+    this.g.attr('transform', 'translate(30,200)scale(0.8)');
 
     // this.map.attr(
     //   'transform',
@@ -116,18 +148,6 @@ export class MapComponent implements AfterViewInit {
     //     (this.height / 960) * 0.8 +
     //     ')'
     // );
-
-    // .on("click", clicked)
-    // .on("mouseover", enterCounty);
-
-    // this.map
-    //   .selectAll('path')
-    //   .data(this.renderData)
-    //   .enter()
-    //   .append('path')
-    //   .attr('d', this.path)
-    //   .attr('stroke', '#3f2ab2')
-    //   .attr('stroke-width', '0.7');
   }
 
   getCountryData() {
@@ -177,15 +197,6 @@ export class MapComponent implements AfterViewInit {
       this.drawCountry();
       // console.log('country, town, village', country, town, village);
     });
-    // this.state.worlddata.features.forEach((country: any, index: number) => {
-    //   this.countryColors.push(
-    //     `rgba(30,80,100,${
-    //       ((1 / this.state.worlddata.features.length) * index) / 2 + 0.5
-    //     })`
-    //   );
-    // });
-
-    // this.renderMap();
   }
 
   createSVGg() {
@@ -200,9 +211,13 @@ export class MapComponent implements AfterViewInit {
       .append('svg');
 
     this.createSVGg();
-    this.initZoom();
-    this.map.call(this.zoom);
-    // this.map.call(this.zoom.transform, d3.zoomIdentity.scale(0.8));
+    // this.initZoom();
+    // this.map.call(this.zoom);
+    // this.map.call(
+    //   this.zoom.transform,
+    //   d3.zoomIdentity.scale(0.8),
+    //   d3.zoomIdentity.translate(0, 200)
+    // );
   }
 
   async sleep(sec) {
@@ -211,16 +226,16 @@ export class MapComponent implements AfterViewInit {
     });
   }
 
-  initZoom() {
-    this.zoom = d3
-      .zoom()
-      .scaleExtent([1, 8])
-      .translateExtent([
-        [0, 0],
-        [this.width, this.height],
-      ])
-      .on('zoom', this.zoomed.bind(this));
-  }
+  // initZoom() {
+  //   this.zoom = d3
+  //     .zoom()
+  //     .scaleExtent([1, 8])
+  //     .translateExtent([
+  //       [0, 0],
+  //       [this.width, this.height],
+  //     ])
+  //     .on('zoom', this.zoomed.bind(this));
+  // }
 
   switchArea() {}
 
