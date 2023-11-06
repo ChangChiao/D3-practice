@@ -124,12 +124,18 @@ export class MapComponent implements AfterViewInit {
         return i.properties.color;
       })
       .on('click', function (event, data) {
+        // d3.select(this).attr('border', 0.8);
+        d3.select(this).classed('active', true);
+        d3.select(this).raise();
+        // self.g
+        //   .selectAll('path')
+        //   .classed('active', (item) => item.id === data.id);
+
         self.showInfo(data);
         self.switchArea(data);
       })
       .on('mouseover', function (event, data) {
         d3.select(this).attr('opacity', 0.8);
-        console.log('data', data);
         self.showInfo(data);
       })
       .on('mouseout', function () {
@@ -256,6 +262,7 @@ export class MapComponent implements AfterViewInit {
     const type = this.getDataType(data.id?.length);
     console.log('type', type);
     console.log('data.id', data.id);
+
     switch (type) {
       case 'country': {
         console.log('data--sw', data);
@@ -301,7 +308,7 @@ export class MapComponent implements AfterViewInit {
       .delay(100)
       .duration(500)
       .style('opacity', 1);
-    const strokeWidth = areaType === 'country' ? '0.7' : '0.2';
+    const strokeWidth = areaType === 'country' ? '1' : '0.5';
     if (areaType === 'county') {
       this.map
         .selectAll('.village')
@@ -312,7 +319,7 @@ export class MapComponent implements AfterViewInit {
         .style('opacity', 0)
         .remove();
     }
-    this.g
+    this.map
       .selectAll('.active')
       .style('stroke-width', strokeWidth)
       .style('stroke', '#ffcc00');
@@ -336,20 +343,18 @@ export class MapComponent implements AfterViewInit {
   }
 
   zoom(bounds, bounds2, type) {
-    const self = this;
-    const startX = this.x;
-    const startY = this.y;
-    const startScale = this.scale;
-    console.log('zoom===', type);
-    console.log('shape1', bounds);
-    console.log('shape2', bounds2);
+    // const self = this;
+    // const startX = this.x;
+    // const startY = this.y;
+    // const startScale = this.scale;
+    // console.log('zoom===', type);
+    // console.log('shape1', bounds);
+    // console.log('shape2', bounds2);
     const { dx, dy, x, y } = this.calcDistance(bounds);
     this.x = x;
     this.y = y;
     if (type == 'country') {
-      // this.x = 480;
-      // this.y = 480;
-      this.scale = Math.max(dx / this.width, dy / this.height);
+      this.scale = 0.9 / Math.max(dx / this.width, dy / this.height);
       // if (this.isDesktopDevice) {
       //   this.scale = 960;
       // } else {
@@ -369,18 +374,28 @@ export class MapComponent implements AfterViewInit {
         this.scale = Math.max(dy, dx);
       }
     }
-    const fromObj = [startX, startY, startScale];
-    const toObj = [this.x, this.y, this.scale];
-    //@ts-ignore
-    const fn = d3.interpolateZoom(fromObj, toObj);
+    // const fromObj = [startX, startY, startScale];
+    // const toObj = [this.x, this.y, this.scale];
+
+    const translate = [
+      this.width / 2 - this.scale * x,
+      this.height / 2 - this.scale * y,
+    ];
     this.g
       .transition()
       .duration(500)
-      .attrTween('transform', function () {
-        return function (t) {
-          return self.transform(fn(t));
-        };
-      });
+      .attr('transform', `translate(${translate})scale(${this.scale})`);
+
+    //@ts-ignore
+    // const fn = d3.interpolateZoom(fromObj, toObj);
+    // this.g
+    //   .transition()
+    //   .duration(500)
+    //   .attrTween('transform', function () {
+    //     return function (t) {
+    //       return self.transform(fn(t));
+    //     };
+    //   });
   }
 
   transform(p) {
