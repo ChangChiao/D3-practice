@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   ChangeDetectionStrategy,
   Component,
+  computed,
   inject,
   signal,
 } from '@angular/core';
@@ -34,7 +35,9 @@ import {
           <li>{{ infoSelected().pfp }}%</li>
         </ul>
       </div>
-      <button (click)="goBackArea()" class="map-back">go Back</button>
+      <button *ngIf="isPrevShow()" (click)="goBackArea()" class="map-back">
+        go Back
+      </button>
     </div>
   `,
   styleUrls: ['./map.component.scss'],
@@ -56,8 +59,11 @@ export class MapComponent implements AfterViewInit {
     pfp: 0,
   });
 
-  scaleRecord = [0.8];
-  translateRecord = [{ x: 30, y: 200 }];
+  scaleRecord = signal([0.8]);
+  translateRecord = signal([{ x: 30, y: 200 }]);
+
+  // isPrevShow = computed(() => this.scaleRecord().length > 1);
+  isPrevShow = () => true;
 
   isMobile = false;
   map = null;
@@ -152,8 +158,8 @@ export class MapComponent implements AfterViewInit {
         d3.select('#info-box').text('');
       });
 
-    const [{ x, y }] = this.translateRecord;
-    const [scale] = this.scaleRecord;
+    const [{ x, y }] = this.translateRecord();
+    const [scale] = this.scaleRecord();
     this.g.attr('transform', `translate(${x},${y})scale(${scale})`);
 
     // this.map.attr(
@@ -332,16 +338,31 @@ export class MapComponent implements AfterViewInit {
 
   goBackArea() {
     console.log('goBackArea');
-    console.log('scale', this.scaleRecord);
-    console.log('trans', this.translateRecord);
-    if (this.translateRecord.length === 2) {
-      this.removeLine('village');
-    } else {
+    console.log('scale', this.scaleRecord());
+    console.log('trans', this.translateRecord());
+    let scale = 0;
+    let x = 0;
+    let y = 0;
+    if (this.translateRecord().length > 1) {
       this.removeLine('town');
+      const tempScale = [...this.scaleRecord()];
+      const tempTranslate = [...this.translateRecord()];
+      const targetScale = tempScale.pop();
+      const targetTranslate = tempTranslate.pop();
+      scale = targetScale;
+      x = targetTranslate.x;
+      y = targetTranslate.y;
+      this.scaleRecord.set(tempScale);
+      this.translateRecord.set(tempTranslate);
+    } else {
+      this.removeLine('village');
+      const [targetScale] = this.scaleRecord();
+      const [targetTranslate] = this.translateRecord();
+      scale = targetScale;
+      x = targetTranslate.x;
+      y = targetTranslate.y;
     }
-
-    const scale = this.scaleRecord.pop();
-    const { x, y } = this.translateRecord.pop();
+    console.log('final-scale', this.scaleRecord());
     this.g
       .transition()
       .duration(500)
@@ -484,11 +505,11 @@ export class MapComponent implements AfterViewInit {
         'transform',
         `translate(${translate.x},${translate.y})scale(${this.scale})`
       );
-    if (this.translateRecord.length < 2) {
-      this.translateRecord.push(translate);
+    if (this.translateRecord().length < 2) {
+      this.translateRecord.update((val) => [...val, translate]);
     }
-    if (this.scaleRecord.length < 2) {
-      this.scaleRecord.push(this.scale);
+    if (this.scaleRecord().length < 2) {
+      this.scaleRecord.update((val) => [...val, this.scale]);
     }
     //@ts-ignore
     // const fn = d3.interpolateZoom(fromObj, toObj);
