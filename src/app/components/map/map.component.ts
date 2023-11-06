@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import * as d3 from 'd3';
+import { DeviceDetectorService } from 'ngx-device-detector';
 import { feature, mesh } from 'topojson-client';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin, retry } from 'rxjs';
@@ -39,12 +40,13 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MapComponent implements AfterViewInit {
-  state!: { worlddata: any; neighbors: any };
   #api = inject(HttpClient);
+  #deviceDetectorService = inject(DeviceDetectorService);
   centerPoint = { x: 0, y: 0 };
   width = 700;
   height = 1000;
   initialScale = 1;
+  isDesktopDevice = false;
 
   infoSelected = signal({
     name: '',
@@ -72,6 +74,9 @@ export class MapComponent implements AfterViewInit {
   path = d3.geoPath();
   // projection = d3.geoMercator().scale(this.initialScale).center([123, 24]);
   // path = d3.geoPath().projection(this.projection);
+  constructor() {
+    this.isDesktopDevice = this.#deviceDetectorService.isDesktop();
+  }
 
   collapse = d3.select('#collapse-content').style('opacity', 1);
   dragContainer = d3
@@ -100,17 +105,11 @@ export class MapComponent implements AfterViewInit {
   //   this.g.attr('transform', event.transform);
   // }
   showInfo(data) {
-    const countrySelected = data.properties.name.substring(0, 3);
-    const [filteredCountry] = this.countryData.features.filter(
-      (item) => item.properties.name.toString() == countrySelected
-    );
-    const { name, ddp, kmt, pfp } = filteredCountry.properties;
+    const { name, ddp, kmt, pfp } = data.properties;
     this.infoSelected.set({ name, ddp, kmt, pfp });
-    // this.infoSelected = { name, ddp, kmt, pfp };
-    console.log('filteredCountry', filteredCountry);
   }
 
-  drawCountry() {
+  createCountry() {
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self = this;
     console.log('this.xx', this.countryData);
@@ -124,8 +123,12 @@ export class MapComponent implements AfterViewInit {
       .style('fill', function (i) {
         return i.properties.color;
       })
+      .on('click', function (event, data) {
+        self.showInfo(data);
+      })
       .on('mouseover', function (event, data) {
         d3.select(this).attr('opacity', 0.8);
+        console.log('data', data);
         self.showInfo(data);
       })
       .on('mouseout', function () {
@@ -194,7 +197,7 @@ export class MapComponent implements AfterViewInit {
       // @ts-ignore
       this.villageData = feature(village, village.objects.tracts);
 
-      this.drawCountry();
+      this.createCountry();
       // console.log('country, town, village', country, town, village);
     });
   }
