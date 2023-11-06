@@ -34,6 +34,7 @@ import {
           <li>{{ infoSelected().pfp }}%</li>
         </ul>
       </div>
+      <button (click)="goBackArea()" class="map-back">go Back</button>
     </div>
   `,
   styleUrls: ['./map.component.scss'],
@@ -55,6 +56,9 @@ export class MapComponent implements AfterViewInit {
     pfp: 0,
   });
 
+  scaleRecord = [0.8];
+  translateRecord = [{ x: 30, y: 200 }];
+
   isMobile = false;
   map = null;
   g = null;
@@ -67,8 +71,8 @@ export class MapComponent implements AfterViewInit {
 
   activeLineColor = 'orange';
   normalLineColor = 'black';
-  activeLineWidth = '0.7';
-  normalLineWidth = '0.3';
+  activeLineWidth = 0.3;
+  normalLineWidth = 0.1;
 
   x = 480;
   y = 480;
@@ -148,7 +152,9 @@ export class MapComponent implements AfterViewInit {
         d3.select('#info-box').text('');
       });
 
-    this.g.attr('transform', 'translate(30,200)scale(0.8)');
+    const [{ x, y }] = this.translateRecord;
+    const [scale] = this.scaleRecord;
+    this.g.attr('transform', `translate(${x},${y})scale(${scale})`);
 
     // this.map.attr(
     //   'transform',
@@ -177,7 +183,8 @@ export class MapComponent implements AfterViewInit {
       .attr('class', 'town')
       .attr('d', this.path)
       .style('opacity', 0)
-      .on('click', this.switchArea)
+      .style('stroke-width', this.normalLineWidth)
+      .style('stroke', this.normalLineColor)
       .style('fill', function (i) {
         return i.properties.color;
       })
@@ -193,7 +200,6 @@ export class MapComponent implements AfterViewInit {
   }
 
   createVillage(data) {
-    const self = this;
     const townVillages = this.villageData.features.filter(
       (i) => i.id.slice(0, 7) == data.id
     );
@@ -225,6 +231,17 @@ export class MapComponent implements AfterViewInit {
     this.clickedTarget.style('stroke-width', this.normalLineWidth);
     this.clickedTarget.style('stroke', this.normalLineColor);
     this.clickedTarget.lower();
+  }
+
+  removeLine(type) {
+    this.g
+      .selectAll(`.${type}`)
+      .data([])
+      .exit()
+      .transition()
+      .duration(500)
+      .style('opacity', 0)
+      .remove();
   }
 
   getCountryData() {
@@ -272,7 +289,6 @@ export class MapComponent implements AfterViewInit {
       this.villageData = feature(village, village.objects.tracts);
 
       this.createCountry();
-      // console.log('country, town, village', country, town, village);
     });
   }
 
@@ -312,6 +328,24 @@ export class MapComponent implements AfterViewInit {
     }
 
     return 'village';
+  }
+
+  goBackArea() {
+    console.log('goBackArea');
+    console.log('scale', this.scaleRecord);
+    console.log('trans', this.translateRecord);
+    if (this.translateRecord.length === 2) {
+      this.removeLine('village');
+    } else {
+      this.removeLine('town');
+    }
+
+    const scale = this.scaleRecord.pop();
+    const { x, y } = this.translateRecord.pop();
+    this.g
+      .transition()
+      .duration(500)
+      .attr('transform', `translate(${x},${y})scale(${scale})`);
   }
 
   // initZoom() {
@@ -439,15 +473,23 @@ export class MapComponent implements AfterViewInit {
     //   }
     // }
 
-    const translate = [
-      this.width / 2 - this.scale * x,
-      this.height / 2 - this.scale * y,
-    ];
+    const translate = {
+      x: this.width / 2 - this.scale * x,
+      y: this.height / 2 - this.scale * y,
+    };
     this.g
       .transition()
       .duration(500)
-      .attr('transform', `translate(${translate})scale(${this.scale})`);
-
+      .attr(
+        'transform',
+        `translate(${translate.x},${translate.y})scale(${this.scale})`
+      );
+    if (this.translateRecord.length < 2) {
+      this.translateRecord.push(translate);
+    }
+    if (this.scaleRecord.length < 2) {
+      this.scaleRecord.push(this.scale);
+    }
     //@ts-ignore
     // const fn = d3.interpolateZoom(fromObj, toObj);
     // this.g
@@ -467,8 +509,6 @@ export class MapComponent implements AfterViewInit {
   //     this.centerPoint[1] - p[1] * k
   //   }) scale(${k})`;
   // }
-
-  selectArea() {}
 
   goPrevArea() {}
 }
