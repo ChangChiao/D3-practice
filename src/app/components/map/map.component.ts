@@ -86,7 +86,7 @@ export class MapComponent implements AfterViewInit {
 
   drawCountry() {
     console.log('this.xx', this.countryData);
-    this.map
+    this.g
       .selectAll('.country')
       .data(this.countryData.features)
       .enter()
@@ -97,8 +97,14 @@ export class MapComponent implements AfterViewInit {
         return i.properties.color;
       });
 
-    this.map.attr('transform', 'translate(100,50)scale(900)');
-    this.map.call(this.zoom.transform, d3.zoomIdentity.scale(0.8));
+    // this.map.attr('transform', 'translate(100,50)scale(900)');
+    this.g.attr('transform', 'translate(30,130)scale(0.5)');
+    // this.map.call(this.zoom.transform, d3.zoomIdentity.scale(300));
+
+    // d3.select(this.map.current)
+    //   .transition()
+    //   .duration(500)
+    //   .attr('transform', `translate(${this.x},${this.y})`);
 
     // this.map.attr(
     //   'transform',
@@ -194,7 +200,6 @@ export class MapComponent implements AfterViewInit {
       .append('svg');
 
     this.createSVGg();
-    this.sleep(2000);
     this.initZoom();
     this.map.call(this.zoom);
     // this.map.call(this.zoom.transform, d3.zoomIdentity.scale(0.8));
@@ -210,6 +215,10 @@ export class MapComponent implements AfterViewInit {
     this.zoom = d3
       .zoom()
       .scaleExtent([1, 8])
+      .translateExtent([
+        [0, 0],
+        [this.width, this.height],
+      ])
       .on('zoom', this.zoomed.bind(this));
   }
 
