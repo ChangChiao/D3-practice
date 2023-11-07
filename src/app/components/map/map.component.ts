@@ -2,16 +2,15 @@ import {
   AfterViewInit,
   ChangeDetectionStrategy,
   Component,
-  computed,
   inject,
   signal,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import * as d3 from 'd3';
 import { DeviceDetectorService } from 'ngx-device-detector';
-import { feature, mesh } from 'topojson-client';
+import { feature } from 'topojson-client';
 import { HttpClient } from '@angular/common/http';
-import { forkJoin, retry } from 'rxjs';
+import { forkJoin } from 'rxjs';
 import {
   CountryData,
   TownData,
@@ -141,7 +140,6 @@ export class MapComponent implements AfterViewInit {
         self.clearBoundary();
         self.clickedTarget = d3.select(this);
         self.drawBoundary();
-
         self.showInfo(data);
         self.switchArea(data);
       })
@@ -163,7 +161,6 @@ export class MapComponent implements AfterViewInit {
     const countryTowns = this.townData.features.filter(
       (item) => item.id.slice(0, 5) == data.id
     );
-    console.log('countryTowns', countryTowns);
     const townPaths = this.g
       .selectAll('.town')
       .data(countryTowns, (item) => item.id)
@@ -223,7 +220,7 @@ export class MapComponent implements AfterViewInit {
     this.clickedTarget.lower();
   }
 
-  removeLine(type) {
+  clearArea(type) {
     this.g
       .selectAll(`.${type}`)
       .data([])
@@ -321,14 +318,11 @@ export class MapComponent implements AfterViewInit {
   }
 
   goBackArea() {
-    console.log('goBackArea');
-    console.log('scale', this.scaleRecord());
-    console.log('trans', this.translateRecord());
     let scale = 0;
     let x = 0;
     let y = 0;
     if (this.translateRecord().length > 1) {
-      this.removeLine('town');
+      this.clearArea('village');
       const tempScale = [...this.scaleRecord()];
       const tempTranslate = [...this.translateRecord()];
       const targetScale = tempScale.pop();
@@ -338,15 +332,16 @@ export class MapComponent implements AfterViewInit {
       y = targetTranslate.y;
       this.scaleRecord.set(tempScale);
       this.translateRecord.set(tempTranslate);
+      this.clearBoundary();
     } else {
-      this.removeLine('village');
+      this.clearArea('town');
       const [targetScale] = this.scaleRecord();
       const [targetTranslate] = this.translateRecord();
       scale = targetScale;
       x = targetTranslate.x;
       y = targetTranslate.y;
+      this.isPrevShow = false;
     }
-    console.log('final-scale', this.scaleRecord());
     this.g
       .transition()
       .duration(500)
@@ -366,39 +361,36 @@ export class MapComponent implements AfterViewInit {
 
   switchArea(data) {
     const type = this.getDataType(data.id?.length);
-    console.log('type', type);
-    console.log('data.id', data.id);
-
     switch (type) {
       case 'country': {
         const bounds = this.path.bounds(data);
         this.toTown(data);
-        this.zoom(bounds, null, 'country');
+        this.zoom(bounds);
         break;
       }
       case 'town': {
         const bounds = this.path.bounds(data);
         this.toVillage(data);
-        this.zoom(bounds, null, 'town');
+        this.zoom(bounds);
         break;
       }
-      case 'village':
+      default:
         break;
     }
   }
 
   toTown(data) {
     const { townPaths } = this.createTown(data);
-    this.toOtherArea('town', townPaths);
+    this.toOtherArea(townPaths);
   }
 
   toVillage(data) {
     const { villagePaths } = this.createVillage(data);
-    this.toOtherArea('village', villagePaths);
+    this.toOtherArea(villagePaths);
   }
 
-  // TODO???
-  toOtherArea(type, toPath) {
+  toOtherArea(toPath) {
+    this.isPrevShow = true;
     toPath
       .style('opacity', 0)
       .transition()
@@ -415,28 +407,11 @@ export class MapComponent implements AfterViewInit {
     return { dx, dy, x, y };
   }
 
-  zoom(bounds, bounds2, type) {
+  zoom(bounds) {
     const { dx, dy, x, y } = this.calcDistance(bounds);
     this.x = x;
     this.y = y;
     this.scale = 0.7 / Math.max(dx / this.width, dy / this.height);
-    // if (type == 'country') {
-    //   this.scale = 0.9 / Math.max(dx / this.width, dy / this.height);
-    // } else if (type == 'town') {
-    //   if (this.isDesktopDevice) {
-    //     this.scale = Math.max(dy, dx);
-    //   } else {
-    //     this.scale = Math.max(dx, dy) * 2;
-    //   }
-    // } else {
-    //   const { dx, dy } = this.calcDistance(bounds2);
-    //   if (this.isDesktopDevice) {
-    //     this.scale = Math.max(dy, dx) * 2;
-    //   } else {
-    //     this.scale = Math.max(dy, dx);
-    //   }
-    // }
-
     const translate = {
       x: this.width / 2 - this.scale * x,
       y: this.height / 2 - this.scale * y,
@@ -454,25 +429,5 @@ export class MapComponent implements AfterViewInit {
     if (this.scaleRecord().length < 2) {
       this.scaleRecord.update((val) => [...val, this.scale]);
     }
-    //@ts-ignore
-    // const fn = d3.interpolateZoom(fromObj, toObj);
-    // this.g
-    //   .transition()
-    //   .duration(500)
-    //   .attrTween('transform', function () {
-    //     return function (t) {
-    //       return self.transform(fn(t));
-    //     };
-    //   });
   }
-
-  // transform(p) {
-  //   console.log('p', p);
-  //   const k = (this.height / p[2]) * 0.8;
-  //   return `translate(${this.centerPoint[0] - p[0] * k}, ${
-  //     this.centerPoint[1] - p[1] * k
-  //   }) scale(${k})`;
-  // }
-
-  goPrevArea() {}
 }
