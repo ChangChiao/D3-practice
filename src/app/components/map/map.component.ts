@@ -58,8 +58,8 @@ export class MapComponent implements AfterViewInit {
     pfp: 0,
   });
 
-  scaleRecord = signal([0.8]);
-  translateRecord = signal([{ x: 30, y: 200 }]);
+  scaleRecord = [0.8];
+  translateRecord = [{ x: 30, y: 200 }];
 
   isPrevShow = false;
 
@@ -151,8 +151,8 @@ export class MapComponent implements AfterViewInit {
         d3.select(this).attr('opacity', 1);
       });
 
-    const [{ x, y }] = this.translateRecord();
-    const [scale] = this.scaleRecord();
+    const [{ x, y }] = this.translateRecord;
+    const [scale] = this.scaleRecord;
     this.g.attr('transform', `translate(${x},${y})scale(${scale})`);
   }
 
@@ -321,22 +321,18 @@ export class MapComponent implements AfterViewInit {
     let scale = 0;
     let x = 0;
     let y = 0;
-    if (this.translateRecord().length > 1) {
+    if (this.translateRecord.length > 1) {
       this.clearArea('village');
-      const tempScale = [...this.scaleRecord()];
-      const tempTranslate = [...this.translateRecord()];
-      const targetScale = tempScale.pop();
-      const targetTranslate = tempTranslate.pop();
-      scale = targetScale;
-      x = targetTranslate.x;
-      y = targetTranslate.y;
-      this.scaleRecord.set(tempScale);
-      this.translateRecord.set(tempTranslate);
+      const tempScale = this.scaleRecord.pop();
+      const tempTranslate = this.translateRecord.pop();
+      scale = tempScale;
+      x = tempTranslate.x;
+      y = tempTranslate.y;
       this.clearBoundary();
     } else {
       this.clearArea('town');
-      const [targetScale] = this.scaleRecord();
-      const [targetTranslate] = this.translateRecord();
+      const [targetScale] = this.scaleRecord;
+      const [targetTranslate] = this.translateRecord;
       scale = targetScale;
       x = targetTranslate.x;
       y = targetTranslate.y;
@@ -423,11 +419,9 @@ export class MapComponent implements AfterViewInit {
         'transform',
         `translate(${translate.x},${translate.y})scale(${this.scale})`
       );
-    if (this.translateRecord().length < 2) {
-      this.translateRecord.update((val) => [...val, translate]);
-    }
-    if (this.scaleRecord().length < 2) {
-      this.scaleRecord.update((val) => [...val, this.scale]);
+    if (this.translateRecord.length < 2) {
+      this.translateRecord.push(translate);
+      this.scaleRecord.push(this.scale);
     }
   }
 }

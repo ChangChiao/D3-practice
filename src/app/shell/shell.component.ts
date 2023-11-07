@@ -13,6 +13,7 @@ import { RouterOutlet } from '@angular/router';
         <span>My Application</span>
       </mat-toolbar>
       <router-outlet></router-outlet>
+      
     </ng-container>
   `,
   styleUrls: ['./shell.component.scss'],
