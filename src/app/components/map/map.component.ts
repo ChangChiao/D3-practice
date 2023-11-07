@@ -2,21 +2,24 @@ import {
   AfterViewInit,
   ChangeDetectionStrategy,
   Component,
+  DestroyRef,
   inject,
   signal,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
 import * as d3 from 'd3';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { feature } from 'topojson-client';
 import { HttpClient } from '@angular/common/http';
-import { forkJoin } from 'rxjs';
+import { finalize, forkJoin } from 'rxjs';
 import {
   CountryData,
   TownData,
   TransferData,
   VillageData,
 } from '../../model/index';
+import { AppComponentStore } from 'src/app/store/app.state';
 
 @Component({
   selector: 'app-map',
@@ -44,7 +47,9 @@ import {
 })
 export class MapComponent implements AfterViewInit {
   #api = inject(HttpClient);
+  #store = inject(AppComponentStore);
   #deviceDetectorService = inject(DeviceDetectorService);
+  #destroyRef = inject(DestroyRef);
   centerPoint = { x: 0, y: 0 };
   width = 700;
   height = 1000;
@@ -94,26 +99,6 @@ export class MapComponent implements AfterViewInit {
   }
 
   collapse = d3.select('#collapse-content').style('opacity', 1);
-  dragContainer = d3
-    .drag()
-    .on('start', () => {
-      this.collapse.transition().duration(400).style('opacity', 1);
-    })
-    .on('drag', (d, i) => {
-      // this.x = this.x || 0;
-      // this.y = this.y || 0;
-      // this.x += d3.event.dx;
-      // this.y += d3.event.dy;
-      // const k = height / scale;
-      // d3.select(this).attr(
-      //   'transform',
-      //   `translate(${this.centerPoint.x},${
-      //     this.centerPoint.y
-      //   })scale(${k})translate(${-x},${-y})translate(${this.x / k},${
-      //     this.y / k
-      //   })`
-      // );
-    });
 
   // zoomed(event) {
   //   console.log('event.transform', event.transform);
@@ -244,11 +229,15 @@ export class MapComponent implements AfterViewInit {
   }
 
   fetchData() {
+    this.#store.setLoading(true);
     return forkJoin([
       this.getCountryData(),
       this.getTownData(),
       this.getVillageData(),
-    ]);
+    ]).pipe(
+      takeUntilDestroyed(this.#destroyRef),
+      finalize(() => this.#store.setLoading(true))
+    );
   }
 
   setToolTip() {

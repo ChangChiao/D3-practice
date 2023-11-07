@@ -6,6 +6,7 @@ import { AppService } from '../service';
 
 const initState = {
   vote: [],
+  isLoading: false,
 };
 
 export const TODO_KEY = 'todo';
@@ -28,9 +29,16 @@ export class AppComponentStore extends ComponentStore<VoteState> {
       debounce: true,
     }
   );
+  readonly loading$ = this.select(({ isLoading }) => isLoading);
 
   readonly setVote = this.updater((state, payload: Vote[]) => ({
+    ...state,
     vote: payload,
+  }));
+
+  readonly setLoading = this.updater((state, payload: boolean) => ({
+    ...state,
+    isLoading: payload,
   }));
 
   constructor() {
