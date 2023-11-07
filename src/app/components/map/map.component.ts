@@ -35,7 +35,7 @@ import {
           <li>{{ infoSelected().pfp }}%</li>
         </ul>
       </div>
-      <button *ngIf="isPrevShow()" (click)="goBackArea()" class="map-back">
+      <button *ngIf="isPrevShow" (click)="goBackArea()" class="map-back">
         go Back
       </button>
     </div>
@@ -62,8 +62,7 @@ export class MapComponent implements AfterViewInit {
   scaleRecord = signal([0.8]);
   translateRecord = signal([{ x: 30, y: 200 }]);
 
-  // isPrevShow = computed(() => this.scaleRecord().length > 1);
-  isPrevShow = () => true;
+  isPrevShow = false;
 
   isMobile = false;
   map = null;
@@ -151,39 +150,23 @@ export class MapComponent implements AfterViewInit {
         self.showInfo(data);
       })
       .on('mouseout', function () {
-        // 鼠标移出时的事件处理
         d3.select(this).attr('opacity', 1);
-
-        // 清空信息框
-        d3.select('#info-box').text('');
       });
 
     const [{ x, y }] = this.translateRecord();
     const [scale] = this.scaleRecord();
     this.g.attr('transform', `translate(${x},${y})scale(${scale})`);
-
-    // this.map.attr(
-    //   'transform',
-    //   'translate(' +
-    //     (this.centerPoint.x - 480 * ((this.height / 960) * 0.8)) +
-    //     ',' +
-    //     (this.centerPoint.y - 480 * ((this.height / 960) * 0.8)) +
-    //     ')scale(' +
-    //     (this.height / 960) * 0.8 +
-    //     ')'
-    // );
   }
 
   createTown(data) {
     const self = this;
-    const countyTowns = this.townData.features.filter(
+    const countryTowns = this.townData.features.filter(
       (item) => item.id.slice(0, 5) == data.id
     );
-    console.log('countyTowns', countyTowns);
+    console.log('countryTowns', countryTowns);
     const townPaths = this.g
       .selectAll('.town')
-      .data(countyTowns, (item) => item.id);
-    const enterTownPaths = townPaths
+      .data(countryTowns, (item) => item.id)
       .enter()
       .append('path')
       .attr('class', 'town')
@@ -202,16 +185,17 @@ export class MapComponent implements AfterViewInit {
       })
       .on('mouseover', (event, data) => this.showInfo(data));
 
-    return { townPaths, enterTownPaths };
+    return { townPaths };
   }
 
   createVillage(data) {
-    const townVillages = this.villageData.features.filter(
+    const villages = this.villageData.features.filter(
       (i) => i.id.slice(0, 7) == data.id
     );
-    console.log('townVillages', townVillages);
-    const villagePaths = this.g.selectAll('.village').data(townVillages);
-    const enterVillagePaths = villagePaths
+    console.log('townVillages', villages);
+    const villagePaths = this.g
+      .selectAll('.village')
+      .data(villages)
       .enter()
       .append('path')
       .attr('class', 'village')
@@ -222,7 +206,7 @@ export class MapComponent implements AfterViewInit {
         return i.properties.color;
       })
       .on('mouseover', (event, data) => this.showInfo(data));
-    return { villagePaths, enterVillagePaths };
+    return { villagePaths };
   }
 
   drawBoundary() {
@@ -404,64 +388,23 @@ export class MapComponent implements AfterViewInit {
   }
 
   toTown(data) {
-    const { townPaths, enterTownPaths } = this.createTown(data);
-    // const countyTowns = this.townData.features.filter(
-    //   (item) => item.id.slice(0, 5) == data.id
-    // );
-    // console.log('countyTowns', countyTowns);
-    // const townPaths = this.g
-    //   .selectAll('.town')
-    //   .data(countyTowns, (item) => item.id);
-    // const enterTownPaths = townPaths
-    //   .enter()
-    //   .append('path')
-    //   .attr('class', 'town')
-    //   .attr('d', this.path)
-    //   .style('opacity', 0)
-    //   .on('click', this.switchArea)
-    //   .style('fill', function (i) {
-    //     return i.properties.color;
-    //   })
-    //   .on('mouseover', (event, data) => this.showInfo(data));
-    this.toOtherArea('county', townPaths, enterTownPaths);
+    const { townPaths } = this.createTown(data);
+    this.toOtherArea('town', townPaths);
   }
 
   toVillage(data) {
-    const { villagePaths, enterVillagePaths } = this.createVillage(data);
-    // const townVillages = this.villageData.features.filter(
-    //   (i) => i.id.slice(0, 7) == data.id
-    // );
-    // const villagePaths = this.g.selectAll('.village').data(townVillages);
-    // const enterVillagePaths = enterVillage(villagePaths);
-    this.toOtherArea('town', villagePaths, enterVillagePaths);
+    const { villagePaths } = this.createVillage(data);
+    this.toOtherArea('village', villagePaths);
   }
 
-  toOtherArea(areaType, fromPath, toPath) {
-    fromPath.exit().transition().duration(500).style('opacity', 0).remove();
+  // TODO???
+  toOtherArea(type, toPath) {
     toPath
       .style('opacity', 0)
       .transition()
       .delay(100)
       .duration(500)
       .style('opacity', 1);
-    if (areaType === 'county') {
-      this.map
-        .selectAll('.village')
-        .data([])
-        .exit()
-        .transition()
-        .duration(100)
-        .style('opacity', 0)
-        .remove();
-    }
-    // this.map
-    //   .selectAll('.active')
-    //   .style('stroke-width', strokeWidth)
-    //   .style('stroke', '#ffcc00');
-    // this.map.selectAll('.' + areaType).sort(function (a, b) {
-    //   if (a.id != d.id) return -1;
-    //   return 1;
-    // });
   }
 
   calcDistance(bounds) {
@@ -476,7 +419,7 @@ export class MapComponent implements AfterViewInit {
     const { dx, dy, x, y } = this.calcDistance(bounds);
     this.x = x;
     this.y = y;
-    this.scale = 0.9 / Math.max(dx / this.width, dy / this.height);
+    this.scale = 0.7 / Math.max(dx / this.width, dy / this.height);
     // if (type == 'country') {
     //   this.scale = 0.9 / Math.max(dx / this.width, dy / this.height);
     // } else if (type == 'town') {
