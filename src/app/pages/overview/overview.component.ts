@@ -14,6 +14,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { LetDirective } from '@ngrx/component';
 import { AppComponentStore } from 'src/app/store/app.state';
 import { MapComponent } from '../../components/map/map.component';
+import { DropdownComponent } from 'src/app/components/dropdown/dropdown.component';
 
 @Component({
   selector: 'app-overview',
@@ -24,6 +25,7 @@ import { MapComponent } from '../../components/map/map.component';
     MatIconModule,
     RouterModule,
     LetDirective,
+    DropdownComponent,
   ],
   template: `
     <div *ngrxLet="vm$ as vm">
@@ -41,6 +43,7 @@ import { MapComponent } from '../../components/map/map.component';
       <a [routerLink]="['/rwd']"> rwd </a>
       <a [routerLink]="['/ani']"> ani </a>
       <app-map></app-map>
+      <app-dropdown></app-dropdown>
       <p class="title">overview works!</p>
       <p>count: {{ count() }}</p>
       <p>person: {{ person() }}</p>

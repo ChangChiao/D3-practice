@@ -2,6 +2,7 @@ import { CountryData } from './../../model/country.model';
 import {
   ChangeDetectionStrategy,
   Component,
+  computed,
   inject,
   signal,
 } from '@angular/core';
@@ -28,25 +29,25 @@ import { LetDirective } from '@ngrx/component';
     <form [formGroup]="form" *ngrxLet="vm$ as vm">
       <mat-form-field floatLabel="always" hideRequiredMarker="true" class="">
         <mat-label> 縣/市 </mat-label>
-        <mat-select formControlName="timezone">
-          <mat-option *ngFor="let zone of timeZoneOption" [value]="zone.value">
-            {{ zone.label }}
+        <mat-select formControlName="country">
+          <mat-option *ngFor="let area of countryDropdown()" [value]="area.id">
+            {{ area.name }}
           </mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field floatLabel="always" hideRequiredMarker="true" class="">
         <mat-label> 鎮/區 </mat-label>
-        <mat-select formControlName="timezone">
-          <mat-option *ngFor="let zone of timeZoneOption" [value]="zone.value">
-            {{ zone.label }}
+        <mat-select formControlName="town">
+          <mat-option *ngFor="let area of townDropdown()" [value]="area.id">
+            {{ area.name }}
           </mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field floatLabel="always" hideRequiredMarker="true" class="">
         <mat-label> 村/里 </mat-label>
-        <mat-select formControlName="timezone">
-          <mat-option *ngFor="let zone of timeZoneOption" [value]="zone.value">
-            {{ zone.label }}
+        <mat-select formControlName="village">
+          <mat-option *ngFor="let area of villageDropdown()" [value]="area.id">
+            {{ area.name }}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -63,17 +64,50 @@ export class DropdownComponent {
     town: [''],
     village: [''],
   });
-  countryDropdown = signal(null);
-  townDropdown = signal(null);
-  villageDropdown = signal(null);
+  countryDropdown = signal([]);
+  townList = signal([]);
+  villageList = signal([]);
+
+  townDropdown = signal([]);
+  villageDropdown = signal([]);
 
   vm$ = this.#service.getVoteData().pipe(
     tap(([country, town, village]) => {
-      this.countryDropdown.set(country);
-      this.townDropdown.set(town);
-      this.villageDropdown.set(village);
+      this.countryDropdown.set(this.createCountryList(country));
+      this.townList.set(this.createTownList(town));
+      this.villageList.set(this.createVillageList(village));
     })
   );
+
+  get countryFormControl() {
+    return this.form.get('country');
+  }
+
+  get townFormControl() {
+    return this.form.get('town');
+  }
+
+  get villageFormControl() {
+    return this.form.get('village');
+  }
+
+  constructor() {
+    this.countryFormControl.valueChanges.subscribe((value) => {
+      if (!value) return;
+      const filterArray = this.townList().filter(
+        (item) => item.id.slice(0, 5) === value
+      );
+      this.townDropdown.set(filterArray);
+    });
+    this.townFormControl.valueChanges.subscribe((value) => {
+      if (!value) return;
+
+      const filterArray = this.villageList().filter(
+        (item) => item.id.slice(0, 7) === value
+      );
+      this.villageDropdown.set(filterArray);
+    });
+  }
 
   createCountryList(country: CountryData) {
     return country.objects.counties.geometries.map((item) => ({
