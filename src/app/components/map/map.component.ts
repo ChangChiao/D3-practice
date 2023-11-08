@@ -12,7 +12,7 @@ import * as d3 from 'd3';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { feature } from 'topojson-client';
 import { HttpClient } from '@angular/common/http';
-import { finalize, forkJoin } from 'rxjs';
+import { finalize, forkJoin, skip } from 'rxjs';
 import {
   CountryData,
   TownData,
@@ -94,6 +94,7 @@ export class MapComponent implements AfterViewInit {
   path = d3.geoPath();
   // projection = d3.geoMercator().scale(this.initialScale).center([123, 24]);
   // path = d3.geoPath().projection(this.projection);
+  #vm = this.#store.vm$;
   constructor() {
     this.isDesktopDevice = this.#deviceDetectorService.isDesktop();
   }
@@ -216,29 +217,29 @@ export class MapComponent implements AfterViewInit {
       .remove();
   }
 
-  getCountryData() {
-    return this.#api.get<CountryData>('/assets/data/country-data.json');
-  }
+  // getCountryData() {
+  //   return this.#api.get<CountryData>('/assets/data/country-data.json');
+  // }
 
-  getVillageData() {
-    return this.#api.get<VillageData>('/assets/data/village-data.json');
-  }
+  // getVillageData() {
+  //   return this.#api.get<VillageData>('/assets/data/village-data.json');
+  // }
 
-  getTownData() {
-    return this.#api.get<TownData>('/assets/data/town-data.json');
-  }
+  // getTownData() {
+  //   return this.#api.get<TownData>('/assets/data/town-data.json');
+  // }
 
-  fetchData() {
-    this.#store.setLoading(true);
-    return forkJoin([
-      this.getCountryData(),
-      this.getTownData(),
-      this.getVillageData(),
-    ]).pipe(
-      takeUntilDestroyed(this.#destroyRef),
-      finalize(() => this.#store.setLoading(true))
-    );
-  }
+  // fetchData() {
+  //   this.#store.setLoading(true);
+  //   return forkJoin([
+  //     this.getCountryData(),
+  //     this.getTownData(),
+  //     this.getVillageData(),
+  //   ]).pipe(
+  //     takeUntilDestroyed(this.#destroyRef),
+  //     finalize(() => this.#store.setLoading(true))
+  //   );
+  // }
 
   setToolTip() {
     this.toolTip = d3
@@ -256,7 +257,9 @@ export class MapComponent implements AfterViewInit {
     this.height = document.body.clientHeight;
     this.centerPoint = { x: this.width / 2, y: this.height / 2 };
     this.renderMap();
-    this.fetchData().subscribe(([country, town, village]) => {
+    this.#vm.subscribe(({ country, town, village }) => {
+      console.log('country', country);
+      if (!country) return;
       // @ts-ignore
       this.countryData = feature(country, country.objects.counties);
       // @ts-ignore

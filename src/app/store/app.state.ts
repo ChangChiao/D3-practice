@@ -1,39 +1,69 @@
 import { Injectable, inject } from '@angular/core';
-import { ComponentStore, tapResponse } from '@ngrx/component-store';
+import { ComponentStore } from '@ngrx/component-store';
 import { Vote, VoteState } from '../model/app.model';
-import { EMPTY, catchError, map } from 'rxjs';
+import { EMPTY, catchError, forkJoin, map } from 'rxjs';
 import { AppService } from '../service';
+import { CountryData, TownData, VillageData } from '../model';
 
 const initState = {
-  vote: [],
+  countryVoteData: null,
+  townVoteData: null,
+  villageVoteData: null,
   isLoading: false,
 };
-
-export const TODO_KEY = 'todo';
 
 @Injectable({ providedIn: 'root' })
 export class AppComponentStore extends ComponentStore<VoteState> {
   #service = inject(AppService);
 
-  voteData$ = this.#service.fetchData$.pipe(
+  fetchaaa$ = this.#service.fetchCountry$.pipe(map((data) => data));
+
+  voteData$ = forkJoin([
+    this.#service.fetchCountry$,
+    this.#service.fetchTownData$,
+    this.#service.fetchVillageData$,
+  ]).pipe(
     map((data) => data),
     catchError(() => EMPTY)
   );
 
-  readonly #voteData$ = this.select(({ vote }) => vote);
+  // readonly #loading$ = this.select(({ isLoading }
+  // this.#service.fetchData$.pipe(
+  //   map((data) => data),
+  //   catchError(() => EMPTY)
+  // );
+
+  readonly #countryVoteData$ = this.select(
+    ({ countryVoteData }) => countryVoteData
+  );
+  readonly #townVoteData$ = this.select(({ townVoteData }) => townVoteData);
+  readonly #villageVoteData$ = this.select(
+    ({ villageVoteData }) => villageVoteData
+  );
   readonly vm$ = this.select(
-    this.#voteData$,
-    // this.#loading$,
-    (data) => ({ vote: data }),
+    this.#countryVoteData$,
+    this.#townVoteData$,
+    this.#villageVoteData$,
+    (country, town, village) => ({ country, town, village }),
     {
       debounce: true,
     }
   );
   readonly loading$ = this.select(({ isLoading }) => isLoading);
 
-  readonly setVote = this.updater((state, payload: Vote[]) => ({
+  readonly setCountry = this.updater((state, payload: CountryData) => ({
     ...state,
-    vote: payload,
+    countryVoteData: payload,
+  }));
+
+  readonly setTown = this.updater((state, payload: TownData) => ({
+    ...state,
+    townVoteData: payload,
+  }));
+
+  readonly setVillage = this.updater((state, payload: VillageData) => ({
+    ...state,
+    villageVoteData: payload,
   }));
 
   readonly setLoading = this.updater((state, payload: boolean) => ({

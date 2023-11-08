@@ -1,5 +1,11 @@
+import { CountryData } from './country.model';
+import { TownData } from './town.model';
+import { VillageData } from './village.model';
+
 export interface VoteState {
-  vote: Vote[];
+  countryVoteData: CountryData | null;
+  townVoteData: TownData | null;
+  villageVoteData: VillageData | null;
   isLoading: boolean;
 }
 
