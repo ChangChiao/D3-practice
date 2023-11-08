@@ -14,16 +14,16 @@ const initState = {
 
 @Injectable({ providedIn: 'root' })
 export class AppComponentStore extends ComponentStore<VoteState> {
-  #service = inject(AppService);
+  // #service = inject(AppService);
 
-  voteData$ = forkJoin([
-    this.#service.fetchCountry$,
-    this.#service.fetchTownData$,
-    this.#service.fetchVillageData$,
-  ]).pipe(
-    map((data) => data),
-    catchError(() => EMPTY)
-  );
+  // voteData$ = forkJoin([
+  //   this.#service.fetchCountry$,
+  //   this.#service.fetchTownData$,
+  //   this.#service.fetchVillageData$,
+  // ]).pipe(
+  //   map((data) => data),
+  //   catchError(() => EMPTY)
+  // );
 
   // readonly #loading$ = this.select(({ isLoading }
   // this.#service.fetchData$.pipe(

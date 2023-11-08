@@ -19,7 +19,7 @@ import {
   TransferData,
   VillageData,
 } from '../../model/index';
-import { AppComponentStore } from 'src/app/store/app.state';
+import { AppService } from '../../service/app.service';
 
 @Component({
   selector: 'app-map',
@@ -47,7 +47,7 @@ import { AppComponentStore } from 'src/app/store/app.state';
 })
 export class MapComponent implements AfterViewInit {
   #api = inject(HttpClient);
-  #store = inject(AppComponentStore);
+  #service = inject(AppService);
   #deviceDetectorService = inject(DeviceDetectorService);
   #destroyRef = inject(DestroyRef);
   centerPoint = { x: 0, y: 0 };
@@ -94,7 +94,6 @@ export class MapComponent implements AfterViewInit {
   path = d3.geoPath();
   // projection = d3.geoMercator().scale(this.initialScale).center([123, 24]);
   // path = d3.geoPath().projection(this.projection);
-  #vm = this.#store.vm$;
   constructor() {
     this.isDesktopDevice = this.#deviceDetectorService.isDesktop();
   }
@@ -257,8 +256,7 @@ export class MapComponent implements AfterViewInit {
     this.height = document.body.clientHeight;
     this.centerPoint = { x: this.width / 2, y: this.height / 2 };
     this.renderMap();
-    this.#vm.subscribe(({ country, town, village }) => {
-      console.log('country', country);
+    this.#service.getVoteData().subscribe(([country, town, village]) => {
       if (!country) return;
       // @ts-ignore
       this.countryData = feature(country, country.objects.counties);

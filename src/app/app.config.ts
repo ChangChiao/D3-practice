@@ -11,7 +11,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { AppComponentStore } from './store/app.state';
 import { AppService } from './service';
 
-function initializeAppFactory(store: AppComponentStore, service: AppService) {
+function initializeAppFactory(service: AppService) {
   return () => service.initService();
 }
 
@@ -23,7 +23,7 @@ export const appConfig: ApplicationConfig = {
     {
       provide: APP_INITIALIZER,
       useFactory: initializeAppFactory,
-      deps: [AppComponentStore, AppService],
+      deps: [AppService],
       multi: true,
     },
     {
