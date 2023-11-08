@@ -21,9 +21,9 @@ export class AppService {
   // #API_PATH = 'https://jsonplaceholder.typicode.com/todos';
   #API_PATH = '/assets/data';
 
-  countryVoteData$ = new BehaviorSubject({});
-  townVoteData$ = new BehaviorSubject({});
-  villageVoteData$ = new BehaviorSubject({});
+  countryVoteData$ = new BehaviorSubject(null);
+  townVoteData$ = new BehaviorSubject(null);
+  villageVoteData$ = new BehaviorSubject(null);
 
   getCountry() {
     return this.countryVoteData$;
