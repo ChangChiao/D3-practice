@@ -9,19 +9,10 @@ import { provideHttpClient } from '@angular/common/http';
 import { IconRegistryService } from './service/icon-registry.service';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { AppComponentStore } from './store/app.state';
-import { tap } from 'rxjs';
+import { AppService } from './service';
 
-function initializeAppFactory(store: AppComponentStore) {
-  return () => {
-    store.voteData$
-      .pipe(
-        tap((data) => {
-          console.log('data==', data);
-          store.setVote(data);
-        })
-      )
-      .subscribe();
-  };
+function initializeAppFactory(store: AppComponentStore, service: AppService) {
+  return () => service.initService();
 }
 
 export const appConfig: ApplicationConfig = {
@@ -32,7 +23,7 @@ export const appConfig: ApplicationConfig = {
     {
       provide: APP_INITIALIZER,
       useFactory: initializeAppFactory,
-      deps: [AppComponentStore],
+      deps: [AppComponentStore, AppService],
       multi: true,
     },
     {

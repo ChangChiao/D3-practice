@@ -16,8 +16,6 @@ const initState = {
 export class AppComponentStore extends ComponentStore<VoteState> {
   #service = inject(AppService);
 
-  fetchaaa$ = this.#service.fetchCountry$.pipe(map((data) => data));
-
   voteData$ = forkJoin([
     this.#service.fetchCountry$,
     this.#service.fetchTownData$,
