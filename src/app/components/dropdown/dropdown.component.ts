@@ -2,6 +2,8 @@ import { CountryData } from './../../model/country.model';
 import {
   ChangeDetectionStrategy,
   Component,
+  EventEmitter,
+  Output,
   computed,
   inject,
   signal,
@@ -10,9 +12,9 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { AppService } from 'src/app/service';
+import { AppService } from '../../service';
 import { map, single, tap } from 'rxjs';
-import { TownData, VillageData } from 'src/app/model';
+import { DropdownEmitData, TownData, VillageData } from '../../model';
 import { LetDirective } from '@ngrx/component';
 
 @Component({
@@ -57,6 +59,7 @@ import { LetDirective } from '@ngrx/component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DropdownComponent {
+  @Output() selectData: EventEmitter<DropdownEmitData> = new EventEmitter();
   #service = inject(AppService);
   fb = inject(FormBuilder);
   form: FormGroup = this.fb.group({
@@ -76,6 +79,9 @@ export class DropdownComponent {
       this.countryDropdown.set(this.createCountryList(country));
       this.townList.set(this.createTownList(town));
       this.villageList.set(this.createVillageList(village));
+      // this.countryFormControl.setValue(country[0]?.id);
+      // this.townFormControl.setValue(town[0]?.id);
+      // this.villageFormControl.setValue(village[0]?.id);
     })
   );
 
@@ -98,6 +104,8 @@ export class DropdownComponent {
         (item) => item.id.slice(0, 5) === value
       );
       this.townDropdown.set(filterArray);
+      this.townFormControl.setValue(null);
+      this.villageFormControl.setValue(null);
     });
     this.townFormControl.valueChanges.subscribe((value) => {
       if (!value) return;
@@ -106,6 +114,7 @@ export class DropdownComponent {
         (item) => item.id.slice(0, 7) === value
       );
       this.villageDropdown.set(filterArray);
+      this.villageFormControl.setValue(null);
     });
   }
 
@@ -128,5 +137,13 @@ export class DropdownComponent {
       id: item.id,
       name: item.properties.name.slice(6),
     }));
+  }
+
+  sendSelectedData() {
+    this.selectData.emit({
+      country: this.countryFormControl.value,
+      town: this.townFormControl.value,
+      village: this.villageFormControl.value,
+    });
   }
 }
