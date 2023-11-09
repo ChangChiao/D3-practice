@@ -1,33 +1,35 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
-import { Vote, VoteState } from '../model/app.model';
+import { AppState, SelectedOptionState, VoteState } from '../model/app.model';
 
 const initState = {
-  countrySelected: null,
-  townVotSelected: null,
-  villageSelected: null,
+  voteData: {
+    country: null,
+    town: null,
+    village: null,
+  },
+  selectedOption: {
+    country: null,
+    town: null,
+    village: null,
+  },
   isLoading: false,
+  test: null,
 };
 
 @Injectable({ providedIn: 'root' })
-export class AppComponentStore extends ComponentStore<VoteState> {
-  readonly #countrySelected$ = this.select(
-    ({ countrySelected }) => countrySelected
+export class AppComponentStore extends ComponentStore<AppState> {
+  readonly #voteData$ = this.select(({ voteData }) => voteData);
+  readonly #selectedOption$ = this.select(
+    ({ selectedOption }) => selectedOption
   );
-  readonly #townVotSelected$ = this.select(
-    ({ townVotSelected }) => townVotSelected
-  );
-  readonly #villageSelected$ = this.select(
-    ({ villageSelected }) => villageSelected
-  );
+
   readonly vm$ = this.select(
-    this.#countrySelected$,
-    this.#townVotSelected$,
-    this.#villageSelected$,
-    (countrySelected, townVotSelected, villageSelected) => ({
-      countrySelected,
-      townVotSelected,
-      villageSelected,
+    this.#voteData$,
+    this.#selectedOption$,
+    (voteData, selectedOption) => ({
+      voteData,
+      selectedOption,
     }),
     {
       debounce: true,
@@ -35,22 +37,18 @@ export class AppComponentStore extends ComponentStore<VoteState> {
   );
   readonly loading$ = this.select(({ isLoading }) => isLoading);
 
-  readonly setCountrySelected = this.updater(
-    (state, payload: string | null) => ({
-      ...state,
-      countrySelected: payload,
-    })
-  );
-
-  readonly setTownSelected = this.updater((state, payload: string | null) => ({
+  readonly setVoteData = this.updater((state, payload: VoteState | null) => ({
     ...state,
-    townVotSelected: payload,
+    voteData: payload,
   }));
 
-  readonly setVillageSelected = this.updater(
-    (state, payload: string | null) => ({
+  readonly setSelectedOption = this.updater(
+    (state, payload: { key: string; value: string | null }) => ({
       ...state,
-      villageSelected: payload,
+      selectedOption: {
+        ...state.selectedOption,
+        [payload.key]: payload.value,
+      },
     })
   );
 

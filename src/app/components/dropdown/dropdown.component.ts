@@ -76,8 +76,9 @@ export class DropdownComponent {
   townDropdown = signal([]);
   villageDropdown = signal([]);
 
-  vm$ = this.#service.getVoteData().pipe(
-    tap(([country, town, village]) => {
+  vm$ = this.#store.vm$.pipe(
+    tap(({ voteData }) => {
+      const { country, town, village } = voteData;
       this.countryDropdown.set(this.createCountryList(country));
       this.townList.set(this.createTownList(town));
       this.villageList.set(this.createVillageList(village));
@@ -96,9 +97,13 @@ export class DropdownComponent {
     return this.form.get('village');
   }
 
+  setSelectedOption(key, value) {
+    this.#store.setSelectedOption({ key, value });
+  }
+
   constructor() {
     this.countryFormControl.valueChanges.subscribe((value) => {
-      this.#store.setCountrySelected(value);
+      this.setSelectedOption('country', value);
       if (!value) return;
       const filterArray = this.townList().filter(
         (item) => item.id.slice(0, 5) === value
@@ -108,7 +113,7 @@ export class DropdownComponent {
       this.villageFormControl.setValue(null);
     });
     this.townFormControl.valueChanges.subscribe((value) => {
-      this.#store.setTownSelected(value);
+      this.setSelectedOption('town', value);
       if (!value) return;
       const filterArray = this.villageList().filter(
         (item) => item.id.slice(0, 7) === value
@@ -117,7 +122,7 @@ export class DropdownComponent {
       this.villageFormControl.setValue(null);
     });
     this.villageFormControl.valueChanges.subscribe((value) => {
-      this.#store.setVillageSelected(value);
+      this.setSelectedOption('village', value);
     });
   }
 

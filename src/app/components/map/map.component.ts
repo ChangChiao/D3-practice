@@ -3,6 +3,9 @@ import {
   ChangeDetectionStrategy,
   Component,
   DestroyRef,
+  Input,
+  OnChanges,
+  SimpleChanges,
   inject,
   signal,
 } from '@angular/core';
@@ -12,7 +15,7 @@ import * as d3 from 'd3';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { feature } from 'topojson-client';
 import { HttpClient } from '@angular/common/http';
-import { finalize, forkJoin, skip } from 'rxjs';
+import { finalize, forkJoin, skip, tap } from 'rxjs';
 import {
   CountryData,
   TownData,
@@ -20,13 +23,14 @@ import {
   VillageData,
 } from '../../model/index';
 import { AppService } from '../../service/app.service';
+import { AppComponentStore } from '../../store/app.state';
 
 @Component({
   selector: 'app-map',
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="map-container">
+    <div class="map-container" *ngrxLet="vm$ as vm">
       <svg class="map"></svg>
       <div id="collapse-content"></div>
       <div class="map-info-box">
@@ -46,10 +50,30 @@ import { AppService } from '../../service/app.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MapComponent implements AfterViewInit {
+  @Input() voteData;
+  @Input() selectedOption;
   #api = inject(HttpClient);
   #service = inject(AppService);
+  #store = inject(AppComponentStore);
   #deviceDetectorService = inject(DeviceDetectorService);
   #destroyRef = inject(DestroyRef);
+  selectedData = signal({});
+  vm$ = this.#store.vm$.pipe(
+    tap(({ voteData, selectedOption }) => {
+      console.log('voteData', voteData);
+      if (!voteData.country) return;
+      const { country, town, village } = voteData;
+      // @ts-ignore
+      this.countryData = feature(country, country.objects.counties);
+      // @ts-ignore
+      this.townData = feature(town, town.objects.town);
+      // @ts-ignore
+      this.villageData = feature(village, village.objects.tracts);
+
+      this.createCountry();
+    })
+  );
+
   centerPoint = { x: 0, y: 0 };
   width = 700;
   height = 1000;
@@ -104,6 +128,7 @@ export class MapComponent implements AfterViewInit {
   //   console.log('event.transform', event.transform);
   //   this.g.attr('transform', event.transform);
   // }
+
   showInfo(data) {
     const { name, ddp, kmt, pfp } = data.properties;
     this.infoSelected.set({ name, ddp, kmt, pfp });
@@ -256,17 +281,17 @@ export class MapComponent implements AfterViewInit {
     this.height = document.body.clientHeight;
     this.centerPoint = { x: this.width / 2, y: this.height / 2 };
     this.renderMap();
-    this.#service.getVoteData().subscribe(([country, town, village]) => {
-      if (!country) return;
-      // @ts-ignore
-      this.countryData = feature(country, country.objects.counties);
-      // @ts-ignore
-      this.townData = feature(town, town.objects.town);
-      // @ts-ignore
-      this.villageData = feature(village, village.objects.tracts);
+    // this.#service.getVoteData().subscribe(([country, town, village]) => {
+    //   if (!country) return;
+    //   // @ts-ignore
+    //   this.countryData = feature(country, country.objects.counties);
+    //   // @ts-ignore
+    //   this.townData = feature(town, town.objects.town);
+    //   // @ts-ignore
+    //   this.villageData = feature(village, village.objects.tracts);
 
-      this.createCountry();
-    });
+    //   this.createCountry();
+    // });
   }
 
   createSVGg() {

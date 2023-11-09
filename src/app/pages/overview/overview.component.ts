@@ -12,9 +12,10 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { LetDirective } from '@ngrx/component';
-import { AppComponentStore } from 'src/app/store/app.state';
+import { AppComponentStore } from '../../store/app.state';
 import { MapComponent } from '../../components/map/map.component';
-import { DropdownComponent } from 'src/app/components/dropdown/dropdown.component';
+import { DropdownComponent } from '../../components/dropdown/dropdown.component';
+import { AppService } from '../../service';
 
 @Component({
   selector: 'app-overview',
@@ -28,7 +29,7 @@ import { DropdownComponent } from 'src/app/components/dropdown/dropdown.componen
     DropdownComponent,
   ],
   template: `
-    <div *ngrxLet="vm$ as vm">
+    <div *ngrxLet="">
       <mat-icon
         aria-hidden="false"
         aria-label="Example home icon"
@@ -50,8 +51,6 @@ import { DropdownComponent } from 'src/app/components/dropdown/dropdown.componen
       <p>doubleCount: {{ doubleCount() }}</p>
       <button (click)="setCount()">set count</button>
       <button (click)="setPerson()">set person</button>
-      <
-      {{ vm | json }}
     </div>
   `,
   styleUrls: ['./overview.component.scss'],
@@ -64,8 +63,11 @@ export class OverviewComponent {
   // setCount() {
   //   this.count.set(3);
   // }
-  #store = inject(AppComponentStore);
-  vm$ = this.#store.vm$;
+  // #service = inject(AppService);
+  // #store = inject(AppComponentStore);
+
+  // selected$ = this.#store.vm$;
+  // voteData$ = this.#service.getVoteData();
   constructor() {
     effect(() => {
       const count = this.count();

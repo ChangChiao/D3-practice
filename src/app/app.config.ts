@@ -10,9 +10,20 @@ import { IconRegistryService } from './service/icon-registry.service';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { AppComponentStore } from './store/app.state';
 import { AppService } from './service';
+import { EMPTY, catchError, finalize, map, tap } from 'rxjs';
 
-function initializeAppFactory(service: AppService) {
-  return () => service.initService();
+function initializeAppFactory(service: AppService, store: AppComponentStore) {
+  store.setLoading(true);
+  return () =>
+    service.initService().pipe(
+      map((data) => data),
+      tap(([country, town, village]) => {
+        console.log('ccc', country);
+        store.setVoteData({ country, town, village });
+      }),
+      finalize(() => store.setLoading(false)),
+      catchError(() => EMPTY)
+    );
 }
 
 export const appConfig: ApplicationConfig = {
@@ -23,7 +34,7 @@ export const appConfig: ApplicationConfig = {
     {
       provide: APP_INITIALIZER,
       useFactory: initializeAppFactory,
-      deps: [AppService],
+      deps: [AppService, AppComponentStore],
       multi: true,
     },
     {

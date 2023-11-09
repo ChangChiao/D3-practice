@@ -37,30 +37,20 @@ export class AppService {
     return this.villageVoteData$;
   }
 
-  getVoteData() {
-    return combineLatest([
-      this.countryVoteData$,
-      this.townVoteData$,
-      this.villageVoteData$,
-    ]);
-  }
+  // getVoteData() {
+  //   return combineLatest([
+  //     this.countryVoteData$,
+  //     this.townVoteData$,
+  //     this.villageVoteData$,
+  //   ]);
+  // }
 
   initService() {
-    this.#store.setLoading(true);
     return forkJoin([
       this.fetchCountry$,
       this.fetchTownData$,
       this.fetchVillageData$,
-    ]).pipe(
-      map((data) => data),
-      tap(([country, town, village]) => {
-        this.countryVoteData$.next(country);
-        this.townVoteData$.next(town);
-        this.villageVoteData$.next(village);
-      }),
-      finalize(() => this.#store.setLoading(false)),
-      catchError(() => EMPTY)
-    );
+    ]);
   }
 
   fetchCountry$ = this.#api
