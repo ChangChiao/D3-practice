@@ -29,7 +29,7 @@ import { AppService } from '../../service';
     DropdownComponent,
   ],
   template: `
-    <div *ngrxLet="">
+    <div>
       <mat-icon
         aria-hidden="false"
         aria-label="Example home icon"

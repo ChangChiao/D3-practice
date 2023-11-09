@@ -24,13 +24,14 @@ import {
 } from '../../model/index';
 import { AppService } from '../../service/app.service';
 import { AppComponentStore } from '../../store/app.state';
+import { LetDirective } from '@ngrx/component';
 
 @Component({
   selector: 'app-map',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, LetDirective],
   template: `
-    <div class="map-container" *ngrxLet="vm$ as vm">
+    <div class="map-container">
       <svg class="map"></svg>
       <div id="collapse-content"></div>
       <div class="map-info-box">
@@ -58,21 +59,6 @@ export class MapComponent implements AfterViewInit {
   #deviceDetectorService = inject(DeviceDetectorService);
   #destroyRef = inject(DestroyRef);
   selectedData = signal({});
-  vm$ = this.#store.vm$.pipe(
-    tap(({ voteData, selectedOption }) => {
-      console.log('voteData', voteData);
-      if (!voteData.country) return;
-      const { country, town, village } = voteData;
-      // @ts-ignore
-      this.countryData = feature(country, country.objects.counties);
-      // @ts-ignore
-      this.townData = feature(town, town.objects.town);
-      // @ts-ignore
-      this.villageData = feature(village, village.objects.tracts);
-
-      this.createCountry();
-    })
-  );
 
   centerPoint = { x: 0, y: 0 };
   width = 700;
@@ -119,6 +105,7 @@ export class MapComponent implements AfterViewInit {
   // projection = d3.geoMercator().scale(this.initialScale).center([123, 24]);
   // path = d3.geoPath().projection(this.projection);
   constructor() {
+    console.log('testing===');
     this.isDesktopDevice = this.#deviceDetectorService.isDesktop();
   }
 
@@ -190,12 +177,19 @@ export class MapComponent implements AfterViewInit {
         self.drawBoundary();
         self.switchArea(data);
       })
-      .on('mouseover', (event, data) => this.showInfo(data));
+      .on('mouseover', function (event, data) {
+        d3.select(this).attr('opacity', 0.8);
+        self.showInfo(data);
+      })
+      .on('mouseout', function () {
+        d3.select(this).attr('opacity', 1);
+      });
 
     return { townPaths };
   }
 
   createVillage(data) {
+    const self = this;
     const villages = this.villageData.features.filter(
       (i) => i.id.slice(0, 7) == data.id
     );
@@ -212,7 +206,13 @@ export class MapComponent implements AfterViewInit {
       .style('fill', function (i) {
         return i.properties.color;
       })
-      .on('mouseover', (event, data) => this.showInfo(data));
+      .on('mouseover', function (event, data) {
+        d3.select(this).attr('opacity', 0.8);
+        self.showInfo(data);
+      })
+      .on('mouseout', function () {
+        d3.select(this).attr('opacity', 1);
+      });
     return { villagePaths };
   }
 
@@ -277,21 +277,28 @@ export class MapComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
+    console.log('init');
     this.width = document.body.clientWidth;
     this.height = document.body.clientHeight;
     this.centerPoint = { x: this.width / 2, y: this.height / 2 };
     this.renderMap();
-    // this.#service.getVoteData().subscribe(([country, town, village]) => {
-    //   if (!country) return;
-    //   // @ts-ignore
-    //   this.countryData = feature(country, country.objects.counties);
-    //   // @ts-ignore
-    //   this.townData = feature(town, town.objects.town);
-    //   // @ts-ignore
-    //   this.villageData = feature(village, village.objects.tracts);
+    this.#store.vm$
+      .pipe(
+        tap(({ voteData, selectedOption }) => {
+          console.log('voteData', voteData);
+          if (!voteData.country) return;
+          const { country, town, village } = voteData;
+          // @ts-ignore
+          this.countryData = feature(country, country.objects.counties);
+          // @ts-ignore
+          this.townData = feature(town, town.objects.town);
+          // @ts-ignore
+          this.villageData = feature(village, village.objects.tracts);
 
-    //   this.createCountry();
-    // });
+          this.createCountry();
+        })
+      )
+      .subscribe();
   }
 
   createSVGg() {
