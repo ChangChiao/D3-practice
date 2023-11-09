@@ -16,6 +16,7 @@ import { AppService } from '../../service';
 import { map, single, tap } from 'rxjs';
 import { DropdownEmitData, TownData, VillageData } from '../../model';
 import { LetDirective } from '@ngrx/component';
+import { AppComponentStore } from 'src/app/store/app.state';
 
 @Component({
   selector: 'app-dropdown',
@@ -61,6 +62,7 @@ import { LetDirective } from '@ngrx/component';
 export class DropdownComponent {
   @Output() selectData: EventEmitter<DropdownEmitData> = new EventEmitter();
   #service = inject(AppService);
+  #store = inject(AppComponentStore);
   fb = inject(FormBuilder);
   form: FormGroup = this.fb.group({
     country: [''],
@@ -79,9 +81,6 @@ export class DropdownComponent {
       this.countryDropdown.set(this.createCountryList(country));
       this.townList.set(this.createTownList(town));
       this.villageList.set(this.createVillageList(village));
-      // this.countryFormControl.setValue(country[0]?.id);
-      // this.townFormControl.setValue(town[0]?.id);
-      // this.villageFormControl.setValue(village[0]?.id);
     })
   );
 
@@ -99,6 +98,7 @@ export class DropdownComponent {
 
   constructor() {
     this.countryFormControl.valueChanges.subscribe((value) => {
+      this.#store.setCountrySelected(value);
       if (!value) return;
       const filterArray = this.townList().filter(
         (item) => item.id.slice(0, 5) === value
@@ -108,13 +108,16 @@ export class DropdownComponent {
       this.villageFormControl.setValue(null);
     });
     this.townFormControl.valueChanges.subscribe((value) => {
+      this.#store.setTownSelected(value);
       if (!value) return;
-
       const filterArray = this.villageList().filter(
         (item) => item.id.slice(0, 7) === value
       );
       this.villageDropdown.set(filterArray);
       this.villageFormControl.setValue(null);
+    });
+    this.villageFormControl.valueChanges.subscribe((value) => {
+      this.#store.setVillageSelected(value);
     });
   }
 

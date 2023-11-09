@@ -1,68 +1,58 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { Vote, VoteState } from '../model/app.model';
-import { EMPTY, catchError, forkJoin, map } from 'rxjs';
-import { AppService } from '../service';
-import { CountryData, TownData, VillageData } from '../model';
 
 const initState = {
-  countryVoteData: null,
-  townVoteData: null,
-  villageVoteData: null,
+  countrySelected: null,
+  townVotSelected: null,
+  villageSelected: null,
   isLoading: false,
 };
 
 @Injectable({ providedIn: 'root' })
 export class AppComponentStore extends ComponentStore<VoteState> {
-  // #service = inject(AppService);
-
-  // voteData$ = forkJoin([
-  //   this.#service.fetchCountry$,
-  //   this.#service.fetchTownData$,
-  //   this.#service.fetchVillageData$,
-  // ]).pipe(
-  //   map((data) => data),
-  //   catchError(() => EMPTY)
-  // );
-
-  // readonly #loading$ = this.select(({ isLoading }
-  // this.#service.fetchData$.pipe(
-  //   map((data) => data),
-  //   catchError(() => EMPTY)
-  // );
-
-  readonly #countryVoteData$ = this.select(
-    ({ countryVoteData }) => countryVoteData
+  readonly #countrySelected$ = this.select(
+    ({ countrySelected }) => countrySelected
   );
-  readonly #townVoteData$ = this.select(({ townVoteData }) => townVoteData);
-  readonly #villageVoteData$ = this.select(
-    ({ villageVoteData }) => villageVoteData
+  readonly #townVotSelected$ = this.select(
+    ({ townVotSelected }) => townVotSelected
+  );
+  readonly #villageSelected$ = this.select(
+    ({ villageSelected }) => villageSelected
   );
   readonly vm$ = this.select(
-    this.#countryVoteData$,
-    this.#townVoteData$,
-    this.#villageVoteData$,
-    (country, town, village) => ({ country, town, village }),
+    this.#countrySelected$,
+    this.#townVotSelected$,
+    this.#villageSelected$,
+    (countrySelected, townVotSelected, villageSelected) => ({
+      countrySelected,
+      townVotSelected,
+      villageSelected,
+    }),
     {
       debounce: true,
     }
   );
   readonly loading$ = this.select(({ isLoading }) => isLoading);
 
-  readonly setCountry = this.updater((state, payload: CountryData) => ({
+  readonly setCountrySelected = this.updater(
+    (state, payload: string | null) => ({
+      ...state,
+      countrySelected: payload,
+    })
+  );
+
+  readonly setTownSelected = this.updater((state, payload: string | null) => ({
     ...state,
-    countryVoteData: payload,
+    townVotSelected: payload,
   }));
 
-  readonly setTown = this.updater((state, payload: TownData) => ({
-    ...state,
-    townVoteData: payload,
-  }));
-
-  readonly setVillage = this.updater((state, payload: VillageData) => ({
-    ...state,
-    villageVoteData: payload,
-  }));
+  readonly setVillageSelected = this.updater(
+    (state, payload: string | null) => ({
+      ...state,
+      villageSelected: payload,
+    })
+  );
 
   readonly setLoading = this.updater((state, payload: boolean) => ({
     ...state,
