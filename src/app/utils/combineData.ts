@@ -4,9 +4,9 @@ export const combineData = (a, b, type = 'counties') => {
   const newObjects = arr.map((element) => {
     const newObj = { ...element };
     importArr.forEach((item) => {
-      if (transCode(element, type) === item.id) {
-        newObj.id = item.id;
+      if (transCode(element, type) === removeDash(item.id, type)) {
         newObj.properties = {
+          countyId: element.properties.COUNTYCODE,
           countryName: element.properties.COUNTYNAME,
           kmt: item.properties.kmt,
           ddp: item.properties.ddp,
@@ -15,11 +15,18 @@ export const combineData = (a, b, type = 'counties') => {
           winnerRate: item.properties.winning_rate_2020,
           color: transColor(transWinner(item.properties.winner_2020)),
         };
-        if (type === 'town' || type === 'village') {
+        newObj.id = element.properties.COUNTYCODE;
+        if (type === 'town') {
           newObj.properties.townName = element.properties.TOWNNAME;
+          newObj.id = element.properties.TOWNCODE;
+          newObj.properties.townId = element.properties.TOWNCODE;
         }
         if (type === 'village') {
+          newObj.properties.townName = element.properties.TOWNNAME;
           newObj.properties.villageName = element.properties.VILLAGENAME;
+          newObj.id = element.properties.VILLCODE;
+          newObj.properties.townId = element.properties.TOWNCODE;
+          newObj.properties.villageId = element.properties.VILLCODE;
         }
       }
     });
@@ -27,6 +34,10 @@ export const combineData = (a, b, type = 'counties') => {
   });
   a.objects[type].geometries = newObjects;
   return a;
+};
+
+const removeDash = (str, type) => {
+  return type === 'village' ? str.replace(/-/g, '') : str;
 };
 
 const transCode = (element, type) => {

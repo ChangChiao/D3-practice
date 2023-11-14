@@ -77556,7 +77556,8 @@
           ],
           "type": "MultiPolygon",
           "properties": {
-            "name": "連江縣",
+            "countyId": "09007",
+            "countryName": "連江縣",
             "kmt": 77.8,
             "ddp": 19.3,
             "pfp": 2.9,
@@ -77600,7 +77601,8 @@
           ],
           "type": "MultiPolygon",
           "properties": {
-            "name": "宜蘭縣",
+            "countyId": "10002",
+            "countryName": "宜蘭縣",
             "kmt": 32.8,
             "ddp": 63.3,
             "pfp": 3.9,
@@ -77614,7 +77616,8 @@
           "arcs": [[147, 148, 149, 150]],
           "type": "Polygon",
           "properties": {
-            "name": "彰化縣",
+            "countyId": "10007",
+            "countryName": "彰化縣",
             "kmt": 38.2,
             "ddp": 57.2,
             "pfp": 4.6,
@@ -77628,7 +77631,8 @@
           "arcs": [[151, 152, 153, 154, -149, 155]],
           "type": "Polygon",
           "properties": {
-            "name": "南投縣",
+            "countyId": "10008",
+            "countryName": "南投縣",
             "kmt": 44.7,
             "ddp": 50.8,
             "pfp": 4.5,
@@ -77649,7 +77653,8 @@
           ],
           "type": "MultiPolygon",
           "properties": {
-            "name": "雲林縣",
+            "countyId": "10009",
+            "countryName": "雲林縣",
             "kmt": 34.6,
             "ddp": 61.6,
             "pfp": 3.8,
@@ -77671,7 +77676,8 @@
           ],
           "type": "MultiPolygon",
           "properties": {
-            "name": "基隆市",
+            "countyId": "10017",
+            "countryName": "基隆市",
             "kmt": 43.9,
             "ddp": 50.8,
             "pfp": 5.3,
@@ -77685,7 +77691,8 @@
           "arcs": [[173]],
           "type": "Polygon",
           "properties": {
-            "name": "台北市",
+            "countyId": "63000",
+            "countryName": "臺北市",
             "kmt": 42,
             "ddp": 53.7,
             "pfp": 4.3,
@@ -77699,7 +77706,8 @@
           "arcs": [[-166, 174, -164, 175, -125, 176, 177], [-174]],
           "type": "Polygon",
           "properties": {
-            "name": "新北市",
+            "countyId": "65000",
+            "countryName": "新北市",
             "kmt": 38.9,
             "ddp": 56.5,
             "pfp": 4.6,
@@ -77713,7 +77721,8 @@
           "arcs": [[178, -156, -148, 179, 180, 181, 182, 183, 184, 185, -106]],
           "type": "Polygon",
           "properties": {
-            "name": "台中市",
+            "countyId": "66000",
+            "countryName": "臺中市",
             "kmt": 38.1,
             "ddp": 57,
             "pfp": 5,
@@ -77727,7 +77736,8 @@
           "arcs": [[186, 187, 188]],
           "type": "Polygon",
           "properties": {
-            "name": "台南市",
+            "countyId": "67000",
+            "countryName": "臺南市",
             "kmt": 28.9,
             "ddp": 67.6,
             "pfp": 3.5,
@@ -77750,7 +77760,8 @@
           ],
           "type": "Polygon",
           "properties": {
-            "name": "桃園市",
+            "countyId": "68000",
+            "countryName": "桃園市",
             "kmt": 40.4,
             "ddp": 54.8,
             "pfp": 4.8,
@@ -77772,7 +77783,8 @@
           ],
           "type": "Polygon",
           "properties": {
-            "name": "苗栗縣",
+            "countyId": "10005",
+            "countryName": "苗栗縣",
             "kmt": 50.3,
             "ddp": 45,
             "pfp": 4.7,
@@ -77786,7 +77798,8 @@
           "arcs": [[314]],
           "type": "Polygon",
           "properties": {
-            "name": "嘉義市",
+            "countyId": "10020",
+            "countryName": "嘉義市",
             "kmt": 34.8,
             "ddp": 61.4,
             "pfp": 3.8,
@@ -77810,7 +77823,8 @@
           ],
           "type": "MultiPolygon",
           "properties": {
-            "name": "嘉義縣",
+            "countyId": "10010",
+            "countryName": "嘉義縣",
             "kmt": 32.2,
             "ddp": 64.2,
             "pfp": 3.6,
@@ -77861,7 +77875,8 @@
           ],
           "type": "MultiPolygon",
           "properties": {
-            "name": "金門縣",
+            "countyId": "09020",
+            "countryName": "金門縣",
             "kmt": 74.8,
             "ddp": 21.8,
             "pfp": 3.4,
@@ -77882,7 +77897,8 @@
           ],
           "type": "MultiPolygon",
           "properties": {
-            "name": "高雄市",
+            "countyId": "64000",
+            "countryName": "高雄市",
             "kmt": 34.6,
             "ddp": 62.2,
             "pfp": 3.1,
@@ -77907,7 +77923,8 @@
           ],
           "type": "MultiPolygon",
           "properties": {
-            "name": "台東縣",
+            "countyId": "10014",
+            "countryName": "臺東縣",
             "kmt": 58.3,
             "ddp": 38.1,
             "pfp": 3.6,
@@ -77921,7 +77938,8 @@
           "arcs": [[382, -382, -367, -152, -179, -105]],
           "type": "Polygon",
           "properties": {
-            "name": "花蓮縣",
+            "countyId": "10015",
+            "countryName": "花蓮縣",
             "kmt": 60.4,
             "ddp": 35.9,
             "pfp": 3.7,
@@ -78196,7 +78214,8 @@
           ],
           "type": "MultiPolygon",
           "properties": {
-            "name": "澎湖縣",
+            "countyId": "10016",
+            "countryName": "澎湖縣",
             "kmt": 41.1,
             "ddp": 53.8,
             "pfp": 5.1,
@@ -78210,7 +78229,8 @@
           "arcs": [[643, 644, 645, 646, -294, 647, 648, 649]],
           "type": "Polygon",
           "properties": {
-            "name": "新竹市",
+            "countyId": "10018",
+            "countryName": "新竹市",
             "kmt": 39.3,
             "ddp": 55.3,
             "pfp": 5.4,
@@ -78238,7 +78258,8 @@
           ],
           "type": "Polygon",
           "properties": {
-            "name": "新竹縣",
+            "countyId": "10004",
+            "countryName": "新竹縣",
             "kmt": 47.4,
             "ddp": 46.9,
             "pfp": 5.7,
@@ -78262,7 +78283,8 @@
           ],
           "type": "MultiPolygon",
           "properties": {
-            "name": "屏東縣",
+            "countyId": "10013",
+            "countryName": "屏東縣",
             "kmt": 35,
             "ddp": 62.3,
             "pfp": 2.7,

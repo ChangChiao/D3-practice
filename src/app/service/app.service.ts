@@ -46,16 +46,18 @@ export class AppService {
   //   ]);
   // }
 
-  test() {
-    forkJoin([this.fetchTOWN$, this.fetchTownData$]).subscribe(([a, b]) => {
-      console.log('a, b', a, b);
-      const res = combineData(a, b, 'town');
-      console.log('res', JSON.stringify(res));
-    });
+  mergeData() {
+    forkJoin([this.fetchVILLAGE$, this.fetchVillageData$]).subscribe(
+      ([a, b]) => {
+        console.log('a, b', a, b);
+        const res = combineData(a, b, 'village');
+        console.log('res', JSON.stringify(res));
+      }
+    );
   }
 
   initService() {
-    this.test();
+    this.mergeData();
     return forkJoin([
       this.fetchCountry$,
       this.fetchTownData$,
@@ -85,7 +87,7 @@ export class AppService {
     );
 
   fetchCountry$ = this.#api
-    .get<CountryData>(`${this.#API_PATH}/country-vote-data.json`)
+    .get<CountryData>(`${this.#API_PATH}/country-data.json`)
     .pipe(
       map((res) => res),
       catchError((err: unknown) => EMPTY)

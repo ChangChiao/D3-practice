@@ -326,7 +326,7 @@ export class MapComponent implements AfterViewInit {
     if (num === 5) {
       return 'country';
     }
-    if (num === 7) {
+    if (num === 8) {
       return 'town';
     }
 
