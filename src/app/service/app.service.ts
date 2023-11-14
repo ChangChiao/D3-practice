@@ -13,6 +13,7 @@ import {
 } from 'rxjs';
 import { CountryData, TownData, VillageData, Vote } from '../model';
 import { AppComponentStore } from '../store/app.state';
+import { combineData } from '../utils/combineData';
 
 @Injectable({ providedIn: 'root' })
 export class AppService {
@@ -45,7 +46,16 @@ export class AppService {
   //   ]);
   // }
 
+  test() {
+    forkJoin([this.fetchaaa$, this.fetchCountry$]).subscribe(([a, b]) => {
+      console.log('a, b', a, b);
+      const res = combineData(a, b);
+      console.log('res', JSON.stringify(res));
+    });
+  }
+
   initService() {
+    this.test();
     return forkJoin([
       this.fetchCountry$,
       this.fetchTownData$,
@@ -53,8 +63,15 @@ export class AppService {
     ]);
   }
 
+  fetchaaa$ = this.#api
+    .get<CountryData>(`${this.#API_PATH}/COUNTY_MOI_1090820.json`)
+    .pipe(
+      map((res) => res),
+      catchError((err: unknown) => EMPTY)
+    );
+
   fetchCountry$ = this.#api
-    .get<CountryData>(`${this.#API_PATH}/country-data.json`)
+    .get<CountryData>(`${this.#API_PATH}/country-vote-data.json`)
     .pipe(
       map((res) => res),
       catchError((err: unknown) => EMPTY)

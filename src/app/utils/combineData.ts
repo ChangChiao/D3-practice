@@ -1,16 +1,16 @@
-export const doData = (a, b) => {
-  const arr = a.COUNTY_MOI_1090820.geometries;
-  const importArr = b.counties.geometries;
-  arr.map((element) => {
+export const combineData = (a, b) => {
+  const arr = a.objects.counties.geometries;
+  const importArr = b.objects.counties.geometries;
+  const newObjects = arr.map((element) => {
     const newObj = { ...element };
     importArr.forEach((item) => {
-      if (element.properties.COUNTYNAME === item.properties.name) {
+      if (element.properties.COUNTYCODE === item.id) {
         newObj.id = item.id;
         newObj.properties = {
-          ...item.properties.name,
-          ...item.properties.kmt,
-          ...item.properties.ddp,
-          ...item.properties.pfp,
+          name: item.properties.name,
+          kmt: item.properties.kmt,
+          ddp: item.properties.ddp,
+          pfp: item.properties.pfp,
           winner: transWinner(item.properties.winner_2020),
           winnerRate: item.properties.winning_rate_2020,
           color: transColor(transWinner(item.properties.winner_2020)),
@@ -19,6 +19,8 @@ export const doData = (a, b) => {
     });
     return newObj;
   });
+  a.objects.counties.geometries = newObjects;
+  return a;
 };
 
 const transWinner = (type) => {

@@ -63,7 +63,7 @@ export class MapComponent implements AfterViewInit {
   centerPoint = { x: 0, y: 0 };
   width = 700;
   height = 1000;
-  initialScale = 1;
+  initialScale = 8000;
   isDesktopDevice = false;
 
   infoSelected = signal({
@@ -101,11 +101,10 @@ export class MapComponent implements AfterViewInit {
   villageData: TransferData = null;
   countryData: TransferData = null;
 
-  path = d3.geoPath();
-  // projection = d3.geoMercator().scale(this.initialScale).center([123, 24]);
-  // path = d3.geoPath().projection(this.projection);
+  // path = d3.geoPath();
+  projection = d3.geoMercator().scale(this.initialScale).center([123, 24]);
+  path = d3.geoPath().projection(this.projection);
   constructor() {
-    console.log('testing===');
     this.isDesktopDevice = this.#deviceDetectorService.isDesktop();
   }
 
@@ -120,6 +119,8 @@ export class MapComponent implements AfterViewInit {
     const { name, ddp, kmt, pfp } = data.properties;
     this.infoSelected.set({ name, ddp, kmt, pfp });
   }
+
+  genColor() {}
 
   createCountry() {
     const self = this;
@@ -309,17 +310,10 @@ export class MapComponent implements AfterViewInit {
     this.map = d3
       .select('.map')
       .attr('width', this.width)
-      .attr('height', this.height)
-      .append('svg');
+      .attr('height', this.height);
+    // .append('svg');
 
     this.createSVGg();
-    // this.initZoom();
-    // this.map.call(this.zoom);
-    // this.map.call(
-    //   this.zoom.transform,
-    //   d3.zoomIdentity.scale(0.8),
-    //   d3.zoomIdentity.translate(0, 200)
-    // );
   }
 
   async sleep(sec) {
