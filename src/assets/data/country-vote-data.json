@@ -77556,11 +77556,15 @@
           ],
           "type": "MultiPolygon",
           "properties": {
-            "COUNTYID": "Z",
-            "COUNTYCODE": "09007",
-            "COUNTYNAME": "連江縣",
-            "COUNTYENG": "Lienchiang County"
-          }
+            "name": "連江縣",
+            "kmt": 77.8,
+            "ddp": 19.3,
+            "pfp": 2.9,
+            "winner": "kmt",
+            "winnerRate": 77.8,
+            "color": "blue"
+          },
+          "id": "09007"
         },
         {
           "arcs": [
@@ -77596,31 +77600,43 @@
           ],
           "type": "MultiPolygon",
           "properties": {
-            "COUNTYID": "G",
-            "COUNTYCODE": "10002",
-            "COUNTYNAME": "宜蘭縣",
-            "COUNTYENG": "Yilan County"
-          }
+            "name": "宜蘭縣",
+            "kmt": 32.8,
+            "ddp": 63.3,
+            "pfp": 3.9,
+            "winner": "ddp",
+            "winnerRate": 63.3,
+            "color": "green"
+          },
+          "id": "10002"
         },
         {
           "arcs": [[147, 148, 149, 150]],
           "type": "Polygon",
           "properties": {
-            "COUNTYID": "N",
-            "COUNTYCODE": "10007",
-            "COUNTYNAME": "彰化縣",
-            "COUNTYENG": "Changhua County"
-          }
+            "name": "彰化縣",
+            "kmt": 38.2,
+            "ddp": 57.2,
+            "pfp": 4.6,
+            "winner": "ddp",
+            "winnerRate": 57.2,
+            "color": "green"
+          },
+          "id": "10007"
         },
         {
           "arcs": [[151, 152, 153, 154, -149, 155]],
           "type": "Polygon",
           "properties": {
-            "COUNTYID": "M",
-            "COUNTYCODE": "10008",
-            "COUNTYNAME": "南投縣",
-            "COUNTYENG": "Nantou County"
-          }
+            "name": "南投縣",
+            "kmt": 44.7,
+            "ddp": 50.8,
+            "pfp": 4.5,
+            "winner": "ddp",
+            "winnerRate": 50.8,
+            "color": "green"
+          },
+          "id": "10008"
         },
         {
           "arcs": [
@@ -77633,11 +77649,15 @@
           ],
           "type": "MultiPolygon",
           "properties": {
-            "COUNTYID": "P",
-            "COUNTYCODE": "10009",
-            "COUNTYNAME": "雲林縣",
-            "COUNTYENG": "Yunlin County"
-          }
+            "name": "雲林縣",
+            "kmt": 34.6,
+            "ddp": 61.6,
+            "pfp": 3.8,
+            "winner": "ddp",
+            "winnerRate": 61.6,
+            "color": "green"
+          },
+          "id": "10009"
         },
         {
           "arcs": [
@@ -77651,51 +77671,71 @@
           ],
           "type": "MultiPolygon",
           "properties": {
-            "COUNTYID": "C",
-            "COUNTYCODE": "10017",
-            "COUNTYNAME": "基隆市",
-            "COUNTYENG": "Keelung City"
-          }
+            "name": "基隆市",
+            "kmt": 43.9,
+            "ddp": 50.8,
+            "pfp": 5.3,
+            "winner": "ddp",
+            "winnerRate": 50.8,
+            "color": "green"
+          },
+          "id": "10017"
         },
         {
           "arcs": [[173]],
           "type": "Polygon",
           "properties": {
-            "COUNTYID": "A",
-            "COUNTYCODE": "63000",
-            "COUNTYNAME": "臺北市",
-            "COUNTYENG": "Taipei City"
-          }
+            "name": "台北市",
+            "kmt": 42,
+            "ddp": 53.7,
+            "pfp": 4.3,
+            "winner": "ddp",
+            "winnerRate": 53.7,
+            "color": "green"
+          },
+          "id": "63000"
         },
         {
           "arcs": [[-166, 174, -164, 175, -125, 176, 177], [-174]],
           "type": "Polygon",
           "properties": {
-            "COUNTYID": "F",
-            "COUNTYCODE": "65000",
-            "COUNTYNAME": "新北市",
-            "COUNTYENG": "New Taipei City"
-          }
+            "name": "新北市",
+            "kmt": 38.9,
+            "ddp": 56.5,
+            "pfp": 4.6,
+            "winner": "ddp",
+            "winnerRate": 56.5,
+            "color": "green"
+          },
+          "id": "65000"
         },
         {
           "arcs": [[178, -156, -148, 179, 180, 181, 182, 183, 184, 185, -106]],
           "type": "Polygon",
           "properties": {
-            "COUNTYID": "B",
-            "COUNTYCODE": "66000",
-            "COUNTYNAME": "臺中市",
-            "COUNTYENG": "Taichung City"
-          }
+            "name": "台中市",
+            "kmt": 38.1,
+            "ddp": 57,
+            "pfp": 5,
+            "winner": "ddp",
+            "winnerRate": 57,
+            "color": "green"
+          },
+          "id": "66000"
         },
         {
           "arcs": [[186, 187, 188]],
           "type": "Polygon",
           "properties": {
-            "COUNTYID": "D",
-            "COUNTYCODE": "67000",
-            "COUNTYNAME": "臺南市",
-            "COUNTYENG": "Tainan City"
-          }
+            "name": "台南市",
+            "kmt": 28.9,
+            "ddp": 67.6,
+            "pfp": 3.5,
+            "winner": "ddp",
+            "winnerRate": 67.6,
+            "color": "green"
+          },
+          "id": "67000"
         },
         {
           "arcs": [
@@ -77710,11 +77750,15 @@
           ],
           "type": "Polygon",
           "properties": {
-            "COUNTYID": "H",
-            "COUNTYCODE": "68000",
-            "COUNTYNAME": "桃園市",
-            "COUNTYENG": "Taoyuan City"
-          }
+            "name": "桃園市",
+            "kmt": 40.4,
+            "ddp": 54.8,
+            "pfp": 4.8,
+            "winner": "ddp",
+            "winnerRate": 54.8,
+            "color": "green"
+          },
+          "id": "68000"
         },
         {
           "arcs": [
@@ -77728,21 +77772,29 @@
           ],
           "type": "Polygon",
           "properties": {
-            "COUNTYID": "K",
-            "COUNTYCODE": "10005",
-            "COUNTYNAME": "苗栗縣",
-            "COUNTYENG": "Miaoli County"
-          }
+            "name": "苗栗縣",
+            "kmt": 50.3,
+            "ddp": 45,
+            "pfp": 4.7,
+            "winner": "kmt",
+            "winnerRate": 50.3,
+            "color": "blue"
+          },
+          "id": "10005"
         },
         {
           "arcs": [[314]],
           "type": "Polygon",
           "properties": {
-            "COUNTYID": "I",
-            "COUNTYCODE": "10020",
-            "COUNTYNAME": "嘉義市",
-            "COUNTYENG": "Chiayi City"
-          }
+            "name": "嘉義市",
+            "kmt": 34.8,
+            "ddp": 61.4,
+            "pfp": 3.8,
+            "winner": "ddp",
+            "winnerRate": 61.4,
+            "color": "green"
+          },
+          "id": "10020"
         },
         {
           "arcs": [
@@ -77758,11 +77810,15 @@
           ],
           "type": "MultiPolygon",
           "properties": {
-            "COUNTYID": "Q",
-            "COUNTYCODE": "10010",
-            "COUNTYNAME": "嘉義縣",
-            "COUNTYENG": "Chiayi County"
-          }
+            "name": "嘉義縣",
+            "kmt": 32.2,
+            "ddp": 64.2,
+            "pfp": 3.6,
+            "winner": "ddp",
+            "winnerRate": 64.2,
+            "color": "green"
+          },
+          "id": "10010"
         },
         {
           "arcs": [
@@ -77805,11 +77861,15 @@
           ],
           "type": "MultiPolygon",
           "properties": {
-            "COUNTYID": "W",
-            "COUNTYCODE": "09020",
-            "COUNTYNAME": "金門縣",
-            "COUNTYENG": "Kinmen County"
-          }
+            "name": "金門縣",
+            "kmt": 74.8,
+            "ddp": 21.8,
+            "pfp": 3.4,
+            "winner": "kmt",
+            "winnerRate": 74.8,
+            "color": "blue"
+          },
+          "id": "09020"
         },
         {
           "arcs": [
@@ -77822,11 +77882,15 @@
           ],
           "type": "MultiPolygon",
           "properties": {
-            "COUNTYID": "E",
-            "COUNTYCODE": "64000",
-            "COUNTYNAME": "高雄市",
-            "COUNTYENG": "Kaohsiung City"
-          }
+            "name": "高雄市",
+            "kmt": 34.6,
+            "ddp": 62.2,
+            "pfp": 3.1,
+            "winner": "ddp",
+            "winnerRate": 62.2,
+            "color": "green"
+          },
+          "id": "64000"
         },
         {
           "arcs": [
@@ -77843,21 +77907,29 @@
           ],
           "type": "MultiPolygon",
           "properties": {
-            "COUNTYID": "V",
-            "COUNTYCODE": "10014",
-            "COUNTYNAME": "臺東縣",
-            "COUNTYENG": "Taitung County"
-          }
+            "name": "台東縣",
+            "kmt": 58.3,
+            "ddp": 38.1,
+            "pfp": 3.6,
+            "winner": "kmt",
+            "winnerRate": 58.3,
+            "color": "blue"
+          },
+          "id": "10014"
         },
         {
           "arcs": [[382, -382, -367, -152, -179, -105]],
           "type": "Polygon",
           "properties": {
-            "COUNTYID": "U",
-            "COUNTYCODE": "10015",
-            "COUNTYNAME": "花蓮縣",
-            "COUNTYENG": "Hualien County"
-          }
+            "name": "花蓮縣",
+            "kmt": 60.4,
+            "ddp": 35.9,
+            "pfp": 3.7,
+            "winner": "kmt",
+            "winnerRate": 60.4,
+            "color": "blue"
+          },
+          "id": "10015"
         },
         {
           "arcs": [
@@ -78124,21 +78196,29 @@
           ],
           "type": "MultiPolygon",
           "properties": {
-            "COUNTYID": "X",
-            "COUNTYCODE": "10016",
-            "COUNTYNAME": "澎湖縣",
-            "COUNTYENG": "Penghu County"
-          }
+            "name": "澎湖縣",
+            "kmt": 41.1,
+            "ddp": 53.8,
+            "pfp": 5.1,
+            "winner": "ddp",
+            "winnerRate": 53.8,
+            "color": "green"
+          },
+          "id": "10016"
         },
         {
           "arcs": [[643, 644, 645, 646, -294, 647, 648, 649]],
           "type": "Polygon",
           "properties": {
-            "COUNTYID": "O",
-            "COUNTYCODE": "10018",
-            "COUNTYNAME": "新竹市",
-            "COUNTYENG": "Hsinchu City"
-          }
+            "name": "新竹市",
+            "kmt": 39.3,
+            "ddp": 55.3,
+            "pfp": 5.4,
+            "winner": "ddp",
+            "winnerRate": 55.3,
+            "color": "green"
+          },
+          "id": "10018"
         },
         {
           "arcs": [
@@ -78158,11 +78238,15 @@
           ],
           "type": "Polygon",
           "properties": {
-            "COUNTYID": "J",
-            "COUNTYCODE": "10004",
-            "COUNTYNAME": "新竹縣",
-            "COUNTYENG": "Hsinchu County"
-          }
+            "name": "新竹縣",
+            "kmt": 47.4,
+            "ddp": 46.9,
+            "pfp": 5.7,
+            "winner": "kmt",
+            "winnerRate": 47.4,
+            "color": "blue"
+          },
+          "id": "10004"
         },
         {
           "arcs": [
@@ -78178,11 +78262,15 @@
           ],
           "type": "MultiPolygon",
           "properties": {
-            "COUNTYID": "T",
-            "COUNTYCODE": "10013",
-            "COUNTYNAME": "屏東縣",
-            "COUNTYENG": "Pingtung County"
-          }
+            "name": "屏東縣",
+            "kmt": 35,
+            "ddp": 62.3,
+            "pfp": 2.7,
+            "winner": "ddp",
+            "winnerRate": 62.3,
+            "color": "green"
+          },
+          "id": "10013"
         }
       ]
     }
