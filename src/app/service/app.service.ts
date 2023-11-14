@@ -47,7 +47,7 @@ export class AppService {
   // }
 
   test() {
-    forkJoin([this.fetchbbb$, this.fetchTownData$]).subscribe(([a, b]) => {
+    forkJoin([this.fetchTOWN$, this.fetchTownData$]).subscribe(([a, b]) => {
       console.log('a, b', a, b);
       const res = combineData(a, b, 'town');
       console.log('res', JSON.stringify(res));
@@ -63,21 +63,21 @@ export class AppService {
     ]);
   }
 
-  fetchaaa$ = this.#api
+  fetchCOUNTY$ = this.#api
     .get<CountryData>(`${this.#API_PATH}/COUNTY_MOI_1090820.json`)
     .pipe(
       map((res) => res),
       catchError((err: unknown) => EMPTY)
     );
 
-  fetchbbb$ = this.#api
+  fetchTOWN$ = this.#api
     .get<CountryData>(`${this.#API_PATH}/TOWN_MOI_1120825.json`)
     .pipe(
       map((res) => res),
       catchError((err: unknown) => EMPTY)
     );
 
-  fetchccc$ = this.#api
+  fetchVILLAGE$ = this.#api
     .get<CountryData>(`${this.#API_PATH}/VILLAGE_NLSC_1120928.json`)
     .pipe(
       map((res) => res),

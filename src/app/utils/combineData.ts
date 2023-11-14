@@ -4,10 +4,10 @@ export const combineData = (a, b, type = 'counties') => {
   const newObjects = arr.map((element) => {
     const newObj = { ...element };
     importArr.forEach((item) => {
-      if (transCode(item, type) === item.id) {
+      if (transCode(element, type) === item.id) {
         newObj.id = item.id;
         newObj.properties = {
-          name: item.properties.name,
+          countryName: element.properties.COUNTYNAME,
           kmt: item.properties.kmt,
           ddp: item.properties.ddp,
           pfp: item.properties.pfp,
@@ -15,6 +15,12 @@ export const combineData = (a, b, type = 'counties') => {
           winnerRate: item.properties.winning_rate_2020,
           color: transColor(transWinner(item.properties.winner_2020)),
         };
+        if (type === 'town' || type === 'village') {
+          newObj.properties.townName = element.properties.TOWNNAME;
+        }
+        if (type === 'village') {
+          newObj.properties.villageName = element.properties.VILLAGENAME;
+        }
       }
     });
     return newObj;
@@ -25,7 +31,7 @@ export const combineData = (a, b, type = 'counties') => {
 
 const transCode = (element, type) => {
   if (type === 'counties') return element.properties.COUNTYCODE;
-  if (type === 'town') return element.properties.TOWNCODE;
+  if (type === 'town') return element.properties.TOWNCODE.slice(0, -1);
   return element.properties.VILLCODE;
 };
 
