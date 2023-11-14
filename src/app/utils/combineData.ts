@@ -1,10 +1,10 @@
-export const combineData = (a, b) => {
-  const arr = a.objects.counties.geometries;
-  const importArr = b.objects.counties.geometries;
+export const combineData = (a, b, type = 'counties') => {
+  const arr = a.objects[type].geometries;
+  const importArr = b.objects[type].geometries;
   const newObjects = arr.map((element) => {
     const newObj = { ...element };
     importArr.forEach((item) => {
-      if (element.properties.COUNTYCODE === item.id) {
+      if (transCode(item, type) === item.id) {
         newObj.id = item.id;
         newObj.properties = {
           name: item.properties.name,
@@ -19,8 +19,14 @@ export const combineData = (a, b) => {
     });
     return newObj;
   });
-  a.objects.counties.geometries = newObjects;
+  a.objects[type].geometries = newObjects;
   return a;
+};
+
+const transCode = (element, type) => {
+  if (type === 'counties') return element.properties.COUNTYCODE;
+  if (type === 'town') return element.properties.TOWNCODE;
+  return element.properties.VILLCODE;
 };
 
 const transWinner = (type) => {
