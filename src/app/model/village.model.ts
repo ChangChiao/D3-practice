@@ -12,9 +12,7 @@ export interface VillageTransform {
 }
 
 export interface VillageObjects {
-  tracts: VillageTracts;
-  town: VillageTown;
-  counties: VillageCounties;
+  village: VillageTracts;
 }
 
 export interface VillageTracts {
@@ -30,49 +28,16 @@ export interface VillageGeometry {
 }
 
 export interface VillageProperties {
-  name: string;
+  countyId: string;
+  countryName: string;
   kmt: number;
   ddp: number;
   pfp: number;
+  winner: string;
+  winnerRate: number;
   color: string;
-  winner_2020: string;
-  winning_rate_2020: number;
-}
-
-export interface VillageTown {
-  type: string;
-  geometries: VillageGeometry2[];
-}
-
-export interface VillageGeometry2 {
-  type: string;
-  arcs: number[][][];
-  id: string;
-  properties?: VillageProperties2;
-}
-
-export interface VillageProperties2 {
-  winner_2020?: string;
-  color?: string;
-  kmt?: number;
-  ddp?: number;
-  pfp?: number;
-  winning_rate_2020?: number;
-}
-
-export interface VillageCounties {
-  type: string;
-  geometries: VillageGeometry3[];
-}
-
-export interface VillageGeometry3 {
-  type: string;
-  arcs: number[][][];
-  id: string;
-  properties?: VillageProperties3;
-}
-
-export interface VillageProperties3 {
-  color?: string;
-  winner_2020?: string;
+  townName: string;
+  villageName: string;
+  townId: string;
+  villageId: string;
 }

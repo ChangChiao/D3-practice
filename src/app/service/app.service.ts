@@ -57,7 +57,7 @@ export class AppService {
   }
 
   initService() {
-    this.mergeData();
+    // this.mergeData();
     return forkJoin([
       this.fetchCountry$,
       this.fetchTownData$,
@@ -87,21 +87,21 @@ export class AppService {
     );
 
   fetchCountry$ = this.#api
-    .get<CountryData>(`${this.#API_PATH}/country-data.json`)
+    .get<CountryData>(`${this.#API_PATH}/country-vote-data.json`)
     .pipe(
       map((res) => res),
       catchError((err: unknown) => EMPTY)
     );
 
   fetchTownData$ = this.#api
-    .get<TownData>(`${this.#API_PATH}/town-data.json`)
+    .get<TownData>(`${this.#API_PATH}/town-vote-data.json`)
     .pipe(
       map((res) => res),
       catchError((err: unknown) => EMPTY)
     );
 
   fetchVillageData$ = this.#api
-    .get<VillageData>(`${this.#API_PATH}/village-data.json`)
+    .get<VillageData>(`${this.#API_PATH}/village-vote-data.json`)
     .pipe(
       map((res) => res),
       catchError((err: unknown) => EMPTY)

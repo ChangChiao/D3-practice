@@ -129,21 +129,21 @@ export class DropdownComponent {
   createCountryList(country: CountryData) {
     return country.objects.counties.geometries.map((item) => ({
       id: item.id,
-      name: item.properties.name,
+      name: item.properties.countryName,
     }));
   }
 
   createTownList(town: TownData) {
     return town.objects.town.geometries.map((item) => ({
       id: item.id,
-      name: item.properties.name.slice(3),
+      name: item.properties.townName,
     }));
   }
 
   createVillageList(village: VillageData) {
     return village.objects.tracts.geometries.map((item) => ({
       id: item.id,
-      name: item.properties.name.slice(6),
+      name: item.properties.villageName,
     }));
   }
 

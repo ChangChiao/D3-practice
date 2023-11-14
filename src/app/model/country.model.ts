@@ -22,11 +22,12 @@ export interface CountryGeometry {
 }
 
 export interface CountryProperties {
-  name: string;
+  countyId: string;
+  countryName: string;
   kmt: number;
   ddp: number;
   pfp: number;
+  winner: string;
+  winnerRate: number;
   color: string;
-  winner_2020: string;
-  winning_rate_2020: number;
 }
