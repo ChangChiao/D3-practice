@@ -155,10 +155,12 @@ export class MapComponent implements AfterViewInit {
   }
 
   createTown(data) {
+    console.log('data', data.id);
     const self = this;
     const countryTowns = this.townData.features.filter(
-      (item) => item.id.slice(0, 5) == data.id
+      (item) => item.properties.countyId == data.id
     );
+    console.log('countryTowns', countryTowns);
     const townPaths = this.g
       .selectAll('.town')
       .data(countryTowns, (item) => item.id)
@@ -192,7 +194,7 @@ export class MapComponent implements AfterViewInit {
   createVillage(data) {
     const self = this;
     const villages = this.villageData.features.filter(
-      (i) => i.id.slice(0, 7) == data.id
+      (i) => i.properties.townId == data.id
     );
     console.log('townVillages', villages);
     const villagePaths = this.g
@@ -294,7 +296,7 @@ export class MapComponent implements AfterViewInit {
           // @ts-ignore
           this.townData = feature(town, town.objects.town);
           // @ts-ignore
-          this.villageData = feature(village, village.objects.tracts);
+          this.villageData = feature(village, village.objects.village);
 
           this.createCountry();
         })
@@ -373,6 +375,7 @@ export class MapComponent implements AfterViewInit {
 
   switchArea(data) {
     const type = this.getDataType(data.id?.length);
+    console.log('type', type);
     switch (type) {
       case 'country': {
         const bounds = this.path.bounds(data);

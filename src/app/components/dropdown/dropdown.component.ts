@@ -106,7 +106,7 @@ export class DropdownComponent {
       this.setSelectedOption('country', value);
       if (!value) return;
       const filterArray = this.townList().filter(
-        (item) => item.id.slice(0, 5) === value
+        (item) => item.properties.countyId === value
       );
       this.townDropdown.set(filterArray);
       this.townFormControl.setValue(null);
@@ -116,7 +116,7 @@ export class DropdownComponent {
       this.setSelectedOption('town', value);
       if (!value) return;
       const filterArray = this.villageList().filter(
-        (item) => item.id.slice(0, 7) === value
+        (item) => item.properties.townId === value
       );
       this.villageDropdown.set(filterArray);
       this.villageFormControl.setValue(null);
@@ -141,7 +141,7 @@ export class DropdownComponent {
   }
 
   createVillageList(village: VillageData) {
-    return village.objects.tracts.geometries.map((item) => ({
+    return village.objects.village.geometries.map((item) => ({
       id: item.id,
       name: item.properties.villageName,
     }));
