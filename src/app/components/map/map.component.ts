@@ -128,7 +128,7 @@ export class MapComponent implements AfterViewInit {
       .data(this.countryData.features)
       .enter()
       .append('path')
-      .attr('class', 'country')
+      .classed('country', true)
       .attr('d', this.path)
       .style('fill', function (i) {
         return i.properties.color;
@@ -163,7 +163,7 @@ export class MapComponent implements AfterViewInit {
       .data(countryTowns, (item) => item.id)
       .enter()
       .append('path')
-      .attr('class', 'town')
+      .classed('town', true)
       .attr('d', this.path)
       .style('opacity', 0)
       .style('stroke-width', this.normalLineWidth)
@@ -199,7 +199,7 @@ export class MapComponent implements AfterViewInit {
       .data(villages)
       .enter()
       .append('path')
-      .attr('class', 'village')
+      .classed('village', true)
       .attr('d', this.path)
       .style('stroke-width', this.normalLineWidth)
       .style('stroke', this.normalLineColor)
