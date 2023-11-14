@@ -23,7 +23,7 @@ export const combineData = (a, b, type = 'counties') => {
         }
         if (type === 'village') {
           newObj.properties.townName = element.properties.TOWNNAME;
-          newObj.properties.villageName = element.properties.VILLAGENAME;
+          newObj.properties.villageName = element.properties.VILLNAME;
           newObj.id = element.properties.VILLCODE;
           newObj.properties.townId = element.properties.TOWNCODE;
           newObj.properties.villageId = element.properties.VILLCODE;
