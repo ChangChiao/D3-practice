@@ -1,18 +1,24 @@
-import { CountryData } from './country.model';
-import { TownData } from './town.model';
-import { VillageData } from './village.model';
+import { CountryData, CountryProperties } from './country.model';
+import { TownData, TownProperties } from './town.model';
+import { VillageData, VillageProperties } from './village.model';
 
 export interface AppState {
-  mapData: mapState;
+  mapData: MapState;
   selectedOption: SelectedOptionState;
   isLoading: boolean;
-  // voteData:
+  voteData: VoteState;
 }
 
-export interface mapState {
+export interface MapState {
   country: CountryData | null;
   town: TownData | null;
   village: VillageData | null;
+}
+
+export interface VoteState {
+  country: CountryProperties[];
+  town: TownProperties[];
+  village: VillageProperties[];
 }
 
 export interface SelectedOptionState {

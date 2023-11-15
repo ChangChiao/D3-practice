@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
-import { AppState, SelectedOptionState, mapState } from '../model/app.model';
+import {
+  AppState,
+  MapState,
+  SelectedOptionState,
+  VoteState,
+} from '../model/app.model';
 
 const initState = {
   mapData: {
@@ -42,10 +47,29 @@ export class AppComponentStore extends ComponentStore<AppState> {
   );
   readonly loading$ = this.select(({ isLoading }) => isLoading);
 
-  readonly setMapData = this.updater((state, payload: mapState | null) => ({
+  readonly setMapData = this.updater((state, payload: MapState | null) => ({
     ...state,
     mapData: payload,
   }));
+
+  readonly setVoteData = this.updater((state, payload: MapState | null) => {
+    const { country, town, village } = payload;
+    const countryData = country.objects.counties.geometries.map(
+      (item) => item.properties
+    );
+    const townData = town.objects.town.geometries.map(
+      (item) => item.properties
+    );
+    const villageData = village.objects.village.geometries.map(
+      (item) => item.properties
+    );
+    return {
+      ...state,
+      country: countryData,
+      town: townData,
+      village: villageData,
+    };
+  });
 
   readonly setSelectedOption = this.updater(
     (state, payload: { key: string; value: string | null }) => ({
