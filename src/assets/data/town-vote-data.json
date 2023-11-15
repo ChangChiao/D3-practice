@@ -228112,7 +228112,6 @@
             "pfp": 3.1,
             "winner": "kmt",
             "winnerRate": 68.5,
-            "color": "blue",
             "townName": "成功鎮",
             "townId": "10014020"
           },
@@ -228129,7 +228128,6 @@
             "pfp": 1.8,
             "winner": "ddp",
             "winnerRate": 69.2,
-            "color": "green",
             "townName": "佳冬鄉",
             "townId": "10013210"
           },
@@ -228146,7 +228144,6 @@
             "pfp": 4.8,
             "winner": "ddp",
             "winnerRate": 57,
-            "color": "green",
             "townName": "麥寮鄉",
             "townId": "10009130"
           },
@@ -228163,7 +228160,6 @@
             "pfp": 2.8,
             "winner": "kmt",
             "winnerRate": 67.4,
-            "color": "blue",
             "townName": "綠島鄉",
             "townId": "10014110"
           },
@@ -228180,7 +228176,6 @@
             "pfp": 9.2,
             "winner": "kmt",
             "winnerRate": 59.8,
-            "color": "blue",
             "townName": "蘭嶼鄉",
             "townId": "10014160"
           },
@@ -228199,7 +228194,6 @@
             "pfp": 3.9,
             "winner": "ddp",
             "winnerRate": 56,
-            "color": "green",
             "townName": "田中鎮",
             "townId": "10007120"
           },
@@ -228221,7 +228215,6 @@
             "pfp": 4.4,
             "winner": "ddp",
             "winnerRate": 59.7,
-            "color": "green",
             "townName": "社頭鄉",
             "townId": "10007170"
           },
@@ -228238,7 +228231,6 @@
             "pfp": 2.2,
             "winner": "ddp",
             "winnerRate": 68.2,
-            "color": "green",
             "townName": "竹田鄉",
             "townId": "10013140"
           },
@@ -228255,7 +228247,6 @@
             "pfp": 2.7,
             "winner": "ddp",
             "winnerRate": 68.7,
-            "color": "green",
             "townName": "萬丹鄉",
             "townId": "10013050"
           },
@@ -228272,7 +228263,6 @@
             "pfp": 4.3,
             "winner": "kmt",
             "winnerRate": 59.3,
-            "color": "blue",
             "townName": "三灣鄉",
             "townId": "10005160"
           },
@@ -228289,7 +228279,6 @@
             "pfp": 4,
             "winner": "kmt",
             "winnerRate": 52,
-            "color": "blue",
             "townName": "峨眉鄉",
             "townId": "10004110"
           },
@@ -228306,7 +228295,6 @@
             "pfp": 4,
             "winner": "kmt",
             "winnerRate": 64.5,
-            "color": "blue",
             "townName": "南庄鄉",
             "townId": "10005110"
           },
@@ -228323,7 +228311,6 @@
             "pfp": 4,
             "winner": "ddp",
             "winnerRate": 65.6,
-            "color": "green",
             "townName": "太保市",
             "townId": "10010010"
           },
@@ -228340,7 +228327,6 @@
             "pfp": 3.6,
             "winner": "ddp",
             "winnerRate": 62.6,
-            "color": "green",
             "townName": "中埔鄉",
             "townId": "10010130"
           },
@@ -228357,7 +228343,6 @@
             "pfp": 3.9,
             "winner": "ddp",
             "winnerRate": 57.1,
-            "color": "green",
             "townName": "番路鄉",
             "townId": "10010160"
           },
@@ -228374,7 +228359,6 @@
             "pfp": 3.7,
             "winner": "ddp",
             "winnerRate": 63.3,
-            "color": "green",
             "townName": "水上鄉",
             "townId": "10010120"
           },
@@ -228391,7 +228375,6 @@
             "pfp": 4.5,
             "winner": "ddp",
             "winnerRate": 56.1,
-            "color": "green",
             "townName": "員林市",
             "townId": "10007100"
           },
@@ -228442,7 +228425,6 @@
             "pfp": 2.9,
             "winner": "ddp",
             "winnerRate": 65.6,
-            "color": "green",
             "townName": "小港區",
             "townId": "64000110"
           },
@@ -228459,7 +228441,6 @@
             "pfp": 4,
             "winner": "ddp",
             "winnerRate": 63.7,
-            "color": "green",
             "townName": "蘇澳鎮",
             "townId": "10002030"
           },
@@ -228476,7 +228457,6 @@
             "pfp": 3.4,
             "winner": "ddp",
             "winnerRate": 69.2,
-            "color": "green",
             "townName": "五結鄉",
             "townId": "10002090"
           },
@@ -228493,7 +228473,6 @@
             "pfp": 4.3,
             "winner": "ddp",
             "winnerRate": 59.3,
-            "color": "green",
             "townName": "宜蘭市",
             "townId": "10002010"
           },
@@ -228510,7 +228489,6 @@
             "pfp": 3.8,
             "winner": "ddp",
             "winnerRate": 67.5,
-            "color": "green",
             "townName": "壯圍鄉",
             "townId": "10002060"
           },
@@ -228545,7 +228523,6 @@
             "pfp": 2.9,
             "winner": "kmt",
             "winnerRate": 76.7,
-            "color": "blue",
             "townName": "南竿鄉",
             "townId": "09007010"
           },
@@ -228593,7 +228570,6 @@
             "pfp": 2.4,
             "winner": "kmt",
             "winnerRate": 81.2,
-            "color": "blue",
             "townName": "莒光鄉",
             "townId": "09007030"
           },
@@ -228610,7 +228586,6 @@
             "pfp": 3.9,
             "winner": "kmt",
             "winnerRate": 67.7,
-            "color": "blue",
             "townName": "金寧鄉",
             "townId": "09020040"
           },
@@ -228627,7 +228602,6 @@
             "pfp": 1.8,
             "winner": "kmt",
             "winnerRate": 85,
-            "color": "blue",
             "townName": "烏坵鄉",
             "townId": "09020060"
           },
@@ -228644,7 +228618,6 @@
             "pfp": 3.8,
             "winner": "ddp",
             "winnerRate": 64.1,
-            "color": "green",
             "townName": "羅東鎮",
             "townId": "10002020"
           },
@@ -228661,7 +228634,6 @@
             "pfp": 3.7,
             "winner": "ddp",
             "winnerRate": 67.3,
-            "color": "green",
             "townName": "員山鄉",
             "townId": "10002070"
           },
@@ -228678,7 +228650,6 @@
             "pfp": 3.6,
             "winner": "ddp",
             "winnerRate": 70.4,
-            "color": "green",
             "townName": "冬山鄉",
             "townId": "10002080"
           },
@@ -228695,7 +228666,6 @@
             "pfp": 3.9,
             "winner": "ddp",
             "winnerRate": 66.9,
-            "color": "green",
             "townName": "三星鄉",
             "townId": "10002100"
           },
@@ -228712,7 +228682,6 @@
             "pfp": 3.8,
             "winner": "kmt",
             "winnerRate": 75.8,
-            "color": "blue",
             "townName": "大同鄉",
             "townId": "10002110"
           },
@@ -228729,7 +228698,6 @@
             "pfp": 5.7,
             "winner": "kmt",
             "winnerRate": 52.9,
-            "color": "blue",
             "townName": "竹東鎮",
             "townId": "10004020"
           },
@@ -228746,7 +228714,6 @@
             "pfp": 4.8,
             "winner": "ddp",
             "winnerRate": 49.4,
-            "color": "green",
             "townName": "新埔鎮",
             "townId": "10004030"
           },
@@ -228763,7 +228730,6 @@
             "pfp": 4.4,
             "winner": "kmt",
             "winnerRate": 51.6,
-            "color": "blue",
             "townName": "關西鎮",
             "townId": "10004040"
           },
@@ -228780,7 +228746,6 @@
             "pfp": 5.9,
             "winner": "kmt",
             "winnerRate": 49.7,
-            "color": "blue",
             "townName": "湖口鄉",
             "townId": "10004050"
           },
@@ -228797,7 +228762,6 @@
             "pfp": 5.6,
             "winner": "kmt",
             "winnerRate": 51.8,
-            "color": "blue",
             "townName": "芎林鄉",
             "townId": "10004070"
           },
@@ -228814,7 +228778,6 @@
             "pfp": 4.8,
             "winner": "kmt",
             "winnerRate": 57.9,
-            "color": "blue",
             "townName": "橫山鄉",
             "townId": "10004080"
           },
@@ -228831,7 +228794,6 @@
             "pfp": 4.9,
             "winner": "kmt",
             "winnerRate": 55.2,
-            "color": "blue",
             "townName": "北埔鄉",
             "townId": "10004090"
           },
@@ -228848,7 +228810,6 @@
             "pfp": 4.4,
             "winner": "kmt",
             "winnerRate": 70.3,
-            "color": "blue",
             "townName": "尖石鄉",
             "townId": "10004120"
           },
@@ -228865,7 +228826,6 @@
             "pfp": 3.6,
             "winner": "kmt",
             "winnerRate": 73.4,
-            "color": "blue",
             "townName": "五峰鄉",
             "townId": "10004130"
           },
@@ -228882,7 +228842,6 @@
             "pfp": 5.3,
             "winner": "ddp",
             "winnerRate": 58.5,
-            "color": "green",
             "townName": "龍井區",
             "townId": "66000250"
           },
@@ -228899,7 +228858,6 @@
             "pfp": 5,
             "winner": "ddp",
             "winnerRate": 56.9,
-            "color": "green",
             "townName": "大雅區",
             "townId": "66000180"
           },
@@ -228916,7 +228874,6 @@
             "pfp": 5.7,
             "winner": "ddp",
             "winnerRate": 57.5,
-            "color": "green",
             "townName": "沙鹿區",
             "townId": "66000130"
           },
@@ -228933,7 +228890,6 @@
             "pfp": 5,
             "winner": "ddp",
             "winnerRate": 60.6,
-            "color": "green",
             "townName": "梧棲區",
             "townId": "66000140"
           },
@@ -228988,7 +228944,6 @@
             "pfp": 5.2,
             "winner": "ddp",
             "winnerRate": 59.8,
-            "color": "green",
             "townName": "湖西鄉",
             "townId": "10016020"
           },
@@ -229005,7 +228960,6 @@
             "pfp": 2.7,
             "winner": "kmt",
             "winnerRate": 81.7,
-            "color": "blue",
             "townName": "金峰鄉",
             "townId": "10014140"
           },
@@ -229022,7 +228976,6 @@
             "pfp": 3.2,
             "winner": "kmt",
             "winnerRate": 59.5,
-            "color": "blue",
             "townName": "太麻里鄉",
             "townId": "10014090"
           },
@@ -229039,7 +228992,6 @@
             "pfp": 4.4,
             "winner": "kmt",
             "winnerRate": 56.9,
-            "color": "blue",
             "townName": "苗栗市",
             "townId": "10005010"
           },
@@ -229056,7 +229008,6 @@
             "pfp": 4.1,
             "winner": "ddp",
             "winnerRate": 53.4,
-            "color": "green",
             "townName": "卓蘭鎮",
             "townId": "10005070"
           },
@@ -229073,7 +229024,6 @@
             "pfp": 3.5,
             "winner": "kmt",
             "winnerRate": 60,
-            "color": "blue",
             "townName": "大湖鄉",
             "townId": "10005080"
           },
@@ -229090,7 +229040,6 @@
             "pfp": 4.7,
             "winner": "kmt",
             "winnerRate": 54.9,
-            "color": "blue",
             "townName": "公館鄉",
             "townId": "10005090"
           },
@@ -229107,7 +229056,6 @@
             "pfp": 4.2,
             "winner": "kmt",
             "winnerRate": 58,
-            "color": "blue",
             "townName": "銅鑼鄉",
             "townId": "10005100"
           },
@@ -229124,7 +229072,6 @@
             "pfp": 4.1,
             "winner": "kmt",
             "winnerRate": 58.5,
-            "color": "blue",
             "townName": "頭屋鄉",
             "townId": "10005120"
           },
@@ -229141,7 +229088,6 @@
             "pfp": 4.7,
             "winner": "kmt",
             "winnerRate": 56.4,
-            "color": "blue",
             "townName": "三義鄉",
             "townId": "10005130"
           },
@@ -229158,7 +229104,6 @@
             "pfp": 5,
             "winner": "kmt",
             "winnerRate": 60.4,
-            "color": "blue",
             "townName": "西湖鄉",
             "townId": "10005140"
           },
@@ -229175,7 +229120,6 @@
             "pfp": 4.8,
             "winner": "kmt",
             "winnerRate": 54,
-            "color": "blue",
             "townName": "造橋鄉",
             "townId": "10005150"
           },
@@ -229192,7 +229136,6 @@
             "pfp": 3.1,
             "winner": "kmt",
             "winnerRate": 64.7,
-            "color": "blue",
             "townName": "獅潭鄉",
             "townId": "10005170"
           },
@@ -229209,7 +229152,6 @@
             "pfp": 2.8,
             "winner": "kmt",
             "winnerRate": 75.8,
-            "color": "blue",
             "townName": "泰安鄉",
             "townId": "10005180"
           },
@@ -229226,7 +229168,6 @@
             "pfp": 5,
             "winner": "ddp",
             "winnerRate": 55.5,
-            "color": "green",
             "townName": "彰化市",
             "townId": "10007010"
           },
@@ -229243,7 +229184,6 @@
             "pfp": 5,
             "winner": "ddp",
             "winnerRate": 57,
-            "color": "green",
             "townName": "和美鎮",
             "townId": "10007030"
           },
@@ -229260,7 +229200,6 @@
             "pfp": 5.8,
             "winner": "ddp",
             "winnerRate": 52.3,
-            "color": "green",
             "townName": "線西鄉",
             "townId": "10007040"
           },
@@ -229277,7 +229216,6 @@
             "pfp": 4.8,
             "winner": "ddp",
             "winnerRate": 56.2,
-            "color": "green",
             "townName": "伸港鄉",
             "townId": "10007050"
           },
@@ -229294,7 +229232,6 @@
             "pfp": 4.5,
             "winner": "ddp",
             "winnerRate": 59.4,
-            "color": "green",
             "townName": "秀水鄉",
             "townId": "10007070"
           },
@@ -229311,7 +229248,6 @@
             "pfp": 4.8,
             "winner": "ddp",
             "winnerRate": 54.8,
-            "color": "green",
             "townName": "花壇鄉",
             "townId": "10007080"
           },
@@ -229328,7 +229264,6 @@
             "pfp": 4.6,
             "winner": "ddp",
             "winnerRate": 59.4,
-            "color": "green",
             "townName": "芬園鄉",
             "townId": "10007090"
           },
@@ -229345,7 +229280,6 @@
             "pfp": 4.5,
             "winner": "ddp",
             "winnerRate": 55.6,
-            "color": "green",
             "townName": "溪湖鎮",
             "townId": "10007110"
           },
@@ -229372,7 +229306,6 @@
             "pfp": 3.6,
             "winner": "ddp",
             "winnerRate": 63,
-            "color": "green",
             "townName": "東石鄉",
             "townId": "10010090"
           },
@@ -229389,7 +229322,6 @@
             "pfp": 4.5,
             "winner": "ddp",
             "winnerRate": 58.3,
-            "color": "green",
             "townName": "大村鄉",
             "townId": "10007130"
           },
@@ -229406,7 +229338,6 @@
             "pfp": 4.8,
             "winner": "ddp",
             "winnerRate": 51.1,
-            "color": "green",
             "townName": "埔鹽鄉",
             "townId": "10007140"
           },
@@ -229423,7 +229354,6 @@
             "pfp": 4.7,
             "winner": "ddp",
             "winnerRate": 60.6,
-            "color": "green",
             "townName": "埔心鄉",
             "townId": "10007150"
           },
@@ -229440,7 +229370,6 @@
             "pfp": 4.3,
             "winner": "ddp",
             "winnerRate": 59.1,
-            "color": "green",
             "townName": "永靖鄉",
             "townId": "10007160"
           },
@@ -229457,7 +229386,6 @@
             "pfp": 3.6,
             "winner": "ddp",
             "winnerRate": 56.1,
-            "color": "green",
             "townName": "二水鄉",
             "townId": "10007180"
           },
@@ -229474,7 +229402,6 @@
             "pfp": 4.2,
             "winner": "ddp",
             "winnerRate": 52.3,
-            "color": "green",
             "townName": "二林鎮",
             "townId": "10007200"
           },
@@ -229491,7 +229418,6 @@
             "pfp": 4.5,
             "winner": "ddp",
             "winnerRate": 58.1,
-            "color": "green",
             "townName": "埤頭鄉",
             "townId": "10007220"
           },
@@ -229508,7 +229434,6 @@
             "pfp": 4.1,
             "winner": "ddp",
             "winnerRate": 60.3,
-            "color": "green",
             "townName": "芳苑鄉",
             "townId": "10007230"
           },
@@ -229525,7 +229450,6 @@
             "pfp": 3.6,
             "winner": "ddp",
             "winnerRate": 52.2,
-            "color": "green",
             "townName": "大城鄉",
             "townId": "10007240"
           },
@@ -229542,7 +229466,6 @@
             "pfp": 3.3,
             "winner": "ddp",
             "winnerRate": 62.2,
-            "color": "green",
             "townName": "竹塘鄉",
             "townId": "10007250"
           },
@@ -229559,7 +229482,6 @@
             "pfp": 4.2,
             "winner": "ddp",
             "winnerRate": 62.6,
-            "color": "green",
             "townName": "溪州鄉",
             "townId": "10007260"
           },
@@ -229576,7 +229498,6 @@
             "pfp": 5.1,
             "winner": "ddp",
             "winnerRate": 50.9,
-            "color": "green",
             "townName": "南投市",
             "townId": "10008010"
           },
@@ -229593,7 +229514,6 @@
             "pfp": 4.3,
             "winner": "ddp",
             "winnerRate": 48.2,
-            "color": "green",
             "townName": "埔里鎮",
             "townId": "10008020"
           },
@@ -229610,7 +229530,6 @@
             "pfp": 4.9,
             "winner": "ddp",
             "winnerRate": 54,
-            "color": "green",
             "townName": "草屯鎮",
             "townId": "10008030"
           },
@@ -229627,7 +229546,6 @@
             "pfp": 3.6,
             "winner": "ddp",
             "winnerRate": 55,
-            "color": "green",
             "townName": "竹山鎮",
             "townId": "10008040"
           },
@@ -229644,7 +229562,6 @@
             "pfp": 4.5,
             "winner": "ddp",
             "winnerRate": 50.7,
-            "color": "green",
             "townName": "集集鎮",
             "townId": "10008050"
           },
@@ -229661,7 +229578,6 @@
             "pfp": 4.2,
             "winner": "ddp",
             "winnerRate": 60.4,
-            "color": "green",
             "townName": "名間鄉",
             "townId": "10008060"
           },
@@ -229678,7 +229594,6 @@
             "pfp": 3.7,
             "winner": "ddp",
             "winnerRate": 49.6,
-            "color": "green",
             "townName": "鹿谷鄉",
             "townId": "10008070"
           },
@@ -229695,7 +229610,6 @@
             "pfp": 4.4,
             "winner": "ddp",
             "winnerRate": 53.8,
-            "color": "green",
             "townName": "中寮鄉",
             "townId": "10008080"
           },
@@ -229712,7 +229626,6 @@
             "pfp": 4.2,
             "winner": "ddp",
             "winnerRate": 51.6,
-            "color": "green",
             "townName": "魚池鄉",
             "townId": "10008090"
           },
@@ -229758,7 +229671,6 @@
             "pfp": 4.5,
             "winner": "kmt",
             "winnerRate": 48.9,
-            "color": "blue",
             "townName": "國姓鄉",
             "townId": "10008100"
           },
@@ -229775,7 +229687,6 @@
             "pfp": 4.3,
             "winner": "ddp",
             "winnerRate": 49,
-            "color": "green",
             "townName": "水里鄉",
             "townId": "10008110"
           },
@@ -229792,7 +229703,6 @@
             "pfp": 3.8,
             "winner": "kmt",
             "winnerRate": 62,
-            "color": "blue",
             "townName": "信義鄉",
             "townId": "10008120"
           },
@@ -229809,7 +229719,6 @@
             "pfp": 3.4,
             "winner": "kmt",
             "winnerRate": 76.1,
-            "color": "blue",
             "townName": "仁愛鄉",
             "townId": "10008130"
           },
@@ -229826,7 +229735,6 @@
             "pfp": 4.4,
             "winner": "ddp",
             "winnerRate": 56.4,
-            "color": "green",
             "townName": "斗六市",
             "townId": "10009010"
           },
@@ -229843,7 +229751,6 @@
             "pfp": 3.8,
             "winner": "ddp",
             "winnerRate": 61.2,
-            "color": "green",
             "townName": "斗南鎮",
             "townId": "10009020"
           },
@@ -229860,7 +229767,6 @@
             "pfp": 4.5,
             "winner": "ddp",
             "winnerRate": 57.6,
-            "color": "green",
             "townName": "虎尾鎮",
             "townId": "10009030"
           },
@@ -229877,7 +229783,6 @@
             "pfp": 3,
             "winner": "ddp",
             "winnerRate": 66.4,
-            "color": "green",
             "townName": "西螺鎮",
             "townId": "10009040"
           },
@@ -229894,7 +229799,6 @@
             "pfp": 4,
             "winner": "ddp",
             "winnerRate": 63.2,
-            "color": "green",
             "townName": "土庫鎮",
             "townId": "10009050"
           },
@@ -229911,7 +229815,6 @@
             "pfp": 3.6,
             "winner": "ddp",
             "winnerRate": 65.8,
-            "color": "green",
             "townName": "北港鎮",
             "townId": "10009060"
           },
@@ -229928,7 +229831,6 @@
             "pfp": 3.4,
             "winner": "ddp",
             "winnerRate": 60.8,
-            "color": "green",
             "townName": "古坑鄉",
             "townId": "10009070"
           },
@@ -229945,7 +229847,6 @@
             "pfp": 3.7,
             "winner": "ddp",
             "winnerRate": 64.6,
-            "color": "green",
             "townName": "大埤鄉",
             "townId": "10009080"
           },
@@ -229962,7 +229863,6 @@
             "pfp": 3.7,
             "winner": "ddp",
             "winnerRate": 66.9,
-            "color": "green",
             "townName": "莿桐鄉",
             "townId": "10009090"
           },
@@ -229979,7 +229879,6 @@
             "pfp": 4,
             "winner": "ddp",
             "winnerRate": 60.4,
-            "color": "green",
             "townName": "林內鄉",
             "townId": "10009100"
           },
@@ -229996,7 +229895,6 @@
             "pfp": 2.6,
             "winner": "ddp",
             "winnerRate": 69.3,
-            "color": "green",
             "townName": "二崙鄉",
             "townId": "10009110"
           },
@@ -230013,7 +229911,6 @@
             "pfp": 3.4,
             "winner": "ddp",
             "winnerRate": 63.3,
-            "color": "green",
             "townName": "崙背鄉",
             "townId": "10009120"
           },
@@ -230030,7 +229927,6 @@
             "pfp": 3.8,
             "winner": "ddp",
             "winnerRate": 59.2,
-            "color": "green",
             "townName": "東勢鄉",
             "townId": "10009140"
           },
@@ -230047,7 +229943,6 @@
             "pfp": 3.8,
             "winner": "ddp",
             "winnerRate": 62.8,
-            "color": "green",
             "townName": "褒忠鄉",
             "townId": "10009150"
           },
@@ -230064,7 +229959,6 @@
             "pfp": 3.5,
             "winner": "ddp",
             "winnerRate": 64.5,
-            "color": "green",
             "townName": "元長鄉",
             "townId": "10009170"
           },
@@ -230081,7 +229975,6 @@
             "pfp": 3.3,
             "winner": "ddp",
             "winnerRate": 70.9,
-            "color": "green",
             "townName": "水林鄉",
             "townId": "10009200"
           },
@@ -230098,7 +229991,6 @@
             "pfp": 3.3,
             "winner": "ddp",
             "winnerRate": 65.6,
-            "color": "green",
             "townName": "朴子市",
             "townId": "10010020"
           },
@@ -230115,7 +230007,6 @@
             "pfp": 3.8,
             "winner": "ddp",
             "winnerRate": 62.5,
-            "color": "green",
             "townName": "大林鎮",
             "townId": "10010040"
           },
@@ -230132,7 +230023,6 @@
             "pfp": 4.1,
             "winner": "ddp",
             "winnerRate": 64.9,
-            "color": "green",
             "townName": "民雄鄉",
             "townId": "10010050"
           },
@@ -230149,7 +230039,6 @@
             "pfp": 3.4,
             "winner": "ddp",
             "winnerRate": 70.9,
-            "color": "green",
             "townName": "溪口鄉",
             "townId": "10010060"
           },
@@ -230166,7 +230055,6 @@
             "pfp": 3.3,
             "winner": "ddp",
             "winnerRate": 71.4,
-            "color": "green",
             "townName": "新港鄉",
             "townId": "10010070"
           },
@@ -230183,7 +230071,6 @@
             "pfp": 3,
             "winner": "ddp",
             "winnerRate": 70.3,
-            "color": "green",
             "townName": "六腳鄉",
             "townId": "10010080"
           },
@@ -230200,7 +230087,6 @@
             "pfp": 3.3,
             "winner": "ddp",
             "winnerRate": 65.6,
-            "color": "green",
             "townName": "義竹鄉",
             "townId": "10010100"
           },
@@ -230217,7 +230103,6 @@
             "pfp": 2.7,
             "winner": "ddp",
             "winnerRate": 67.8,
-            "color": "green",
             "townName": "鹿草鄉",
             "townId": "10010110"
           },
@@ -230234,7 +230119,6 @@
             "pfp": 3.9,
             "winner": "ddp",
             "winnerRate": 61.8,
-            "color": "green",
             "townName": "竹崎鄉",
             "townId": "10010140"
           },
@@ -230251,7 +230135,6 @@
             "pfp": 4.1,
             "winner": "ddp",
             "winnerRate": 59.1,
-            "color": "green",
             "townName": "梅山鄉",
             "townId": "10010150"
           },
@@ -230268,7 +230151,6 @@
             "pfp": 3.4,
             "winner": "ddp",
             "winnerRate": 54.9,
-            "color": "green",
             "townName": "大埔鄉",
             "townId": "10010170"
           },
@@ -230285,7 +230167,6 @@
             "pfp": 3.5,
             "winner": "kmt",
             "winnerRate": 65.9,
-            "color": "blue",
             "townName": "阿里山鄉",
             "townId": "10010180"
           },
@@ -230302,7 +230183,6 @@
             "pfp": 3.2,
             "winner": "ddp",
             "winnerRate": 58.5,
-            "color": "green",
             "townName": "屏東市",
             "townId": "10013010"
           },
@@ -230319,7 +230199,6 @@
             "pfp": 2.8,
             "winner": "ddp",
             "winnerRate": 62.9,
-            "color": "green",
             "townName": "潮州鎮",
             "townId": "10013020"
           },
@@ -230336,7 +230215,6 @@
             "pfp": 2.9,
             "winner": "ddp",
             "winnerRate": 63.5,
-            "color": "green",
             "townName": "長治鄉",
             "townId": "10013060"
           },
@@ -230353,7 +230231,6 @@
             "pfp": 2.6,
             "winner": "ddp",
             "winnerRate": 67.9,
-            "color": "green",
             "townName": "麟洛鄉",
             "townId": "10013070"
           },
@@ -230370,7 +230247,6 @@
             "pfp": 2.5,
             "winner": "ddp",
             "winnerRate": 72.8,
-            "color": "green",
             "townName": "九如鄉",
             "townId": "10013080"
           },
@@ -230387,7 +230263,6 @@
             "pfp": 2.4,
             "winner": "ddp",
             "winnerRate": 69.8,
-            "color": "green",
             "townName": "里港鄉",
             "townId": "10013090"
           },
@@ -230404,7 +230279,6 @@
             "pfp": 2.6,
             "winner": "ddp",
             "winnerRate": 61.6,
-            "color": "green",
             "townName": "鹽埔鄉",
             "townId": "10013100"
           },
@@ -230421,7 +230295,6 @@
             "pfp": 2.2,
             "winner": "ddp",
             "winnerRate": 71.5,
-            "color": "green",
             "townName": "高樹鄉",
             "townId": "10013110"
           },
@@ -230438,7 +230311,6 @@
             "pfp": 1.9,
             "winner": "ddp",
             "winnerRate": 69.6,
-            "color": "green",
             "townName": "萬巒鄉",
             "townId": "10013120"
           },
@@ -230455,7 +230327,6 @@
             "pfp": 2.8,
             "winner": "ddp",
             "winnerRate": 65.3,
-            "color": "green",
             "townName": "內埔鄉",
             "townId": "10013130"
           },
@@ -230472,7 +230343,6 @@
             "pfp": 2.8,
             "winner": "ddp",
             "winnerRate": 62.7,
-            "color": "green",
             "townName": "新埤鄉",
             "townId": "10013150"
           },
@@ -230489,7 +230359,6 @@
             "pfp": 2.8,
             "winner": "ddp",
             "winnerRate": 69.4,
-            "color": "green",
             "townName": "崁頂鄉",
             "townId": "10013180"
           },
@@ -230506,7 +230375,6 @@
             "pfp": 2.7,
             "winner": "ddp",
             "winnerRate": 67.7,
-            "color": "green",
             "townName": "南州鄉",
             "townId": "10013200"
           },
@@ -230523,7 +230391,6 @@
             "pfp": 2.9,
             "winner": "kmt",
             "winnerRate": 51.1,
-            "color": "blue",
             "townName": "琉球鄉",
             "townId": "10013220"
           },
@@ -230540,7 +230407,6 @@
             "pfp": 3,
             "winner": "kmt",
             "winnerRate": 70.8,
-            "color": "blue",
             "townName": "三地門鄉",
             "townId": "10013260"
           },
@@ -230557,7 +230423,6 @@
             "pfp": 3.1,
             "winner": "kmt",
             "winnerRate": 67,
-            "color": "blue",
             "townName": "霧臺鄉",
             "townId": "10013270"
           },
@@ -230574,7 +230439,6 @@
             "pfp": 3.1,
             "winner": "kmt",
             "winnerRate": 70.6,
-            "color": "blue",
             "townName": "瑪家鄉",
             "townId": "10013280"
           },
@@ -230591,7 +230455,6 @@
             "pfp": 2.9,
             "winner": "kmt",
             "winnerRate": 72.8,
-            "color": "blue",
             "townName": "泰武鄉",
             "townId": "10013290"
           },
@@ -230608,7 +230471,6 @@
             "pfp": 3.4,
             "winner": "kmt",
             "winnerRate": 74.5,
-            "color": "blue",
             "townName": "來義鄉",
             "townId": "10013300"
           },
@@ -230625,7 +230487,6 @@
             "pfp": 3,
             "winner": "kmt",
             "winnerRate": 74.4,
-            "color": "blue",
             "townName": "春日鄉",
             "townId": "10013310"
           },
@@ -230642,7 +230503,6 @@
             "pfp": 2.8,
             "winner": "kmt",
             "winnerRate": 76.1,
-            "color": "blue",
             "townName": "獅子鄉",
             "townId": "10013320"
           },
@@ -230659,7 +230519,6 @@
             "pfp": 3.1,
             "winner": "kmt",
             "winnerRate": 54.3,
-            "color": "blue",
             "townName": "鹿野鄉",
             "townId": "10014050"
           },
@@ -230676,7 +230535,6 @@
             "pfp": 3.6,
             "winner": "kmt",
             "winnerRate": 53.6,
-            "color": "blue",
             "townName": "池上鄉",
             "townId": "10014060"
           },
@@ -230693,7 +230551,6 @@
             "pfp": 2.7,
             "winner": "kmt",
             "winnerRate": 74.8,
-            "color": "blue",
             "townName": "延平鄉",
             "townId": "10014130"
           },
@@ -230710,7 +230567,6 @@
             "pfp": 3,
             "winner": "kmt",
             "winnerRate": 67.6,
-            "color": "blue",
             "townName": "光復鄉",
             "townId": "10015070"
           },
@@ -230727,7 +230583,6 @@
             "pfp": 3.5,
             "winner": "kmt",
             "winnerRate": 63.6,
-            "color": "blue",
             "townName": "瑞穗鄉",
             "townId": "10015090"
           },
@@ -230744,7 +230599,6 @@
             "pfp": 4.5,
             "winner": "kmt",
             "winnerRate": 61.5,
-            "color": "blue",
             "townName": "富里鄉",
             "townId": "10015100"
           },
@@ -230773,7 +230627,6 @@
             "pfp": 5.1,
             "winner": "ddp",
             "winnerRate": 52.9,
-            "color": "green",
             "townName": "馬公市",
             "townId": "10016010"
           },
@@ -230936,7 +230789,6 @@
             "pfp": 3.9,
             "winner": "ddp",
             "winnerRate": 52,
-            "color": "green",
             "townName": "白沙鄉",
             "townId": "10016030"
           },
@@ -230974,7 +230826,6 @@
             "pfp": 4.7,
             "winner": "ddp",
             "winnerRate": 54.1,
-            "color": "green",
             "townName": "西嶼鄉",
             "townId": "10016040"
           },
@@ -231050,7 +230901,6 @@
             "pfp": 5.7,
             "winner": "ddp",
             "winnerRate": 59.5,
-            "color": "green",
             "townName": "望安鄉",
             "townId": "10016050"
           },
@@ -231067,7 +230917,6 @@
             "pfp": 7.5,
             "winner": "kmt",
             "winnerRate": 51,
-            "color": "blue",
             "townName": "七美鄉",
             "townId": "10016060"
           },
@@ -231089,7 +230938,6 @@
             "pfp": 5.6,
             "winner": "ddp",
             "winnerRate": 49.1,
-            "color": "green",
             "townName": "暖暖區",
             "townId": "10017030"
           },
@@ -231118,7 +230966,6 @@
             "pfp": 4.1,
             "winner": "ddp",
             "winnerRate": 48.9,
-            "color": "green",
             "townName": "大安區",
             "townId": "63000030"
           },
@@ -231147,7 +230994,6 @@
             "pfp": 4.5,
             "winner": "kmt",
             "winnerRate": 49,
-            "color": "blue",
             "townName": "文山區",
             "townId": "63000080"
           },
@@ -231164,7 +231010,6 @@
             "pfp": 2.8,
             "winner": "ddp",
             "winnerRate": 64.6,
-            "color": "green",
             "townName": "鹽埕區",
             "townId": "64000010"
           },
@@ -231181,7 +231026,6 @@
             "pfp": 3.2,
             "winner": "ddp",
             "winnerRate": 60.4,
-            "color": "green",
             "townName": "新興區",
             "townId": "64000060"
           },
@@ -231198,7 +231042,6 @@
             "pfp": 3.6,
             "winner": "ddp",
             "winnerRate": 59.6,
-            "color": "green",
             "townName": "前金區",
             "townId": "64000070"
           },
@@ -231227,7 +231070,6 @@
             "pfp": 3,
             "winner": "ddp",
             "winnerRate": 63.2,
-            "color": "green",
             "townName": "前鎮區",
             "townId": "64000090"
           },
@@ -231272,7 +231114,6 @@
             "pfp": 4.8,
             "winner": "ddp",
             "winnerRate": 56.3,
-            "color": "green",
             "townName": "頭城鎮",
             "townId": "10002040"
           },
@@ -231289,7 +231130,6 @@
             "pfp": 2.4,
             "winner": "kmt",
             "winnerRate": 82.8,
-            "color": "blue",
             "townName": "南澳鄉",
             "townId": "10002120"
           },
@@ -231306,7 +231146,6 @@
             "pfp": 6.2,
             "winner": "ddp",
             "winnerRate": 53.6,
-            "color": "green",
             "townName": "竹北市",
             "townId": "10004010"
           },
@@ -231323,7 +231162,6 @@
             "pfp": 5.7,
             "winner": "ddp",
             "winnerRate": 48.8,
-            "color": "green",
             "townName": "新豐鄉",
             "townId": "10004060"
           },
@@ -231340,7 +231178,6 @@
             "pfp": 4.5,
             "winner": "ddp",
             "winnerRate": 61.3,
-            "color": "green",
             "townName": "苑裡鎮",
             "townId": "10005020"
           },
@@ -231357,7 +231194,6 @@
             "pfp": 4.4,
             "winner": "ddp",
             "winnerRate": 56.3,
-            "color": "green",
             "townName": "通霄鎮",
             "townId": "10005030"
           },
@@ -231374,7 +231210,6 @@
             "pfp": 5.5,
             "winner": "ddp",
             "winnerRate": 51.5,
-            "color": "green",
             "townName": "竹南鎮",
             "townId": "10005040"
           },
@@ -231391,7 +231226,6 @@
             "pfp": 4.1,
             "winner": "ddp",
             "winnerRate": 51.9,
-            "color": "green",
             "townName": "後龍鎮",
             "townId": "10005060"
           },
@@ -231408,7 +231242,6 @@
             "pfp": 4.6,
             "winner": "ddp",
             "winnerRate": 61.4,
-            "color": "green",
             "townName": "鹿港鎮",
             "townId": "10007020"
           },
@@ -231427,7 +231260,6 @@
             "pfp": 4.4,
             "winner": "ddp",
             "winnerRate": 61.9,
-            "color": "green",
             "townName": "福興鄉",
             "townId": "10007060"
           },
@@ -231444,7 +231276,6 @@
             "pfp": 4,
             "winner": "ddp",
             "winnerRate": 53.8,
-            "color": "green",
             "townName": "臺西鄉",
             "townId": "10009160"
           },
@@ -231463,7 +231294,6 @@
             "pfp": 3.2,
             "winner": "ddp",
             "winnerRate": 60,
-            "color": "green",
             "townName": "四湖鄉",
             "townId": "10009180"
           },
@@ -231487,7 +231317,6 @@
             "pfp": 3.5,
             "winner": "ddp",
             "winnerRate": 66.4,
-            "color": "green",
             "townName": "口湖鄉",
             "townId": "10009190"
           },
@@ -231504,7 +231333,6 @@
             "pfp": 3.1,
             "winner": "ddp",
             "winnerRate": 63.1,
-            "color": "green",
             "townName": "布袋鎮",
             "townId": "10010030"
           },
@@ -231521,7 +231349,6 @@
             "pfp": 2.6,
             "winner": "ddp",
             "winnerRate": 68.7,
-            "color": "green",
             "townName": "東港鎮",
             "townId": "10013030"
           },
@@ -231538,7 +231365,6 @@
             "pfp": 2.5,
             "winner": "ddp",
             "winnerRate": 64.2,
-            "color": "green",
             "townName": "枋寮鄉",
             "townId": "10013160"
           },
@@ -231555,7 +231381,6 @@
             "pfp": 2.6,
             "winner": "ddp",
             "winnerRate": 72.4,
-            "color": "green",
             "townName": "新園鄉",
             "townId": "10013170"
           },
@@ -231572,7 +231397,6 @@
             "pfp": 2.3,
             "winner": "ddp",
             "winnerRate": 69.4,
-            "color": "green",
             "townName": "林邊鄉",
             "townId": "10013190"
           },
@@ -231589,7 +231413,6 @@
             "pfp": 2.4,
             "winner": "ddp",
             "winnerRate": 63.8,
-            "color": "green",
             "townName": "車城鄉",
             "townId": "10013230"
           },
@@ -231606,7 +231429,6 @@
             "pfp": 2.9,
             "winner": "ddp",
             "winnerRate": 58.9,
-            "color": "green",
             "townName": "滿州鄉",
             "townId": "10013240"
           },
@@ -231623,7 +231445,6 @@
             "pfp": 1.6,
             "winner": "ddp",
             "winnerRate": 66.1,
-            "color": "green",
             "townName": "枋山鄉",
             "townId": "10013250"
           },
@@ -231640,7 +231461,6 @@
             "pfp": 3.6,
             "winner": "kmt",
             "winnerRate": 72.9,
-            "color": "blue",
             "townName": "牡丹鄉",
             "townId": "10013330"
           },
@@ -231657,7 +231477,6 @@
             "pfp": 3.8,
             "winner": "kmt",
             "winnerRate": 53.7,
-            "color": "blue",
             "townName": "臺東市",
             "townId": "10014010"
           },
@@ -231674,7 +231493,6 @@
             "pfp": 3.4,
             "winner": "kmt",
             "winnerRate": 55.4,
-            "color": "blue",
             "townName": "卑南鄉",
             "townId": "10014040"
           },
@@ -231691,7 +231509,6 @@
             "pfp": 3.8,
             "winner": "kmt",
             "winnerRate": 64.3,
-            "color": "blue",
             "townName": "東河鄉",
             "townId": "10014070"
           },
@@ -231708,7 +231525,6 @@
             "pfp": 3.8,
             "winner": "kmt",
             "winnerRate": 57.7,
-            "color": "blue",
             "townName": "吉安鄉",
             "townId": "10015050"
           },
@@ -231725,7 +231541,6 @@
             "pfp": 3.3,
             "winner": "kmt",
             "winnerRate": 60.2,
-            "color": "blue",
             "townName": "壽豐鄉",
             "townId": "10015060"
           },
@@ -231747,7 +231562,6 @@
             "pfp": 3.1,
             "winner": "kmt",
             "winnerRate": 71.1,
-            "color": "blue",
             "townName": "秀林鄉",
             "townId": "10015110"
           },
@@ -231764,7 +231578,6 @@
             "pfp": 3.4,
             "winner": "ddp",
             "winnerRate": 60.7,
-            "color": "green",
             "townName": "楠梓區",
             "townId": "64000040"
           },
@@ -231789,7 +231602,6 @@
             "pfp": 3.2,
             "winner": "ddp",
             "winnerRate": 60.6,
-            "color": "green",
             "townName": "鳳山區",
             "townId": "64000120"
           },
@@ -231829,7 +231641,6 @@
             "pfp": 3,
             "winner": "ddp",
             "winnerRate": 65,
-            "color": "green",
             "townName": "大寮區",
             "townId": "64000140"
           },
@@ -231846,7 +231657,6 @@
             "pfp": 2.6,
             "winner": "ddp",
             "winnerRate": 67.5,
-            "color": "green",
             "townName": "大樹區",
             "townId": "64000150"
           },
@@ -231863,7 +231673,6 @@
             "pfp": 2.9,
             "winner": "ddp",
             "winnerRate": 68.2,
-            "color": "green",
             "townName": "大社區",
             "townId": "64000160"
           },
@@ -231880,7 +231689,6 @@
             "pfp": 3.2,
             "winner": "ddp",
             "winnerRate": 65.6,
-            "color": "green",
             "townName": "仁武區",
             "townId": "64000170"
           },
@@ -231897,7 +231705,6 @@
             "pfp": 3.2,
             "winner": "ddp",
             "winnerRate": 63.4,
-            "color": "green",
             "townName": "鳥松區",
             "townId": "64000180"
           },
@@ -231914,7 +231721,6 @@
             "pfp": 3.4,
             "winner": "ddp",
             "winnerRate": 60.6,
-            "color": "green",
             "townName": "岡山區",
             "townId": "64000190"
           },
@@ -231931,7 +231737,6 @@
             "pfp": 3.1,
             "winner": "ddp",
             "winnerRate": 70.1,
-            "color": "green",
             "townName": "橋頭區",
             "townId": "64000200"
           },
@@ -231948,7 +231753,6 @@
             "pfp": 2.9,
             "winner": "ddp",
             "winnerRate": 65.6,
-            "color": "green",
             "townName": "燕巢區",
             "townId": "64000210"
           },
@@ -231965,7 +231769,6 @@
             "pfp": 2.6,
             "winner": "ddp",
             "winnerRate": 68.3,
-            "color": "green",
             "townName": "田寮區",
             "townId": "64000220"
           },
@@ -231982,7 +231785,6 @@
             "pfp": 2.9,
             "winner": "ddp",
             "winnerRate": 69.2,
-            "color": "green",
             "townName": "阿蓮區",
             "townId": "64000230"
           },
@@ -231999,7 +231801,6 @@
             "pfp": 3.9,
             "winner": "ddp",
             "winnerRate": 65.3,
-            "color": "green",
             "townName": "路竹區",
             "townId": "64000240"
           },
@@ -232016,7 +231817,6 @@
             "pfp": 3.5,
             "winner": "ddp",
             "winnerRate": 67.3,
-            "color": "green",
             "townName": "湖內區",
             "townId": "64000250"
           },
@@ -232033,7 +231833,6 @@
             "pfp": 3.1,
             "winner": "ddp",
             "winnerRate": 62.2,
-            "color": "green",
             "townName": "旗山區",
             "townId": "64000300"
           },
@@ -232050,7 +231849,6 @@
             "pfp": 2.5,
             "winner": "ddp",
             "winnerRate": 52.5,
-            "color": "green",
             "townName": "美濃區",
             "townId": "64000310"
           },
@@ -232067,7 +231865,6 @@
             "pfp": 2.7,
             "winner": "ddp",
             "winnerRate": 58.7,
-            "color": "green",
             "townName": "六龜區",
             "townId": "64000320"
           },
@@ -232084,7 +231881,6 @@
             "pfp": 2.7,
             "winner": "ddp",
             "winnerRate": 49.5,
-            "color": "green",
             "townName": "甲仙區",
             "townId": "64000330"
           },
@@ -232101,7 +231897,6 @@
             "pfp": 2.3,
             "winner": "ddp",
             "winnerRate": 55.6,
-            "color": "green",
             "townName": "杉林區",
             "townId": "64000340"
           },
@@ -232118,7 +231913,6 @@
             "pfp": 2.7,
             "winner": "ddp",
             "winnerRate": 59.6,
-            "color": "green",
             "townName": "內門區",
             "townId": "64000350"
           },
@@ -232135,7 +231929,6 @@
             "pfp": 1.7,
             "winner": "kmt",
             "winnerRate": 75.3,
-            "color": "blue",
             "townName": "茂林區",
             "townId": "64000360"
           },
@@ -232155,7 +231948,6 @@
             "pfp": 2.8,
             "winner": "kmt",
             "winnerRate": 73.3,
-            "color": "blue",
             "townName": "桃源區",
             "townId": "64000370"
           },
@@ -232172,7 +231964,6 @@
             "pfp": 1.7,
             "winner": "kmt",
             "winnerRate": 71.5,
-            "color": "blue",
             "townName": "那瑪夏區",
             "townId": "64000380"
           },
@@ -232206,7 +231997,6 @@
             "pfp": 4.5,
             "winner": "kmt",
             "winnerRate": 49.8,
-            "color": "blue",
             "townName": "永和區",
             "townId": "65000040"
           },
@@ -232223,7 +232013,6 @@
             "pfp": 4.2,
             "winner": "kmt",
             "winnerRate": 51.7,
-            "color": "blue",
             "townName": "新店區",
             "townId": "65000060"
           },
@@ -232240,7 +232029,6 @@
             "pfp": 4.8,
             "winner": "ddp",
             "winnerRate": 58.9,
-            "color": "green",
             "townName": "土城區",
             "townId": "65000130"
           },
@@ -232269,7 +232057,6 @@
             "pfp": 4.5,
             "winner": "ddp",
             "winnerRate": 65,
-            "color": "green",
             "townName": "蘆洲區",
             "townId": "65000140"
           },
@@ -232293,7 +232080,6 @@
             "pfp": 4.5,
             "winner": "ddp",
             "winnerRate": 61.3,
-            "color": "green",
             "townName": "五股區",
             "townId": "65000150"
           },
@@ -232310,7 +232096,6 @@
             "pfp": 3.2,
             "winner": "ddp",
             "winnerRate": 64.3,
-            "color": "green",
             "townName": "坪林區",
             "townId": "65000200"
           },
@@ -232327,7 +232112,6 @@
             "pfp": 3.4,
             "winner": "ddp",
             "winnerRate": 55.7,
-            "color": "green",
             "townName": "平溪區",
             "townId": "65000240"
           },
@@ -232344,7 +232128,6 @@
             "pfp": 4.7,
             "winner": "kmt",
             "winnerRate": 51.3,
-            "color": "blue",
             "townName": "烏來區",
             "townId": "65000290"
           },
@@ -232361,7 +232144,6 @@
             "pfp": 4.8,
             "winner": "ddp",
             "winnerRate": 60,
-            "color": "green",
             "townName": "豐原區",
             "townId": "66000090"
           },
@@ -232378,7 +232160,6 @@
             "pfp": 4.3,
             "winner": "ddp",
             "winnerRate": 49.5,
-            "color": "green",
             "townName": "東勢區",
             "townId": "66000100"
           },
@@ -232395,7 +232176,6 @@
             "pfp": 5.1,
             "winner": "ddp",
             "winnerRate": 56.6,
-            "color": "green",
             "townName": "后里區",
             "townId": "66000150"
           },
@@ -232412,7 +232192,6 @@
             "pfp": 4.7,
             "winner": "ddp",
             "winnerRate": 62.9,
-            "color": "green",
             "townName": "神岡區",
             "townId": "66000160"
           },
@@ -232450,7 +232229,6 @@
             "pfp": 4.4,
             "winner": "ddp",
             "winnerRate": 54.2,
-            "color": "green",
             "townName": "新社區",
             "townId": "66000190"
           },
@@ -232467,7 +232245,6 @@
             "pfp": 4.7,
             "winner": "ddp",
             "winnerRate": 52.3,
-            "color": "green",
             "townName": "石岡區",
             "townId": "66000200"
           },
@@ -232484,7 +232261,6 @@
             "pfp": 4.9,
             "winner": "ddp",
             "winnerRate": 54.1,
-            "color": "green",
             "townName": "外埔區",
             "townId": "66000210"
           },
@@ -232501,7 +232277,6 @@
             "pfp": 5.2,
             "winner": "ddp",
             "winnerRate": 56.8,
-            "color": "green",
             "townName": "大肚區",
             "townId": "66000240"
           },
@@ -232520,7 +232295,6 @@
             "pfp": 3.6,
             "winner": "kmt",
             "winnerRate": 63.5,
-            "color": "blue",
             "townName": "和平區",
             "townId": "66000290"
           },
@@ -232537,7 +232311,6 @@
             "pfp": 3.7,
             "winner": "ddp",
             "winnerRate": 63.1,
-            "color": "green",
             "townName": "新營區",
             "townId": "67000010"
           },
@@ -232554,7 +232327,6 @@
             "pfp": 2.6,
             "winner": "ddp",
             "winnerRate": 71.9,
-            "color": "green",
             "townName": "鹽水區",
             "townId": "67000020"
           },
@@ -232571,7 +232343,6 @@
             "pfp": 2.6,
             "winner": "ddp",
             "winnerRate": 70.7,
-            "color": "green",
             "townName": "白河區",
             "townId": "67000030"
           },
@@ -232588,7 +232359,6 @@
             "pfp": 3.1,
             "winner": "ddp",
             "winnerRate": 71.1,
-            "color": "green",
             "townName": "後壁區",
             "townId": "67000050"
           },
@@ -232605,7 +232375,6 @@
             "pfp": 2.7,
             "winner": "ddp",
             "winnerRate": 77.3,
-            "color": "green",
             "townName": "麻豆區",
             "townId": "67000070"
           },
@@ -232622,7 +232391,6 @@
             "pfp": 2.9,
             "winner": "ddp",
             "winnerRate": 72,
-            "color": "green",
             "townName": "下營區",
             "townId": "67000080"
           },
@@ -232639,7 +232407,6 @@
             "pfp": 3.3,
             "winner": "ddp",
             "winnerRate": 72.6,
-            "color": "green",
             "townName": "六甲區",
             "townId": "67000090"
           },
@@ -232656,7 +232423,6 @@
             "pfp": 2.6,
             "winner": "ddp",
             "winnerRate": 76.2,
-            "color": "green",
             "townName": "官田區",
             "townId": "67000100"
           },
@@ -232673,7 +232439,6 @@
             "pfp": 3.2,
             "winner": "ddp",
             "winnerRate": 69.8,
-            "color": "green",
             "townName": "大內區",
             "townId": "67000110"
           },
@@ -232690,7 +232455,6 @@
             "pfp": 3,
             "winner": "ddp",
             "winnerRate": 72.2,
-            "color": "green",
             "townName": "佳里區",
             "townId": "67000120"
           },
@@ -232707,7 +232471,6 @@
             "pfp": 2.8,
             "winner": "ddp",
             "winnerRate": 74.6,
-            "color": "green",
             "townName": "學甲區",
             "townId": "67000130"
           },
@@ -232724,7 +232487,6 @@
             "pfp": 2.9,
             "winner": "ddp",
             "winnerRate": 75.2,
-            "color": "green",
             "townName": "西港區",
             "townId": "67000140"
           },
@@ -232741,7 +232503,6 @@
             "pfp": 3.5,
             "winner": "ddp",
             "winnerRate": 64.9,
-            "color": "green",
             "townName": "新化區",
             "townId": "67000180"
           },
@@ -232758,7 +232519,6 @@
             "pfp": 3.4,
             "winner": "ddp",
             "winnerRate": 72.1,
-            "color": "green",
             "townName": "新市區",
             "townId": "67000200"
           },
@@ -232775,7 +232535,6 @@
             "pfp": 3.2,
             "winner": "ddp",
             "winnerRate": 72.7,
-            "color": "green",
             "townName": "安定區",
             "townId": "67000210"
           },
@@ -232792,7 +232551,6 @@
             "pfp": 3.3,
             "winner": "ddp",
             "winnerRate": 55.4,
-            "color": "green",
             "townName": "玉井區",
             "townId": "67000230"
           },
@@ -232809,7 +232567,6 @@
             "pfp": 3,
             "winner": "kmt",
             "winnerRate": 48.9,
-            "color": "blue",
             "townName": "楠西區",
             "townId": "67000240"
           },
@@ -232826,7 +232583,6 @@
             "pfp": 3.1,
             "winner": "ddp",
             "winnerRate": 55.8,
-            "color": "green",
             "townName": "南化區",
             "townId": "67000250"
           },
@@ -232843,7 +232599,6 @@
             "pfp": 2.4,
             "winner": "ddp",
             "winnerRate": 65.1,
-            "color": "green",
             "townName": "左鎮區",
             "townId": "67000260"
           },
@@ -232860,7 +232615,6 @@
             "pfp": 3.7,
             "winner": "ddp",
             "winnerRate": 66.3,
-            "color": "green",
             "townName": "仁德區",
             "townId": "67000270"
           },
@@ -232877,7 +232631,6 @@
             "pfp": 3.4,
             "winner": "ddp",
             "winnerRate": 70.5,
-            "color": "green",
             "townName": "歸仁區",
             "townId": "67000280"
           },
@@ -232894,7 +232647,6 @@
             "pfp": 3.3,
             "winner": "ddp",
             "winnerRate": 70.2,
-            "color": "green",
             "townName": "關廟區",
             "townId": "67000290"
           },
@@ -232911,7 +232663,6 @@
             "pfp": 3.6,
             "winner": "ddp",
             "winnerRate": 63.5,
-            "color": "green",
             "townName": "龍崎區",
             "townId": "67000300"
           },
@@ -232928,7 +232679,6 @@
             "pfp": 3.9,
             "winner": "ddp",
             "winnerRate": 65.2,
-            "color": "green",
             "townName": "永康區",
             "townId": "67000310"
           },
@@ -232945,7 +232695,6 @@
             "pfp": 3.9,
             "winner": "ddp",
             "winnerRate": 61.8,
-            "color": "green",
             "townName": "北區",
             "townId": "67000340"
           },
@@ -232974,7 +232723,6 @@
             "pfp": 2.9,
             "winner": "ddp",
             "winnerRate": 68.9,
-            "color": "green",
             "townName": "林園區",
             "townId": "64000130"
           },
@@ -232991,7 +232739,6 @@
             "pfp": 3,
             "winner": "ddp",
             "winnerRate": 68.3,
-            "color": "green",
             "townName": "茄萣區",
             "townId": "64000260"
           },
@@ -233008,7 +232755,6 @@
             "pfp": 3.3,
             "winner": "ddp",
             "winnerRate": 66.6,
-            "color": "green",
             "townName": "永安區",
             "townId": "64000270"
           },
@@ -233025,7 +232771,6 @@
             "pfp": 3.6,
             "winner": "ddp",
             "winnerRate": 63.1,
-            "color": "green",
             "townName": "彌陀區",
             "townId": "64000280"
           },
@@ -233042,7 +232787,6 @@
             "pfp": 3,
             "winner": "ddp",
             "winnerRate": 69.4,
-            "color": "green",
             "townName": "梓官區",
             "townId": "64000290"
           },
@@ -233092,7 +232836,6 @@
             "pfp": 4.7,
             "winner": "ddp",
             "winnerRate": 53.6,
-            "color": "green",
             "townName": "淡水區",
             "townId": "65000100"
           },
@@ -233109,7 +232852,6 @@
             "pfp": 4.4,
             "winner": "ddp",
             "winnerRate": 52.4,
-            "color": "green",
             "townName": "瑞芳區",
             "townId": "65000120"
           },
@@ -233126,7 +232868,6 @@
             "pfp": 5.3,
             "winner": "ddp",
             "winnerRate": 54.9,
-            "color": "green",
             "townName": "林口區",
             "townId": "65000170"
           },
@@ -233164,7 +232905,6 @@
             "pfp": 3.8,
             "winner": "ddp",
             "winnerRate": 54.6,
-            "color": "green",
             "townName": "三芝區",
             "townId": "65000210"
           },
@@ -233189,7 +232929,6 @@
             "pfp": 4.6,
             "winner": "ddp",
             "winnerRate": 58,
-            "color": "green",
             "townName": "八里區",
             "townId": "65000230"
           },
@@ -233206,7 +232945,6 @@
             "pfp": 4.8,
             "winner": "ddp",
             "winnerRate": 59.3,
-            "color": "green",
             "townName": "大甲區",
             "townId": "66000110"
           },
@@ -233223,7 +232961,6 @@
             "pfp": 4.3,
             "winner": "ddp",
             "winnerRate": 59.3,
-            "color": "green",
             "townName": "大安區",
             "townId": "66000220"
           },
@@ -233240,7 +232977,6 @@
             "pfp": 2.3,
             "winner": "ddp",
             "winnerRate": 72.2,
-            "color": "green",
             "townName": "北門區",
             "townId": "67000170"
           },
@@ -233257,7 +232993,6 @@
             "pfp": 3.7,
             "winner": "ddp",
             "winnerRate": 71.5,
-            "color": "green",
             "townName": "安南區",
             "townId": "67000350"
           },
@@ -233274,7 +233009,6 @@
             "pfp": 4.9,
             "winner": "ddp",
             "winnerRate": 59.7,
-            "color": "green",
             "townName": "蘆竹區",
             "townId": "68000050"
           },
@@ -233291,7 +233025,6 @@
             "pfp": 5.1,
             "winner": "ddp",
             "winnerRate": 57,
-            "color": "green",
             "townName": "龜山區",
             "townId": "68000070"
           },
@@ -233308,7 +233041,6 @@
             "pfp": 3.7,
             "winner": "kmt",
             "winnerRate": 64,
-            "color": "blue",
             "townName": "復興區",
             "townId": "68000130"
           },
@@ -233325,7 +233057,6 @@
             "pfp": 3.9,
             "winner": "ddp",
             "winnerRate": 59.4,
-            "color": "green",
             "townName": "東區",
             "townId": "10020010"
           },
@@ -233342,7 +233073,6 @@
             "pfp": 3.8,
             "winner": "ddp",
             "winnerRate": 63,
-            "color": "green",
             "townName": "西區",
             "townId": "10020020"
           },
@@ -233359,7 +233089,6 @@
             "pfp": 3.2,
             "winner": "kmt",
             "winnerRate": 78.5,
-            "color": "blue",
             "townName": "達仁鄉",
             "townId": "10014150"
           },
@@ -233376,7 +233105,6 @@
             "pfp": 2.6,
             "winner": "kmt",
             "winnerRate": 67.5,
-            "color": "blue",
             "townName": "大武鄉",
             "townId": "10014100"
           },
@@ -233393,7 +233121,6 @@
             "pfp": 3.8,
             "winner": "kmt",
             "winnerRate": 57.9,
-            "color": "blue",
             "townName": "關山鎮",
             "townId": "10014030"
           },
@@ -233410,7 +233137,6 @@
             "pfp": 3.3,
             "winner": "kmt",
             "winnerRate": 75.8,
-            "color": "blue",
             "townName": "海端鄉",
             "townId": "10014120"
           },
@@ -233427,7 +233153,6 @@
             "pfp": 5.1,
             "winner": "ddp",
             "winnerRate": 56.1,
-            "color": "green",
             "townName": "北區",
             "townId": "10018020"
           },
@@ -233444,7 +233169,6 @@
             "pfp": 5.3,
             "winner": "ddp",
             "winnerRate": 59.2,
-            "color": "green",
             "townName": "香山區",
             "townId": "10018030"
           },
@@ -233461,7 +233185,6 @@
             "pfp": 4.1,
             "winner": "ddp",
             "winnerRate": 64.2,
-            "color": "green",
             "townName": "礁溪鄉",
             "townId": "10002050"
           },
@@ -233478,7 +233201,6 @@
             "pfp": 3.4,
             "winner": "kmt",
             "winnerRate": 63.5,
-            "color": "blue",
             "townName": "玉里鎮",
             "townId": "10015030"
           },
@@ -233495,7 +233217,6 @@
             "pfp": 2.6,
             "winner": "kmt",
             "winnerRate": 79.1,
-            "color": "blue",
             "townName": "卓溪鄉",
             "townId": "10015130"
           },
@@ -233512,7 +233233,6 @@
             "pfp": 5.2,
             "winner": "kmt",
             "winnerRate": 53.5,
-            "color": "blue",
             "townName": "頭份市",
             "townId": "10005050"
           },
@@ -233529,7 +233249,6 @@
             "pfp": 4.8,
             "winner": "ddp",
             "winnerRate": 61.2,
-            "color": "green",
             "townName": "清水區",
             "townId": "66000120"
           },
@@ -233546,7 +233265,6 @@
             "pfp": 3.4,
             "winner": "ddp",
             "winnerRate": 67.8,
-            "color": "green",
             "townName": "南區",
             "townId": "67000330"
           },
@@ -233563,7 +233281,6 @@
             "pfp": 3.9,
             "winner": "ddp",
             "winnerRate": 60.3,
-            "color": "green",
             "townName": "東區",
             "townId": "67000320"
           },
@@ -233580,7 +233297,6 @@
             "pfp": 3.6,
             "winner": "ddp",
             "winnerRate": 65,
-            "color": "green",
             "townName": "安平區",
             "townId": "67000360"
           },
@@ -233597,7 +233313,6 @@
             "pfp": 3.8,
             "winner": "ddp",
             "winnerRate": 65.9,
-            "color": "green",
             "townName": "中西區",
             "townId": "67000370"
           },
@@ -233614,7 +233329,6 @@
             "pfp": 4.2,
             "winner": "ddp",
             "winnerRate": 58.2,
-            "color": "green",
             "townName": "大溪區",
             "townId": "68000030"
           },
@@ -233633,7 +233347,6 @@
             "pfp": 4.7,
             "winner": "ddp",
             "winnerRate": 53.7,
-            "color": "green",
             "townName": "八德區",
             "townId": "68000080"
           },
@@ -233652,7 +233365,6 @@
             "pfp": 4.8,
             "winner": "ddp",
             "winnerRate": 56.1,
-            "color": "green",
             "townName": "桃園區",
             "townId": "68000010"
           },
@@ -233669,7 +233381,6 @@
             "pfp": 4.8,
             "winner": "ddp",
             "winnerRate": 61.7,
-            "color": "green",
             "townName": "大園區",
             "townId": "68000060"
           },
@@ -233686,7 +233397,6 @@
             "pfp": 4.9,
             "winner": "ddp",
             "winnerRate": 51.9,
-            "color": "green",
             "townName": "楊梅區",
             "townId": "68000040"
           },
@@ -233703,7 +233413,6 @@
             "pfp": 5.5,
             "winner": "ddp",
             "winnerRate": 53.2,
-            "color": "green",
             "townName": "七堵區",
             "townId": "10017020"
           },
@@ -233725,7 +233434,6 @@
             "pfp": 5.1,
             "winner": "ddp",
             "winnerRate": 53.2,
-            "color": "green",
             "townName": "仁愛區",
             "townId": "10017040"
           },
@@ -233742,7 +233450,6 @@
             "pfp": 5.1,
             "winner": "ddp",
             "winnerRate": 47.6,
-            "color": "green",
             "townName": "信義區",
             "townId": "10017070"
           },
@@ -233767,7 +233474,6 @@
             "pfp": 5.2,
             "winner": "ddp",
             "winnerRate": 50.1,
-            "color": "green",
             "townName": "中正區",
             "townId": "10017010"
           },
@@ -233784,7 +233490,6 @@
             "pfp": 5.4,
             "winner": "ddp",
             "winnerRate": 51.7,
-            "color": "green",
             "townName": "中山區",
             "townId": "10017050"
           },
@@ -233801,7 +233506,6 @@
             "pfp": 5.1,
             "winner": "ddp",
             "winnerRate": 51,
-            "color": "green",
             "townName": "安樂區",
             "townId": "10017060"
           },
@@ -233818,7 +233522,6 @@
             "pfp": 4.6,
             "winner": "ddp",
             "winnerRate": 57.3,
-            "color": "green",
             "townName": "三峽區",
             "townId": "65000090"
           },
@@ -233835,7 +233538,6 @@
             "pfp": 4.9,
             "winner": "ddp",
             "winnerRate": 60.1,
-            "color": "green",
             "townName": "鶯歌區",
             "townId": "65000080"
           },
@@ -233859,7 +233561,6 @@
             "pfp": 4.6,
             "winner": "ddp",
             "winnerRate": 49.9,
-            "color": "green",
             "townName": "中和區",
             "townId": "65000030"
           },
@@ -233876,7 +233577,6 @@
             "pfp": 4.8,
             "winner": "ddp",
             "winnerRate": 60.3,
-            "color": "green",
             "townName": "樹林區",
             "townId": "65000070"
           },
@@ -233912,7 +233612,6 @@
             "pfp": 4.1,
             "winner": "ddp",
             "winnerRate": 53.5,
-            "color": "green",
             "townName": "深坑區",
             "townId": "65000180"
           },
@@ -233941,7 +233640,6 @@
             "pfp": 4.6,
             "winner": "ddp",
             "winnerRate": 59.4,
-            "color": "green",
             "townName": "板橋區",
             "townId": "65000010"
           },
@@ -233972,7 +233670,6 @@
             "pfp": 3.6,
             "winner": "ddp",
             "winnerRate": 63.3,
-            "color": "green",
             "townName": "石碇區",
             "townId": "65000190"
           },
@@ -233989,7 +233686,6 @@
             "pfp": 4.7,
             "winner": "ddp",
             "winnerRate": 62.3,
-            "color": "green",
             "townName": "新莊區",
             "townId": "65000050"
           },
@@ -234006,7 +233702,6 @@
             "pfp": 4.4,
             "winner": "ddp",
             "winnerRate": 59.8,
-            "color": "green",
             "townName": "泰山區",
             "townId": "65000160"
           },
@@ -234045,7 +233740,6 @@
             "pfp": 4.6,
             "winner": "ddp",
             "winnerRate": 63.4,
-            "color": "green",
             "townName": "三重區",
             "townId": "65000020"
           },
@@ -234062,7 +233756,6 @@
             "pfp": 3.7,
             "winner": "ddp",
             "winnerRate": 54.4,
-            "color": "green",
             "townName": "雙溪區",
             "townId": "65000250"
           },
@@ -234079,7 +233772,6 @@
             "pfp": 3.3,
             "winner": "ddp",
             "winnerRate": 66.8,
-            "color": "green",
             "townName": "貢寮區",
             "townId": "65000260"
           },
@@ -234160,7 +233852,6 @@
             "pfp": 4.6,
             "winner": "ddp",
             "winnerRate": 53.1,
-            "color": "green",
             "townName": "汐止區",
             "townId": "65000110"
           },
@@ -234193,7 +233884,6 @@
             "pfp": 3.6,
             "winner": "ddp",
             "winnerRate": 56,
-            "color": "green",
             "townName": "萬里區",
             "townId": "65000280"
           },
@@ -234237,7 +233927,6 @@
             "pfp": 3.6,
             "winner": "ddp",
             "winnerRate": 59.8,
-            "color": "green",
             "townName": "金山區",
             "townId": "65000270"
           },
@@ -234254,7 +233943,6 @@
             "pfp": 3.6,
             "winner": "ddp",
             "winnerRate": 55.2,
-            "color": "green",
             "townName": "石門區",
             "townId": "65000220"
           },
@@ -234271,7 +233959,6 @@
             "pfp": 3.1,
             "winner": "ddp",
             "winnerRate": 59.9,
-            "color": "green",
             "townName": "苓雅區",
             "townId": "64000080"
           },
@@ -234290,7 +233977,6 @@
             "pfp": 3.2,
             "winner": "ddp",
             "winnerRate": 63.2,
-            "color": "green",
             "townName": "三民區",
             "townId": "64000050"
           },
@@ -234307,7 +233993,6 @@
             "pfp": 4.5,
             "winner": "ddp",
             "winnerRate": 60,
-            "color": "green",
             "townName": "新屋區",
             "townId": "68000110"
           },
@@ -234324,7 +234009,6 @@
             "pfp": 4.9,
             "winner": "ddp",
             "winnerRate": 64.4,
-            "color": "green",
             "townName": "觀音區",
             "townId": "68000120"
           },
@@ -234384,7 +234068,6 @@
             "pfp": 2.2,
             "winner": "kmt",
             "winnerRate": 80.2,
-            "color": "blue",
             "townName": "北竿鄉",
             "townId": "09007020"
           },
@@ -234420,7 +234103,6 @@
             "pfp": 5.2,
             "winner": "kmt",
             "winnerRate": 74.7,
-            "color": "blue",
             "townName": "東引鄉",
             "townId": "09007040"
           },
@@ -234454,7 +234136,6 @@
             "pfp": 2.5,
             "winner": "kmt",
             "winnerRate": 80.3,
-            "color": "blue",
             "townName": "烈嶼鄉",
             "townId": "09020050"
           },
@@ -234489,7 +234170,6 @@
             "pfp": 2.4,
             "winner": "ddp",
             "winnerRate": 70.7,
-            "color": "green",
             "townName": "旗津區",
             "townId": "64000100"
           },
@@ -234506,7 +234186,6 @@
             "pfp": 3.1,
             "winner": "kmt",
             "winnerRate": 67.4,
-            "color": "blue",
             "townName": "長濱鄉",
             "townId": "10014080"
           },
@@ -234523,7 +234202,6 @@
             "pfp": 2.7,
             "winner": "kmt",
             "winnerRate": 72.6,
-            "color": "blue",
             "townName": "豐濱鄉",
             "townId": "10015080"
           },
@@ -234559,7 +234237,6 @@
             "pfp": 5.2,
             "winner": "ddp",
             "winnerRate": 56.7,
-            "color": "green",
             "townName": "霧峰區",
             "townId": "66000260"
           },
@@ -234596,7 +234273,6 @@
             "pfp": 5.2,
             "winner": "ddp",
             "winnerRate": 59.4,
-            "color": "green",
             "townName": "大里區",
             "townId": "66000280"
           },
@@ -234615,7 +234291,6 @@
             "pfp": 5.2,
             "winner": "ddp",
             "winnerRate": 56.8,
-            "color": "green",
             "townName": "南區",
             "townId": "66000030"
           },
@@ -234632,7 +234307,6 @@
             "pfp": 5.1,
             "winner": "ddp",
             "winnerRate": 57.9,
-            "color": "green",
             "townName": "烏日區",
             "townId": "66000230"
           },
@@ -234654,7 +234328,6 @@
             "pfp": 4.4,
             "winner": "ddp",
             "winnerRate": 57.6,
-            "color": "green",
             "townName": "中區",
             "townId": "66000010"
           },
@@ -234671,7 +234344,6 @@
             "pfp": 4.8,
             "winner": "ddp",
             "winnerRate": 56.7,
-            "color": "green",
             "townName": "西區",
             "townId": "66000040"
           },
@@ -234688,7 +234360,6 @@
             "pfp": 5.1,
             "winner": "ddp",
             "winnerRate": 56.4,
-            "color": "green",
             "townName": "南屯區",
             "townId": "66000070"
           },
@@ -234713,7 +234384,6 @@
             "pfp": 4.8,
             "winner": "ddp",
             "winnerRate": 54.1,
-            "color": "green",
             "townName": "北區",
             "townId": "66000050"
           },
@@ -234730,7 +234400,6 @@
             "pfp": 5.1,
             "winner": "ddp",
             "winnerRate": 54.6,
-            "color": "green",
             "townName": "西屯區",
             "townId": "66000060"
           },
@@ -234761,7 +234430,6 @@
             "pfp": 5,
             "winner": "ddp",
             "winnerRate": 54.3,
-            "color": "green",
             "townName": "北屯區",
             "townId": "66000080"
           },
@@ -234778,7 +234446,6 @@
             "pfp": 5.1,
             "winner": "ddp",
             "winnerRate": 57.9,
-            "color": "green",
             "townName": "潭子區",
             "townId": "66000170"
           },
@@ -234806,7 +234473,6 @@
             "pfp": 4.2,
             "winner": "ddp",
             "winnerRate": 50.7,
-            "color": "green",
             "townName": "信義區",
             "townId": "63000020"
           },
@@ -234851,7 +234517,6 @@
             "pfp": 4.2,
             "winner": "ddp",
             "winnerRate": 56.4,
-            "color": "green",
             "townName": "萬華區",
             "townId": "63000070"
           },
@@ -234884,7 +234549,6 @@
             "pfp": 4.5,
             "winner": "ddp",
             "winnerRate": 51.4,
-            "color": "green",
             "townName": "中正區",
             "townId": "63000050"
           },
@@ -234906,7 +234570,6 @@
             "pfp": 4.3,
             "winner": "ddp",
             "winnerRate": 51.1,
-            "color": "green",
             "townName": "松山區",
             "townId": "63000010"
           },
@@ -234935,7 +234598,6 @@
             "pfp": 4.4,
             "winner": "ddp",
             "winnerRate": 64,
-            "color": "green",
             "townName": "大同區",
             "townId": "63000060"
           },
@@ -234957,7 +234619,6 @@
             "pfp": 4.5,
             "winner": "ddp",
             "winnerRate": 55.7,
-            "color": "green",
             "townName": "中山區",
             "townId": "63000040"
           },
@@ -235034,7 +234695,6 @@
             "pfp": 4.1,
             "winner": "ddp",
             "winnerRate": 59.2,
-            "color": "green",
             "townName": "士林區",
             "townId": "63000110"
           },
@@ -235117,7 +234777,6 @@
             "pfp": 4.1,
             "winner": "ddp",
             "winnerRate": 57.6,
-            "color": "green",
             "townName": "北投區",
             "townId": "63000120"
           },
@@ -235139,7 +234798,6 @@
             "pfp": 4,
             "winner": "kmt",
             "winnerRate": 56.8,
-            "color": "blue",
             "townName": "花蓮市",
             "townId": "10015010"
           },
@@ -235156,7 +234814,6 @@
             "pfp": 3.9,
             "winner": "kmt",
             "winnerRate": 61.5,
-            "color": "blue",
             "townName": "新城鄉",
             "townId": "10015040"
           },
@@ -235173,7 +234830,6 @@
             "pfp": 3.3,
             "winner": "ddp",
             "winnerRate": 71.7,
-            "color": "green",
             "townName": "善化區",
             "townId": "67000190"
           },
@@ -235190,7 +234846,6 @@
             "pfp": 3,
             "winner": "ddp",
             "winnerRate": 68.9,
-            "color": "green",
             "townName": "山上區",
             "townId": "67000220"
           },
@@ -235207,7 +234862,6 @@
             "pfp": 4.8,
             "winner": "ddp",
             "winnerRate": 57.1,
-            "color": "green",
             "townName": "北斗鎮",
             "townId": "10007190"
           },
@@ -235224,7 +234878,6 @@
             "pfp": 4.3,
             "winner": "ddp",
             "winnerRate": 57.7,
-            "color": "green",
             "townName": "田尾鄉",
             "townId": "10007210"
           },
@@ -235241,7 +234894,6 @@
             "pfp": 3.3,
             "winner": "kmt",
             "winnerRate": 75.8,
-            "color": "blue",
             "townName": "金城鎮",
             "townId": "09020010"
           },
@@ -235258,7 +234910,6 @@
             "pfp": 2.6,
             "winner": "kmt",
             "winnerRate": 80.6,
-            "color": "blue",
             "townName": "金沙鎮",
             "townId": "09020020"
           },
@@ -235293,7 +234944,6 @@
             "pfp": 3.8,
             "winner": "kmt",
             "winnerRate": 75.1,
-            "color": "blue",
             "townName": "金湖鎮",
             "townId": "09020030"
           },
@@ -235310,7 +234960,6 @@
             "pfp": 3.6,
             "winner": "ddp",
             "winnerRate": 69.9,
-            "color": "green",
             "townName": "柳營區",
             "townId": "67000040"
           },
@@ -235327,7 +234976,6 @@
             "pfp": 3,
             "winner": "ddp",
             "winnerRate": 66.5,
-            "color": "green",
             "townName": "東山區",
             "townId": "67000060"
           },
@@ -235344,7 +234992,6 @@
             "pfp": 2.9,
             "winner": "ddp",
             "winnerRate": 74.5,
-            "color": "green",
             "townName": "七股區",
             "townId": "67000150"
           },
@@ -235361,7 +235008,6 @@
             "pfp": 2.4,
             "winner": "ddp",
             "winnerRate": 75.8,
-            "color": "green",
             "townName": "將軍區",
             "townId": "67000160"
           },
@@ -235384,7 +235030,6 @@
             "pfp": 3.1,
             "winner": "ddp",
             "winnerRate": 58.6,
-            "color": "green",
             "townName": "鼓山區",
             "townId": "64000020"
           },
@@ -235401,7 +235046,6 @@
             "pfp": 3.4,
             "winner": "ddp",
             "winnerRate": 54.9,
-            "color": "green",
             "townName": "左營區",
             "townId": "64000030"
           },
@@ -235420,7 +235064,6 @@
             "pfp": 4.8,
             "winner": "ddp",
             "winnerRate": 51.5,
-            "color": "green",
             "townName": "中壢區",
             "townId": "68000020"
           },
@@ -235437,7 +235080,6 @@
             "pfp": 6,
             "winner": "kmt",
             "winnerRate": 48.8,
-            "color": "blue",
             "townName": "寶山鄉",
             "townId": "10004100"
           },
@@ -235454,7 +235096,6 @@
             "pfp": 5.6,
             "winner": "ddp",
             "winnerRate": 53.3,
-            "color": "green",
             "townName": "東區",
             "townId": "10018010"
           },
@@ -235480,7 +235121,6 @@
             "pfp": 2.4,
             "winner": "ddp",
             "winnerRate": 57,
-            "color": "green",
             "townName": "恆春鎮",
             "townId": "10013040"
           },
@@ -235508,7 +235148,6 @@
             "pfp": 4.7,
             "winner": "ddp",
             "winnerRate": 58.8,
-            "color": "green",
             "townName": "東區",
             "townId": "66000020"
           },
@@ -235618,7 +235257,6 @@
             "pfp": 5,
             "winner": "ddp",
             "winnerRate": 57.3,
-            "color": "green",
             "townName": "太平區",
             "townId": "66000270"
           },
@@ -235635,7 +235273,6 @@
             "pfp": 3.4,
             "winner": "kmt",
             "winnerRate": 61.8,
-            "color": "blue",
             "townName": "鳳林鎮",
             "townId": "10015020"
           },
@@ -235652,7 +235289,6 @@
             "pfp": 2.9,
             "winner": "kmt",
             "winnerRate": 75.1,
-            "color": "blue",
             "townName": "萬榮鄉",
             "townId": "10015120"
           },
@@ -235669,7 +235305,6 @@
             "pfp": 4.7,
             "winner": "ddp",
             "winnerRate": 48.6,
-            "color": "green",
             "townName": "龍潭區",
             "townId": "68000090"
           },
@@ -235686,7 +235321,6 @@
             "pfp": 4.9,
             "winner": "ddp",
             "winnerRate": 52.7,
-            "color": "green",
             "townName": "平鎮區",
             "townId": "68000100"
           },
@@ -235766,7 +235400,6 @@
             "pfp": 4.5,
             "winner": "ddp",
             "winnerRate": 54.4,
-            "color": "green",
             "townName": "南港區",
             "townId": "63000090"
           },
@@ -235817,7 +235450,6 @@
             "pfp": 4.7,
             "winner": "ddp",
             "winnerRate": 53.2,
-            "color": "green",
             "townName": "內湖區",
             "townId": "63000100"
           },

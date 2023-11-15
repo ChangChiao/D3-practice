@@ -13,7 +13,6 @@ export const combineData = (a, b, type = 'counties') => {
           pfp: item.properties.pfp,
           winner: transWinner(item.properties.winner_2020),
           winnerRate: item.properties.winning_rate_2020,
-          color: transColor(transWinner(item.properties.winner_2020)),
         };
         newObj.id = element.properties.COUNTYCODE;
         if (type === 'town') {
@@ -50,10 +49,4 @@ const transWinner = (type) => {
   if (type === '民進黨') return 'ddp';
   if (type === '國民黨') return 'kmt';
   return 'pfp';
-};
-
-const transColor = (winner) => {
-  if (winner === 'ddp') return 'green';
-  if (winner === 'kmt') return 'blue';
-  return 'orange';
 };

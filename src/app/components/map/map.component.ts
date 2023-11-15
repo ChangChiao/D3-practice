@@ -184,7 +184,8 @@ export class MapComponent implements AfterViewInit {
       .style('stroke-width', this.normalLineWidth)
       .style('stroke', this.normalLineColor)
       .style('fill', function (i) {
-        return i.properties.color;
+        const { winnerRate, winner } = i.properties;
+        return self.genColor(winnerRate, winner);
       })
       .on('click', function (event, data) {
         self.clearBoundary();
@@ -219,7 +220,8 @@ export class MapComponent implements AfterViewInit {
       .style('stroke-width', this.normalLineWidth)
       .style('stroke', this.normalLineColor)
       .style('fill', function (i) {
-        return i.properties.color;
+        const { winnerRate, winner } = i.properties;
+        return self.genColor(winnerRate, winner);
       })
       .on('mouseover', function (event, data) {
         d3.select(this).attr('opacity', 0.8);

@@ -47,13 +47,11 @@ export class AppService {
   // }
 
   mergeData() {
-    forkJoin([this.fetchVILLAGE$, this.fetchVillageData$]).subscribe(
-      ([a, b]) => {
-        console.log('a, b', a, b);
-        const res = combineData(a, b, 'village');
-        console.log('res', JSON.stringify(res));
-      }
-    );
+    forkJoin([this.fetchTOWN$, this.fetchTownData$]).subscribe(([a, b]) => {
+      console.log('a, b', a, b);
+      const res = combineData(a, b, 'town');
+      console.log('res', JSON.stringify(res));
+    });
   }
 
   initService() {
