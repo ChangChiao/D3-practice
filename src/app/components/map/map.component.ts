@@ -121,6 +121,13 @@ export class MapComponent implements AfterViewInit {
     this.infoSelected.set({ name, ddp, kmt, pfp });
   }
 
+  setLineWidth(type, isActive = false) {
+    let lineWidth = 0.02;
+    if (type === 'country') lineWidth = 0.05;
+    if (type === 'town') lineWidth = 0.03;
+    return isActive ? lineWidth * 5 : lineWidth;
+  }
+
   genColor(value, winner) {
     const index = Math.floor(value / 20);
     if (winner === 'ddp') {
@@ -147,9 +154,9 @@ export class MapComponent implements AfterViewInit {
         return self.genColor(winnerRate, winner);
       })
       .on('click', function (event, data) {
-        self.clearBoundary();
+        self.clearBoundary('country');
         self.clickedTarget = d3.select(this);
-        self.drawBoundary();
+        self.drawBoundary('country');
         self.showInfo(data);
         self.switchArea(data);
       })
@@ -181,16 +188,16 @@ export class MapComponent implements AfterViewInit {
       .classed('town', true)
       .attr('d', this.path)
       .style('opacity', 0)
-      .style('stroke-width', this.normalLineWidth)
+      .style('stroke-width', this.setLineWidth('town'))
       .style('stroke', this.normalLineColor)
       .style('fill', function (i) {
         const { winnerRate, winner } = i.properties;
         return self.genColor(winnerRate, winner);
       })
       .on('click', function (event, data) {
-        self.clearBoundary();
+        self.clearBoundary('town');
         self.clickedTarget = d3.select(this);
-        self.drawBoundary();
+        self.drawBoundary('town');
         self.switchArea(data);
       })
       .on('mouseover', function (event, data) {
@@ -217,7 +224,7 @@ export class MapComponent implements AfterViewInit {
       .append('path')
       .classed('village', true)
       .attr('d', this.path)
-      .style('stroke-width', this.normalLineWidth)
+      .style('stroke-width', this.setLineWidth('village'))
       .style('stroke', this.normalLineColor)
       .style('fill', function (i) {
         const { winnerRate, winner } = i.properties;
@@ -233,16 +240,16 @@ export class MapComponent implements AfterViewInit {
     return { villagePaths };
   }
 
-  drawBoundary() {
+  drawBoundary(type) {
     if (!this.clickedTarget) return;
-    this.clickedTarget.style('stroke-width', this.activeLineWidth);
+    this.clickedTarget.style('stroke-width', this.setLineWidth(type, true));
     this.clickedTarget.style('stroke', this.activeLineColor);
     this.clickedTarget.raise();
   }
 
-  clearBoundary() {
+  clearBoundary(type) {
     if (!this.clickedTarget) return;
-    this.clickedTarget.style('stroke-width', this.normalLineWidth);
+    this.clickedTarget.style('stroke-width', this.setLineWidth(type));
     this.clickedTarget.style('stroke', this.normalLineColor);
     this.clickedTarget.lower();
   }
@@ -360,7 +367,7 @@ export class MapComponent implements AfterViewInit {
       scale = tempScale;
       x = tempTranslate.x;
       y = tempTranslate.y;
-      this.clearBoundary();
+      this.clearBoundary('village');
     } else {
       this.clearArea('town');
       const [targetScale] = this.scaleRecord;
@@ -369,6 +376,7 @@ export class MapComponent implements AfterViewInit {
       x = targetTranslate.x;
       y = targetTranslate.y;
       this.isPrevShow = false;
+      this.clearBoundary('town');
     }
     this.g
       .transition()
