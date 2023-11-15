@@ -67,7 +67,7 @@ export class OverviewComponent {
   // #store = inject(AppComponentStore);
 
   // selected$ = this.#store.vm$;
-  // voteData$ = this.#service.getVoteData();
+  // mapData$ = this.#service.getVoteData();
   constructor() {
     effect(() => {
       const count = this.count();

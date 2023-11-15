@@ -77,8 +77,8 @@ export class DropdownComponent {
   villageDropdown = signal([]);
 
   vm$ = this.#store.vm$.pipe(
-    tap(({ voteData }) => {
-      const { country, town, village } = voteData;
+    tap(({ mapData }) => {
+      const { country, town, village } = mapData;
       this.countryDropdown.set(this.createCountryList(country));
       this.townList.set(this.createTownList(town));
       this.villageList.set(this.createVillageList(village));

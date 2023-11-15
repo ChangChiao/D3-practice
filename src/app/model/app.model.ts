@@ -3,12 +3,13 @@ import { TownData } from './town.model';
 import { VillageData } from './village.model';
 
 export interface AppState {
-  voteData: VoteState;
+  mapData: mapState;
   selectedOption: SelectedOptionState;
   isLoading: boolean;
+  // voteData:
 }
 
-export interface VoteState {
+export interface mapState {
   country: CountryData | null;
   town: TownData | null;
   village: VillageData | null;

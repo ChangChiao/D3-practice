@@ -52,7 +52,7 @@ import { blueList, greenList, orangeList } from 'src/app/configs/mapColor';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MapComponent implements AfterViewInit {
-  @Input() voteData;
+  @Input() mapData;
   @Input() selectedOption;
   #api = inject(HttpClient);
   #service = inject(AppService);
@@ -308,10 +308,10 @@ export class MapComponent implements AfterViewInit {
     this.renderMap();
     this.#store.vm$
       .pipe(
-        tap(({ voteData, selectedOption }) => {
-          console.log('voteData', voteData);
-          if (!voteData.country) return;
-          const { country, town, village } = voteData;
+        tap(({ mapData, selectedOption }) => {
+          console.log('mapData', mapData);
+          if (!mapData.country) return;
+          const { country, town, village } = mapData;
           // @ts-ignore
           this.countryData = feature(country, country.objects.counties);
           // @ts-ignore
