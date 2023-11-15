@@ -25,6 +25,7 @@ import {
 import { AppService } from '../../service/app.service';
 import { AppComponentStore } from '../../store/app.state';
 import { LetDirective } from '@ngrx/component';
+import { blueList, greenList, orangeList } from 'src/app/configs/mapColor';
 
 @Component({
   selector: 'app-map',
@@ -120,7 +121,17 @@ export class MapComponent implements AfterViewInit {
     this.infoSelected.set({ name, ddp, kmt, pfp });
   }
 
-  genColor() {}
+  genColor(value, winner) {
+    const index = Math.floor(value / 20);
+    if (winner === 'ddp') {
+      return greenList[index];
+    }
+    if (winner === 'kmt') {
+      return blueList[index];
+    }
+
+    return orangeList[index];
+  }
 
   createCountry() {
     const self = this;
@@ -132,7 +143,8 @@ export class MapComponent implements AfterViewInit {
       .classed('country', true)
       .attr('d', this.path)
       .style('fill', function (i) {
-        return i.properties.color;
+        const { winnerRate, winner } = i.properties;
+        return self.genColor(winnerRate, winner);
       })
       .on('click', function (event, data) {
         self.clearBoundary();
