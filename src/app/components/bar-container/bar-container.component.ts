@@ -11,15 +11,16 @@ import { AppComponentStore } from 'src/app/store/app.state';
 import { map, single, tap } from 'rxjs';
 import { LetDirective } from '@ngrx/component';
 import { VoteState } from 'src/app/model';
+import { BarComponent } from '../bar/bar.component';
 
 @Component({
   selector: 'app-bar-container',
   standalone: true,
-  imports: [CommonModule, LetDirective],
+  imports: [CommonModule, LetDirective, BarComponent],
   template: `
     <div *ngrxLet="vm$ as vm">
       {{ filterResult() | json }}
-      <!-- <app-bar [data]="filterResult()"></app-bar> -->
+      <app-bar [filterResult]="filterResult" [data]="filterResult()"></app-bar>
     </div>
   `,
   styleUrls: ['./bar-container.component.scss'],

@@ -18,6 +18,7 @@ import * as d3 from 'd3';
 })
 export class BarComponent implements OnInit, AfterViewInit {
   @Input() data;
+  @Input() filterResult;
   maxValue: number;
   svg;
   margin = 100;
@@ -53,11 +54,19 @@ export class BarComponent implements OnInit, AfterViewInit {
       .attr('transform', 'translate(' + this.margin + ',' + this.margin + ')');
   }
 
-  private drawBars(data: any[]): void {
+  transName() {
+    const { type } = this.filterResult;
+    if (type === 'taiwan') return 'countryName';
+    if (type === 'country') return 'townName';
+    if (type === 'town') return 'villageName';
+    return 'countryName';
+  }
+
+  drawBars(data: any[]): void {
     const x = d3
       .scaleBand()
       .range([0, this.width])
-      .domain(data.map((d) => d.name))
+      .domain(data.map((d) => d[this.transName()]))
       .padding(0.2);
 
     this.svg
@@ -83,13 +92,15 @@ export class BarComponent implements OnInit, AfterViewInit {
       .data(data)
       .enter()
       .append('rect')
-      .attr('x', (d) => x(d.name))
-      .attr('y', (d) => y(d.value))
+      .attr('x', (d) => x(d[this.transName()]))
+      .attr('y', (d) => y(d.winnerRate))
       .attr('width', x.bandwidth())
       .attr('height', (d) =>
-        y(d.value) < this.height ? this.height - y(d.value) : this.height
+        y(d.winnerRate) < this.height
+          ? this.height - y(d.winnerRate)
+          : this.height
       ) // this.height
-      .attr('fill', (d) => d.color);
+      .attr('fill', (d) => (d.color ? 'green' : 'blue'));
 
     this.svg
       .selectAll('text.bar')
