@@ -30,15 +30,18 @@ const initState = {
 @Injectable({ providedIn: 'root' })
 export class AppComponentStore extends ComponentStore<AppState> {
   readonly #mapData$ = this.select(({ mapData }) => mapData);
+  readonly #voteData$ = this.select(({ voteData }) => voteData);
   readonly #selectedOption$ = this.select(
     ({ selectedOption }) => selectedOption
   );
 
   readonly vm$ = this.select(
     this.#mapData$,
+    this.#voteData$,
     this.#selectedOption$,
-    (mapData, selectedOption) => ({
+    (mapData, voteData, selectedOption) => ({
       mapData,
+      voteData,
       selectedOption,
     }),
     {
@@ -65,9 +68,11 @@ export class AppComponentStore extends ComponentStore<AppState> {
     );
     return {
       ...state,
-      country: countryData,
-      town: townData,
-      village: villageData,
+      voteData: {
+        country: countryData,
+        town: townData,
+        village: villageData,
+      },
     };
   });
 

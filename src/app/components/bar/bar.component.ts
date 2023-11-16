@@ -41,7 +41,7 @@ export class BarComponent implements OnInit, AfterViewInit {
   }
 
   private createSvg(): void {
-    this.svg = this.d3.d3
+    this.svg = d3
       .select('div#chart')
       .append('svg')
       .attr(

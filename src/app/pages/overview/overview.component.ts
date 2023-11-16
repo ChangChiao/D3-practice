@@ -16,6 +16,7 @@ import { AppComponentStore } from '../../store/app.state';
 import { MapComponent } from '../../components/map/map.component';
 import { DropdownComponent } from '../../components/dropdown/dropdown.component';
 import { AppService } from '../../service';
+import { BarContainerComponent } from 'src/app/components/bar-container/bar-container.component';
 
 @Component({
   selector: 'app-overview',
@@ -27,6 +28,7 @@ import { AppService } from '../../service';
     RouterModule,
     LetDirective,
     DropdownComponent,
+    BarContainerComponent,
   ],
   template: `
     <div>
@@ -43,7 +45,8 @@ import { AppService } from '../../service';
       </a>
       <a [routerLink]="['/rwd']"> rwd </a>
       <a [routerLink]="['/ani']"> ani </a>
-      <app-map></app-map>
+      <!-- <app-map></app-map> -->
+      <app-bar-container></app-bar-container>
       <app-dropdown></app-dropdown>
       <p class="title">overview works!</p>
       <p>count: {{ count() }}</p>

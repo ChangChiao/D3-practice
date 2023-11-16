@@ -320,7 +320,8 @@ export class MapComponent implements AfterViewInit {
           this.villageData = feature(village, village.objects.village);
 
           this.createCountry();
-        })
+        }),
+        takeUntilDestroyed(this.#destroyRef)
       )
       .subscribe();
   }

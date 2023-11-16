@@ -20,6 +20,7 @@ function initializeAppFactory(service: AppService, store: AppComponentStore) {
       tap(([country, town, village]) => {
         console.log('ccc', country);
         store.setMapData({ country, town, village });
+        store.setVoteData({ country, town, village });
       }),
       finalize(() => store.setLoading(false)),
       catchError(() => EMPTY)
