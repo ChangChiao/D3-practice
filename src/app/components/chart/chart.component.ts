@@ -14,6 +14,10 @@ import {
   VillageProperties,
 } from 'src/app/model';
 
+import zoomPlugin from 'chartjs-plugin-zoom';
+
+Chart.register(zoomPlugin);
+
 type PropsData = CountryProperties[] | TownProperties[] | VillageProperties[];
 
 @Component({
@@ -35,6 +39,10 @@ export class ChartComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.drawChart();
+    window.addEventListener('resize', () => {
+      console.log('resize');
+      this.chart.resize();
+    });
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -85,6 +93,51 @@ export class ChartComponent implements AfterViewInit {
       },
       options: {
         aspectRatio: 2.5,
+        scales: {
+          y: {
+            suggestedMin: 0,
+            suggestedMax: 100,
+            ticks: {
+              stepSize: 20,
+            },
+          },
+        },
+        layout: {
+          // padding: 50,
+        },
+        // scales: {
+        //   r: {
+        //     max: 5,
+        //     min: 0,
+        //     ticks: {
+        //         stepSize: 0.5
+        //     }
+        // },
+        plugins: {
+          // zoom: {
+          //   zoom: {
+          //     wheel: {
+          //       enabled: true,
+          //     },
+          //     pinch: {
+          //       enabled: true,
+          //     },
+          //     mode: 'x',
+          //   },
+          // },
+          tooltip: {
+            enabled: true,
+            mode: 'index',
+            intersect: false,
+          },
+          legend: {
+            labels: {
+              font: {
+                size: 14,
+              },
+            },
+          },
+        },
       },
     });
   }
