@@ -1,0 +1,86 @@
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
+import { CommonModule } from '@angular/common';
+import Chart from 'chart.js/auto';
+import {
+  CountryProperties,
+  TownProperties,
+  VillageProperties,
+} from 'src/app/model';
+
+type PropsData = CountryProperties[] | TownProperties[] | VillageProperties[];
+
+@Component({
+  selector: 'app-chart',
+  standalone: true,
+  imports: [CommonModule],
+  template: `
+    <div>
+      <canvas id="canvas">{{ chart }}</canvas>
+    </div>
+  `,
+  styleUrls: ['./chart.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ChartComponent implements AfterViewInit {
+  chart: Chart = null;
+  @Input() data;
+  @Input() filterOject;
+
+  ngAfterViewInit() {
+    this.drawChart();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['data'].currentValue) {
+      this.drawChart();
+    }
+  }
+
+  drawChart() {
+    console.log(this.data);
+    console.log(
+      'this.filterResult()',
+      this.data.map((d) => d[this.transName()]),
+      this.data.map((d) => d.winnerRate)
+    );
+    if (this.chart instanceof Chart) {
+      this.chart.destroy();
+    }
+    this.chart = new Chart('canvas', {
+      type: 'bar',
+      data: {
+        labels: this.data.map((d) => d[this.transName()]),
+        datasets: [
+          {
+            label: '# of Votes',
+            data: this.data.map((d) => d.winnerRate),
+            backgroundColor: 'rgba(93, 175, 89, 0.1)',
+            borderWidth: 1,
+          },
+        ],
+      },
+      // options: {
+      //   scales: {
+      //     y: {
+      //       beginAtZero: true,
+      //     },
+      //   },
+      // },
+    });
+  }
+
+  transName() {
+    const { type } = this.filterOject;
+    if (type === 'taiwan') return 'countryName';
+    if (type === 'country') return 'townName';
+    if (type === 'town') return 'villageName';
+    return 'countryName';
+  }
+}

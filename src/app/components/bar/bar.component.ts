@@ -22,7 +22,7 @@ import * as d3 from 'd3';
 })
 export class BarComponent implements OnInit, AfterViewInit {
   @Input() data;
-  @Input() filterResult;
+  @Input() filterOject;
   toolTip;
   maxValue: number = 100;
   svg;
@@ -52,7 +52,7 @@ export class BarComponent implements OnInit, AfterViewInit {
   }
 
   transName() {
-    const { type } = this.filterResult;
+    const { type } = this.filterOject;
     if (type === 'taiwan') return 'countryName';
     if (type === 'country') return 'townName';
     if (type === 'town') return 'villageName';
@@ -103,7 +103,7 @@ export class BarComponent implements OnInit, AfterViewInit {
         y(d.winnerRate) < this.height
           ? this.height - y(d.winnerRate)
           : this.height
-      ) // this.height
+      )
       .attr('fill', (d) => (d.color ? 'green' : 'blue'))
       .on('mouseover', (event, d) => {
         // 在滑鼠移入時顯示 tooltip

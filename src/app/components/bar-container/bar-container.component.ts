@@ -12,15 +12,19 @@ import { map, single, tap } from 'rxjs';
 import { LetDirective } from '@ngrx/component';
 import { VoteState } from 'src/app/model';
 import { BarComponent } from '../bar/bar.component';
+import { ChartComponent } from '../chart/chart.component';
 
 @Component({
   selector: 'app-bar-container',
   standalone: true,
-  imports: [CommonModule, LetDirective, BarComponent],
+  imports: [CommonModule, LetDirective, ChartComponent, BarComponent],
   template: `
     <div *ngrxLet="vm$ as vm">
-      {{ filterResult() | json }}
-      <app-bar [filterResult]="filterResult" [data]="filterResult()"></app-bar>
+      <app-chart
+        [filterOject]="filterOject()"
+        [data]="filterResult()"
+      ></app-chart>
+      <!-- <app-bar [filterOject]="filterOject()" [data]="filterResult()"></app-bar> -->
     </div>
   `,
   styleUrls: ['./bar-container.component.scss'],
