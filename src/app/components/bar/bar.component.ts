@@ -19,22 +19,15 @@ import * as d3 from 'd3';
 export class BarComponent implements OnInit, AfterViewInit {
   @Input() data;
   @Input() filterResult;
-  maxValue: number;
+  maxValue: number = 100;
   svg;
   margin = 100;
   width = 750 - this.margin * 2;
   height = 600 - this.margin * 2;
+  // width = 500;
+  // height = 500;
 
-  ngOnInit(): void {
-    this.findHighest();
-  }
-
-  findHighest() {
-    const dataCollect = this.data.reduce((prev, cur) => {
-      return [...prev, cur.ddp, cur.kmt, cur.pfp];
-    }, []);
-    this.maxValue = Math.max(...dataCollect);
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit(): void {
     this.createSvg();
@@ -49,7 +42,6 @@ export class BarComponent implements OnInit, AfterViewInit {
         'viewBox',
         `0 0 ${this.width + this.margin * 2} ${this.height + this.margin * 2}`
       )
-
       .append('g')
       .attr('transform', 'translate(' + this.margin + ',' + this.margin + ')');
   }
@@ -67,23 +59,23 @@ export class BarComponent implements OnInit, AfterViewInit {
       .scaleBand()
       .range([0, this.width])
       .domain(data.map((d) => d[this.transName()]))
-      .padding(0.2);
+      .padding(0.5);
 
     this.svg
       .append('g')
-      .attr('transform', 'translate(0,' + this.height + ')')
+      .attr('transform', `translate(0,${this.height})`)
       .call(d3.axisBottom(x))
       .selectAll('text')
       .style('font-size', '14px');
 
     const y = d3
       .scaleLinear()
-      .domain([0, Number(this.maxValue) + 50])
+      .domain([0, this.maxValue])
       .range([this.height, 0]);
 
     this.svg
       .append('g')
-      .call(d3.axisLeft(y))
+      .call(d3.axisLeft(y).tickValues([0, 20, 40, 60, 80, 100]))
       .selectAll('text')
       .style('font-size', '14px');
 
@@ -102,15 +94,15 @@ export class BarComponent implements OnInit, AfterViewInit {
       ) // this.height
       .attr('fill', (d) => (d.color ? 'green' : 'blue'));
 
-    this.svg
-      .selectAll('text.bar')
-      .data(data)
-      .enter()
-      .append('text')
-      .attr('text-anchor', 'middle')
-      .attr('fill', '#70747a')
-      .attr('x', (d) => x(d.name) + 18)
-      .attr('y', (d) => y(d.value) - 5)
-      .text((d) => Math.round(d.value * 100) / 100);
+    // this.svg
+    //   .selectAll('text.bar')
+    //   .data(data)
+    //   .enter()
+    //   .append('text')
+    //   .attr('text-anchor', 'middle')
+    //   .attr('fill', '#70747a')
+    //   .attr('x', (d) => x(d.name) + 18)
+    //   .attr('y', (d) => y(d.value) - 5)
+    //   .text((d) => Math.round(d.value * 100) / 100);
   }
 }
