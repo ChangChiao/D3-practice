@@ -12,13 +12,18 @@ import * as d3 from 'd3';
   selector: 'app-bar',
   standalone: true,
   imports: [CommonModule],
-  template: `<div id="chart"></div>`,
+  template: `
+    <div id="chart">
+      <div id="toolTip"></div>
+    </div>
+  `,
   styleUrls: ['./bar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BarComponent implements OnInit, AfterViewInit {
   @Input() data;
   @Input() filterResult;
+  toolTip;
   maxValue: number = 100;
   svg;
   margin = 100;
@@ -34,7 +39,7 @@ export class BarComponent implements OnInit, AfterViewInit {
     this.drawBars(this.data);
   }
 
-  private createSvg(): void {
+  createSvg(): void {
     this.svg = d3
       .select('div#chart')
       .append('svg')
@@ -55,6 +60,7 @@ export class BarComponent implements OnInit, AfterViewInit {
   }
 
   drawBars(data: any[]): void {
+    const self = this;
     const x = d3
       .scaleBand()
       .range([0, this.width])
@@ -64,7 +70,7 @@ export class BarComponent implements OnInit, AfterViewInit {
     this.svg
       .append('g')
       .attr('transform', `translate(0,${this.height})`)
-      .call(d3.axisBottom(x))
+      .call(d3.axisBottom(x).tickSize(5))
       .selectAll('text')
       .style('font-size', '14px');
 
@@ -75,7 +81,13 @@ export class BarComponent implements OnInit, AfterViewInit {
 
     this.svg
       .append('g')
-      .call(d3.axisLeft(y).tickValues([0, 20, 40, 60, 80, 100]))
+      .call(
+        d3
+          .axisLeft(y)
+          .tickValues([0, 20, 40, 60, 80, 100])
+          .tickSize(0)
+          .tickPadding(10)
+      )
       .selectAll('text')
       .style('font-size', '14px');
 
@@ -92,7 +104,19 @@ export class BarComponent implements OnInit, AfterViewInit {
           ? this.height - y(d.winnerRate)
           : this.height
       ) // this.height
-      .attr('fill', (d) => (d.color ? 'green' : 'blue'));
+      .attr('fill', (d) => (d.color ? 'green' : 'blue'))
+      .on('mouseover', (event, d) => {
+        // 在滑鼠移入時顯示 tooltip
+        d3.select('#toolTip')
+          .style('opacity', 1)
+          .html('Value: ' + `${d[this.transName()]}:${d.winnerRate}`)
+          .style('left', event.pageX + 30 + 'px')
+          .style('top', event.pageY - 550 + 'px');
+      })
+      .on('mouseout', () => {
+        // 在滑鼠移出時隱藏 tooltip
+        d3.select('#toolTip').style('opacity', 0);
+      });
 
     // this.svg
     //   .selectAll('text.bar')

@@ -1,0 +1,13 @@
+#chart {
+  position: relative;
+}
+
+#toolTip {
+  position: absolute;
+  opacity: 0;
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
