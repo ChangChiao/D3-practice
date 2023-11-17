@@ -59,20 +59,33 @@ export class ChartComponent implements AfterViewInit {
         labels: this.data.map((d) => d[this.transName()]),
         datasets: [
           {
-            label: '# of Votes',
-            data: this.data.map((d) => d.winnerRate),
-            backgroundColor: 'rgba(93, 175, 89, 0.1)',
-            borderWidth: 1,
+            label: 'ddp',
+            data: this.data.map((d) => d.ddp),
+            backgroundColor: 'green',
+          },
+          {
+            label: 'kmt',
+            data: this.data.map((d) => d.kmt),
+            backgroundColor: 'blue',
+          },
+          {
+            label: 'pfp',
+            data: this.data.map((d) => d.pfp),
+            backgroundColor: 'orange',
           },
         ],
+        // datasets: [
+        //   {
+        //     label: '# of Votes',
+        //     data: this.data.map((d) => d.winnerRate),
+        //     backgroundColor: 'rgba(93, 175, 89, 0.1)',
+        //     borderWidth: 1,
+        //   },
+        // ],
       },
-      // options: {
-      //   scales: {
-      //     y: {
-      //       beginAtZero: true,
-      //     },
-      //   },
-      // },
+      options: {
+        aspectRatio: 2.5,
+      },
     });
   }
 
