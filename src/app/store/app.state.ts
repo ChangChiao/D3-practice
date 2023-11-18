@@ -1,11 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
-import {
-  AppState,
-  MapState,
-  SelectedOptionState,
-  VoteState,
-} from '../model/app.model';
+import { AppState, MapState, VoteState } from '../model/app.model';
 
 const initState = {
   mapData: {
@@ -50,29 +45,30 @@ export class AppComponentStore extends ComponentStore<AppState> {
   );
   readonly loading$ = this.select(({ isLoading }) => isLoading);
 
-  readonly setMapData = this.updater((state, payload: MapState | null) => ({
+  readonly setMapData = this.updater((state, payload: MapState) => ({
     ...state,
     mapData: payload,
   }));
 
-  readonly setVoteData = this.updater((state, payload: MapState | null) => {
+  readonly setVoteData = this.updater((state, payload: MapState) => {
     const { country, town, village } = payload;
-    const countryData = country.objects.counties.geometries.map(
+    const countryData = country?.objects.counties.geometries.map(
       (item) => item.properties
     );
-    const townData = town.objects.town.geometries.map(
+    const townData = town?.objects.town.geometries.map(
       (item) => item.properties
     );
-    const villageData = village.objects.village.geometries.map(
+    const villageData = village?.objects.village.geometries.map(
       (item) => item.properties
     );
+    const voteData = {
+      country: countryData,
+      town: townData,
+      village: villageData,
+    } as VoteState;
     return {
       ...state,
-      voteData: {
-        country: countryData,
-        town: townData,
-        village: villageData,
-      },
+      ...voteData,
     };
   });
 

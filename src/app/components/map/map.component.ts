@@ -15,6 +15,8 @@ import { feature } from 'topojson-client';
 import { retry, tap } from 'rxjs';
 import {
   CountryGeometry,
+  D3GSelection,
+  D3SVGSelection,
   D3Selection,
   MapBounds,
   MapGeometryData,
@@ -82,13 +84,13 @@ export class MapComponent implements AfterViewInit {
 
   isMobile = false;
   map!: D3Selection;
-  g!: D3Selection;
+  g!: D3GSelection;
   // path = null;
   // toolTip = null;
   colorScale = null;
   // renderData = null;
   // zoom = null;
-  clickedTarget!: D3Selection;
+  clickedTarget!: D3SVGSelection;
 
   activeLineColor = 'orange';
   normalLineColor = 'black';
@@ -222,6 +224,7 @@ export class MapComponent implements AfterViewInit {
     const countryTowns = this.townData?.features.filter(
       (item) => item.properties.countyId == data.id
     );
+    if (!countryTowns) return;
     console.log('countryTowns', countryTowns);
     const townPaths = this.g
       .selectAll('.town')
@@ -259,6 +262,7 @@ export class MapComponent implements AfterViewInit {
     const villages = this.villageData?.features.filter(
       (i) => i.properties.townId == data.id
     );
+    if (!villages) return;
     console.log('townVillages', villages);
     const villagePaths = this.g
       .selectAll('.village')

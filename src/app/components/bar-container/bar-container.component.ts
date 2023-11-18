@@ -44,7 +44,7 @@ export class BarContainerComponent {
     })
   );
 
-  isEmptyObject(obj) {
+  isEmptyObject(obj: Record<string, any>) {
     return Object.keys(obj).length === 0;
   }
 
@@ -54,14 +54,14 @@ export class BarContainerComponent {
     const filterOject = this.filterOject();
     if (this.filterOject().type === 'taiwan') return fullData.country;
     if (this.filterOject().type === 'country') {
-      return fullData.town.filter((item) => {
-        return item.countyId === filterOject.id;
-      });
+      return fullData?.village?.filter(
+        (item) => item.countyId === filterOject.id
+      );
     }
     if (this.filterOject().type === 'town') {
-      return fullData.village.filter((item) => {
-        return item.townId === filterOject.id;
-      });
+      return fullData?.village?.filter(
+        (item) => item.townId === filterOject.id
+      );
     }
     return [];
   });

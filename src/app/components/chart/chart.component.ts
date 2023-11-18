@@ -8,17 +8,11 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import Chart from 'chart.js/auto';
-import {
-  CountryProperties,
-  TownProperties,
-  VillageProperties,
-} from 'src/app/model';
+import { ChartData } from 'src/app/model';
 
 import zoomPlugin from 'chartjs-plugin-zoom';
 
 Chart.register(zoomPlugin);
-
-type PropsData = CountryProperties[] | TownProperties[] | VillageProperties[];
 
 @Component({
   selector: 'app-chart',
@@ -33,9 +27,9 @@ type PropsData = CountryProperties[] | TownProperties[] | VillageProperties[];
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChartComponent implements AfterViewInit {
-  chart: Chart = null;
-  @Input() data;
-  @Input() filterOject;
+  chart!: Chart;
+  @Input() data!: ChartData;
+  @Input() filterOject!: { type: string; id: string };
 
   ngAfterViewInit() {
     this.drawChart();
@@ -51,11 +45,22 @@ export class ChartComponent implements AfterViewInit {
     }
   }
 
+  getKeys() {
+    if ('villageName' in this.data[0]) {
+      return 'villageName';
+    }
+    if ('townName' in this.data[0]) {
+      return 'townName';
+    }
+    return 'countryName';
+  }
+
   drawChart() {
+    const key = this.getKeys() as keyof (typeof this.data)[0];
     console.log(this.data);
     console.log(
       'this.filterResult()',
-      this.data.map((d) => d[this.transName()]),
+      this.data.map((d) => d[key]),
       this.data.map((d) => d.winnerRate)
     );
     if (this.chart instanceof Chart) {
@@ -64,7 +69,7 @@ export class ChartComponent implements AfterViewInit {
     this.chart = new Chart('canvas', {
       type: 'bar',
       data: {
-        labels: this.data.map((d) => d[this.transName()]),
+        labels: this.data.map((d) => d[key]),
         datasets: [
           {
             label: 'ddp',

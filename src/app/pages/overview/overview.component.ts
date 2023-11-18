@@ -45,8 +45,8 @@ import { BarContainerComponent } from 'src/app/components/bar-container/bar-cont
       </a>
       <a [routerLink]="['/rwd']"> rwd </a>
       <a [routerLink]="['/ani']"> ani </a>
-      <app-map></app-map>
-      <!-- <app-bar-container></app-bar-container> -->
+      <!-- <app-map></app-map> -->
+      <app-bar-container></app-bar-container>
       <app-dropdown></app-dropdown>
       <p class="title">overview works!</p>
       <p>count: {{ count() }}</p>
