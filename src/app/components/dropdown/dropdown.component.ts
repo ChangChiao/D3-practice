@@ -4,6 +4,7 @@ import {
   Component,
   EventEmitter,
   Output,
+  WritableSignal,
   computed,
   inject,
   signal,
@@ -17,6 +18,11 @@ import { map, single, tap } from 'rxjs';
 import { DropdownEmitData, TownData, VillageData } from '../../model';
 import { LetDirective } from '@ngrx/component';
 import { AppComponentStore } from 'src/app/store/app.state';
+
+interface Dropdown {
+  id: string;
+  name: string;
+}
 
 @Component({
   selector: 'app-dropdown',
@@ -69,12 +75,12 @@ export class DropdownComponent {
     town: [''],
     village: [''],
   });
-  countryDropdown = signal([]);
-  townList = signal([]);
-  villageList = signal([]);
+  countryDropdown: WritableSignal<Dropdown[] | []> = signal([]);
+  townList: WritableSignal<Dropdown[] | []> = signal([]);
+  villageList: WritableSignal<Dropdown[] | []> = signal([]);
 
-  townDropdown = signal([]);
-  villageDropdown = signal([]);
+  townDropdown: WritableSignal<Dropdown[] | []> = signal([]);
+  villageDropdown: WritableSignal<Dropdown[] | []> = signal([]);
 
   vm$ = this.#store.vm$.pipe(
     tap(({ mapData }) => {
@@ -102,26 +108,26 @@ export class DropdownComponent {
   }
 
   constructor() {
-    this.countryFormControl.valueChanges.subscribe((value) => {
+    this.countryFormControl?.valueChanges.subscribe((value) => {
       this.setSelectedOption('country', value);
       if (!value) return;
       const filterArray = this.townList().filter(
         (item) => item.properties.countyId === value
       );
       this.townDropdown.set(filterArray);
-      this.townFormControl.setValue(null);
-      this.villageFormControl.setValue(null);
+      this.townFormControl?.setValue(null);
+      this.villageFormControl?.setValue(null);
     });
-    this.townFormControl.valueChanges.subscribe((value) => {
+    this.townFormControl?.valueChanges.subscribe((value) => {
       this.setSelectedOption('town', value);
       if (!value) return;
       const filterArray = this.villageList().filter(
         (item) => item.properties.townId === value
       );
       this.villageDropdown.set(filterArray);
-      this.villageFormControl.setValue(null);
+      this.villageFormControl?.setValue(null);
     });
-    this.villageFormControl.valueChanges.subscribe((value) => {
+    this.villageFormControl?.valueChanges.subscribe((value) => {
       this.setSelectedOption('village', value);
     });
   }
@@ -149,9 +155,9 @@ export class DropdownComponent {
 
   sendSelectedData() {
     this.selectData.emit({
-      country: this.countryFormControl.value,
-      town: this.townFormControl.value,
-      village: this.villageFormControl.value,
+      country: this.countryFormControl?.value,
+      town: this.townFormControl?.value,
+      village: this.villageFormControl?.value,
     });
   }
 }
